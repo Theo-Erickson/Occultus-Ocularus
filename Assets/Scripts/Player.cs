@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     [Header("Movement")]
-    [Tooltip("On/Off for player movement input")]
-    public bool canMove;
+    [Tooltip("On/Off for player movement input")] public bool canMove;
+    [Tooltip("Freeze all movement IE no gravity")] public bool frozen;
     [Tooltip("Whether to allow the player to fly freely")] public bool antiGrav = false;
     public float moveSpeed = 1;
 

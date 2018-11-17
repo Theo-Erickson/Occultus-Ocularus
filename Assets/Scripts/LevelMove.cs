@@ -19,11 +19,7 @@ public class LevelMove : MonoBehaviour {
         cScript = cam.GetComponent<CameraScript>();
     }
 
-    void Update() {
-        GameObject other = GameObject.Find("Player");
-        print("C: start " + cScript.start + " destination " + cScript.destination);
-    }
-
+    
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
 
@@ -32,11 +28,12 @@ public class LevelMove : MonoBehaviour {
             if (Mathf.Abs(other.transform.position.x - transform.position.x) < this.GetComponent<BoxCollider>().size.x / 2) {
                 //you have entered from the top
                 if (other.transform.position.y > this.transform.position.y) {
-                    cScript.pastRoomCameraPosition = cScript.start;
-                    cScript.SetDestination(destination, moveTime);
-                } else { //you entered from the bottom
-                    cScript.pastRoomCameraPosition = cScript.destination;
+                    cScript.pastRoomCameraPosition = origin;
                     cScript.SetDestination(origin, moveTime);
+                } else { //you entered from the bottom
+                    cScript.pastRoomCameraPosition = destination;
+                    cScript.SetDestination(destination, moveTime);
+
                 }
             } else if (Mathf.Abs(other.transform.position.y - transform.position.y) > this.GetComponent<BoxCollider>().size.y / 2) {
                 //enter from the right

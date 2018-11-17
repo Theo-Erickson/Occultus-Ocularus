@@ -39,8 +39,13 @@ public class CameraScript : MonoBehaviour {
             //Disable the player movement when the camera is shifting
             if (Vector3.Distance(transform.position, destination) > 1 && Vector3.Distance(transform.position, start) > 1) {
                 GameObject.Find("Player").GetComponent<Player>().canMove = false;
+                //Stop the player from moving when you are transitioning with the camera 
+                GameObject.Find("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
             } else {
                 player.GetComponent<Player>().canMove = true;
+                //Give player the contraints on all rotations + Z axis position
+                GameObject.Find("Player").GetComponent<Rigidbody>().constraints = (RigidbodyConstraints)120;
+
             }
 
             //Camera is set to follow player
