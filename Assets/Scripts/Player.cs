@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     [Header("Movement")]
-    [Tooltip("On/Off for player movement input")]public bool canMove;
-    [Tooltip("Whether to allow the player to fly freely")]public bool antiGrav = false; 
+    [Tooltip("On/Off for player movement input")]
+    public bool canMove;
+    [Tooltip("Whether to allow the player to fly freely")] public bool antiGrav = false;
     public float moveSpeed = 1;
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
+    // Use this for initialization
+    void Start() {
+
+    }
+
     void Update() {
         InputHandler();
-        
+
     }
 
 
@@ -35,11 +36,11 @@ public class Player : MonoBehaviour {
                     cScript.mode = CameraScript.CameraMode.FollowPlayer;
                 } else if (cScript.mode == CameraScript.CameraMode.FollowPlayer) {
                     cScript.mode = CameraScript.CameraMode.Fixed;
-                    cScript.resetPosition(2.0f);
+                    cScript.SetDestination(cScript.pastRoomCameraPosition, 2.0f);
                 }
-            //if you can't then just "Jump", its placeholder
+                //if you can't then just "Jump", its placeholder
             } else {
-                this.transform.position = this.transform.position + Vector3.up * 0.5f;
+                this.transform.position = this.transform.position + Vector3.up * 2.5f;
             }
         }
 
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-	void FixedUpdate () {
+    void FixedUpdate() {
         if (canMove) {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
                 this.transform.position = this.transform.position + Vector3.left * 0.1f * moveSpeed;
