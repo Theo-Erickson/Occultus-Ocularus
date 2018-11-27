@@ -40,11 +40,11 @@ public class CameraScript : MonoBehaviour {
             if (Vector3.Distance(transform.position, destination) > 1 && Vector3.Distance(transform.position, start) > 1) {
                 GameObject.Find("Player").GetComponent<Player>().canMove = false;
                 //Stop the player from moving when you are transitioning with the camera 
-                GameObject.Find("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                GameObject.Find("Player").GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             } else {
                 player.GetComponent<Player>().canMove = true;
                 //Give player the contraints on all rotations + Z axis position
-                GameObject.Find("Player").GetComponent<Rigidbody>().constraints = (RigidbodyConstraints)120;
+                GameObject.Find("Player").GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
             }
 

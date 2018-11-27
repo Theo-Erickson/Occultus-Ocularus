@@ -20,12 +20,12 @@ public class LevelMove : MonoBehaviour {
     }
 
     
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
 
             ///This is to check if you are on same y height as this object    
             //serves to allow checking in you approached from left or right
-            if (Mathf.Abs(other.transform.position.x - transform.position.x) < this.GetComponent<BoxCollider>().size.x / 2) {
+            if (Mathf.Abs(other.transform.position.x - transform.position.x) < this.GetComponent<BoxCollider2D>().size.x / 2) {
                 //you have entered from the top
                 if (other.transform.position.y > this.transform.position.y) {
                     cScript.pastRoomCameraPosition = origin;
@@ -35,7 +35,7 @@ public class LevelMove : MonoBehaviour {
                     cScript.SetDestination(destination, moveTime);
 
                 }
-            } else if (Mathf.Abs(other.transform.position.y - transform.position.y) > this.GetComponent<BoxCollider>().size.y / 2) {
+            } else if (Mathf.Abs(other.transform.position.y - transform.position.y) > this.GetComponent<BoxCollider2D>().size.y / 2) {
                 //enter from the right
                 if (other.transform.position.x > this.transform.position.x) {
                     cScript.pastRoomCameraPosition = origin;

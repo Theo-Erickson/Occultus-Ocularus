@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [Tooltip("Freeze all movement IE no gravity")] public bool frozen;
     [Tooltip("Whether to allow the player to fly freely")] public bool antiGrav = false;
     public float moveSpeed = 1;
+    public float jumpForce = 20;
 
     // Use this for initialization
     void Start() {
@@ -19,6 +20,9 @@ public class Player : MonoBehaviour {
 
     }
 
+    private bool jump = false;
+    // For determining whether the player is touching the ground
+    private ContactPoint2D[] contactPoints = new ContactPoint2D[5];
 
     //function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour {
         }
 
         //"Jump"
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetButtonDown("Jump")) {
             //if you can move freely, switch camera modes
             if (antiGrav) {
                 CameraScript cScript = Camera.main.GetComponent<CameraScript>();
@@ -39,8 +43,14 @@ public class Player : MonoBehaviour {
                     cScript.SetDestination(cScript.pastRoomCameraPosition, 2.0f);
                 }
                 //if you can't then just "Jump", its placeholder
+                // Jump, apply force in FixedUpdate, recommended by Unity docs.
             } else {
-                this.transform.position = this.transform.position + Vector3.up * 2.5f;
+                // Only jump if touching the ground
+                int count = GetComponent<Collider2D>().GetContacts(contactPoints);
+                for(int i = 0; i < count; i ++) {
+                    if(Vector2.Dot(contactPoints[i].normal, Vector2.up) > 0.5)
+                        jump = true;
+                }
             }
         }
 
@@ -49,30 +59,27 @@ public class Player : MonoBehaviour {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.grey;
                 antiGrav = false;
-                this.GetComponent<Rigidbody>().useGravity = true;
+                this.GetComponent<Rigidbody2D>().gravityScale = 1;
             } else {
                 this.GetComponent<Renderer>().material.color = Color.red;
                 antiGrav = true;
-                this.GetComponent<Rigidbody>().useGravity = false;
+                this.GetComponent<Rigidbody2D>().gravityScale = 0;
             }
         }
     }
 
     void FixedUpdate() {
         if (canMove) {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-                this.transform.position = this.transform.position + Vector3.left * 0.1f * moveSpeed;
-            } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-                this.transform.position = this.transform.position + Vector3.right * 0.1f * moveSpeed;
+            this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * 0.1f * moveSpeed;
+
+            if(jump) {
+                this.GetComponent<Rigidbody2D>().AddForce(jumpForce * Vector3.up);
+                jump = false;
             }
 
             //if you are allowed free flight
             if (antiGrav) {
-                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-                    this.transform.position = this.transform.position + Vector3.up * 0.1f * moveSpeed;
-                } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-                    this.transform.position = this.transform.position + Vector3.down * 0.1f * moveSpeed;
-                }
+                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * 0.1f * moveSpeed;
             }
         }
     }
