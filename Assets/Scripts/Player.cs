@@ -7,12 +7,15 @@ public class Player : MonoBehaviour {
     [Tooltip("On/Off for player movement input")] public bool canMove;
     [Tooltip("Freeze all movement IE no gravity")] public bool frozen;
     [Tooltip("Whether to allow the player to fly freely")] public bool antiGrav = false;
-    public float moveSpeed = 1;
+    public float maxWalkSpeed = 1;
+    public float walkForce = 20;
     public float jumpForce = 20;
+
+    private Rigidbody2D body;
 
     // Use this for initialization
     void Start() {
-
+        body = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
@@ -59,27 +62,36 @@ public class Player : MonoBehaviour {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.grey;
                 antiGrav = false;
-                this.GetComponent<Rigidbody2D>().gravityScale = 1;
+                body.gravityScale = 1;
             } else {
                 this.GetComponent<Renderer>().material.color = Color.red;
                 antiGrav = true;
-                this.GetComponent<Rigidbody2D>().gravityScale = 0;
+                body.gravityScale = 0;
+                body.velocity = Vector2.zero;
             }
         }
     }
 
     void FixedUpdate() {
         if (canMove) {
-            this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * 0.1f * moveSpeed;
-
-            if(jump) {
-                this.GetComponent<Rigidbody2D>().AddForce(jumpForce * Vector3.up);
-                jump = false;
-            }
 
             //if you are allowed free flight
             if (antiGrav) {
-                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * 0.1f * moveSpeed;
+                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed;
+                this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed;
+            }
+            // When u walkin
+            else {
+                float h = Input.GetAxis("Horizontal");
+                if(h * body.velocity.x < maxWalkSpeed)
+                    body.AddForce(Vector2.right * h * walkForce);
+                if (Mathf.Abs(body.velocity.x) > maxWalkSpeed)
+                    body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * maxWalkSpeed, body.velocity.y);
+
+                if(jump) {
+                    body.AddForce(jumpForce * Vector3.up);
+                    jump = false;
+                }
             }
         }
     }
