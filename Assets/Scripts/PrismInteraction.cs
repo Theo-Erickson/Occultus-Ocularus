@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PrismInteraction : MonoBehaviour {
 
-    // Rotates anything tagged 'Prism' when E is pressed
+    [Tooltip("Object with this tag will be rotated")] public string rotateTag;
+
+    // Rotates anything tagged 'tagToRotate' when E is pressed
     private void OnTriggerStay2D(Collider2D collision) {
 
         // Interact key
