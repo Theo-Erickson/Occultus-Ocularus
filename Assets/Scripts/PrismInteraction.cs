@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class PrismInteraction : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Rotates anything tagged 'Prism' when E is pressed
+    private void OnTriggerStay2D(Collider2D collision) {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-
-        if (collision.tag == "Prism")
+        // Interact key
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            collision.transform.Rotate(new Vector3(0, 0, 45));
+            // If the thing with which you are colliding is a prism, rotate it
+            if (collision.tag == "Prism")
+            {
+                collision.transform.Rotate(new Vector3(0, 0, 45));
+            }
         }
     }
 }
