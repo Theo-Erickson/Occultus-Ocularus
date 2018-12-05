@@ -5,6 +5,8 @@ using UnityEngine;
 public class PrismInteraction : MonoBehaviour {
 
     [Tooltip("Object with this tag will be rotated")] public string rotateTag = "Prism";
+    [Tooltip("How much to rotate the object by")] public int degrees = 45;
+
 
     // Rotates anything tagged 'tagToRotate' when E is pressed
     private void OnTriggerStay2D(Collider2D collision) {
@@ -15,7 +17,7 @@ public class PrismInteraction : MonoBehaviour {
             // If the thing with which you are colliding is a prism, rotate it
             if (collision.tag == rotateTag)
             {
-                collision.transform.Rotate(new Vector3(0, 0, 45));
+                collision.transform.Rotate(new Vector3(0, 0, degrees));
             }
         }
     }
