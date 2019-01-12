@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
-    public enum CameraMode { Fixed, FollowPlayer }
+    public enum CameraMode { Fixed, FollowPlayer, FollowPlayerRadius }
 
     [Header("Camera Mode")]
-    [Tooltip("Does the camera stay still or follow the player?")]
+    [Tooltip("Does the camera stay still, follow the player, or follow within a radius?")]
     public CameraMode mode;
 
     [Header("Positioning")]
@@ -15,10 +15,15 @@ public class CameraScript : MonoBehaviour {
     [Tooltip("Tells the camera where to go")] public Vector3 destination;
     public Vector3 pastRoomCameraPosition;
 
+    [Tooltip("How far the player can move from the view center before the camera will follow it (Applies only to the FollowPlayerRadius camera mode)")]
+    public float followRadius = 3;
 
     private GameObject player;
     private float timeToReachTarget = 5.0f;
     private float t;
+    // these only apply to the FollowPlayerRadius game mode:
+    private Vector2 screenCenterVector; // Stores the coordinates representing the center of the camera view in world space (2d).
+    private Vector2 screenToPlayerVector; // Stores the vector between the center of the camera view in world space to the player's position (2d).
 
 
     void Start() {
@@ -53,6 +58,15 @@ public class CameraScript : MonoBehaviour {
             //So unity only makes it happen once for better performance
             if (this.transform.parent != player.transform) {
                 this.transform.parent = player.transform;
+            }
+        } else if (mode == CameraMode.FollowPlayerRadius) {
+            //get the center of the screen (mainCamera) in the unity world units
+            screenCenterVector = Camera.main.ScreenToWorldPoint(new Vector2((Screen.width / 2), (Screen.height / 2)));
+            screenToPlayerVector = (Vector2)player.transform.position - screenCenterVector; //subtracts the center of the screen coordinates (2d) from the player's coordinates;
+            if (screenToPlayerVector.magnitude > followRadius) // if the player is too far from the center of the view:
+            {
+                //move the camera such that the player is within the radius focusAreaSize of the view center again:
+                transform.Translate((screenToPlayerVector - screenToPlayerVector.normalized * followRadius) / 2, Space.World);
             }
         }
     }
