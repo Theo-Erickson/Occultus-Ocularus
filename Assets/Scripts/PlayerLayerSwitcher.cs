@@ -35,10 +35,25 @@ public class PlayerLayerSwitcher : MonoBehaviour
             // fade the foreground so the the midground is more visible
             ChangeLayerOpacity(foreground, (float)0.8);
         }
-        // set the player's own layer to the desired layer integer so that the player will collide with that layer (self-collision is settup in the layer properites)
-        player.layer = desiredPlayerLayer;
+        /*
+         * Set the player's own layer to the desired layer integer so that the player will
+         * collide with that layer (self-collision is settup in the layer properites). Calls
+         * SetLayerRecursively so that all children of player will also take the same layer.
+         * This is necessary for changing the interaction trigger, joints, etc.
+         */
+        SetLayerRecursively(player, desiredPlayerLayer);
         // set everything straight after switching layers.
         currentPlayerLayer = desiredPlayerLayer;
+    }
+
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+    
+        foreach(Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
     }
 
 
