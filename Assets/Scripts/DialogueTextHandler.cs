@@ -7,24 +7,38 @@ public class DialogueTextHandler : MonoBehaviour
 {
     //const int PHRASE_SIZE = 85; //This will change depending on the size and font of the text
     const char SPLIT_SYMBOL = '|';
-    const float SCROLL_RATE = 0.2f;
+    const float NORMAL_SCROLL_RATE = 0.4f;
+    const float FAST_SCROLL_RATE = 0.2f;
 
     public Text text;
 
     private string[] phrases;
+    private float lastUpdateTime;
+    private float currentScrollRate;
+
     private int phraseIndex = 0;
     private int charIndex = 0;
-    private float lastUpdateTime;
 
     void Setup()
     {
         lastUpdateTime = Time.time;
+        currentScrollRate = NORMAL_SCROLL_RATE;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentScrollRate = FAST_SCROLL_RATE;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            currentScrollRate = NORMAL_SCROLL_RATE;
+        }
+
         //Add a new letter after each interval defined by SCROLL_RATE
-        while (Time.time - lastUpdateTime > SCROLL_RATE && phraseIndex < phrases.Length)
+        while (Time.time - lastUpdateTime > NORMAL_SCROLL_RATE && phraseIndex < phrases.Length)
         {
             string phrase = phrases[phraseIndex];
             lastUpdateTime = Time.time;
