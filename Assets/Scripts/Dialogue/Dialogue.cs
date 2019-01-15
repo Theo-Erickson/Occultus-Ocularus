@@ -8,12 +8,12 @@ public class Dialogue : MonoBehaviour
     public static string response;
 
     const char SPLIT_SYMBOL = '|';
-    const float NORMAL_SCROLL_RATE = 0.4f;
-    const float FAST_SCROLL_RATE = 0.2f;
+    const float NORMAL_SCROLL_RATE = 0.06f;
+    const float FAST_SCROLL_RATE = 0.03f;
 
     public Text text;
 
-    public string[] phrases;
+    private string[] phrases;
     private float lastUpdateTime;
     private float currentScrollRate;
 
@@ -23,16 +23,15 @@ public class Dialogue : MonoBehaviour
 
     void Setup()
     {
+        Debug.Log("hi");
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
-
-        lastUpdateTime = Time.time;
-
-        phrases = new string[1] { "" };
+        phrases = new string[1];
     }
 
     void Update()
     {
+        //Debug.Log(currentScrollRate);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currentScrollRate = FAST_SCROLL_RATE;
@@ -74,7 +73,10 @@ public class Dialogue : MonoBehaviour
 
     public static void constructDialogueBox(string message)
     {
-        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject);
+        Vector3 position = GameObject.Find("DialogueBoxPos").transform.position;
+        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject, position, Quaternion.identity);
+        dialogueBox.transform.parent = GameObject.Find("Canvas").transform;
+        dialogueBox.BroadcastMessage("Setup");
         dialogueBox.BroadcastMessage("parseText", message);
     }
 }
