@@ -18,6 +18,9 @@ public class CameraScript : MonoBehaviour {
     [Tooltip("How far the player can move from the view center before the camera will follow it (Applies only to the FollowPlayerRadius camera mode)")]
     public float followRadius = 3;
 
+    [Tooltip("How fast the camera should \"catch up\" with the player when in follow radius mode.")]
+    public float followSpeed = 10;
+
     private GameObject player;
     private float timeToReachTarget = 5.0f;
     private float t;
@@ -66,7 +69,7 @@ public class CameraScript : MonoBehaviour {
             if (screenToPlayerVector.magnitude > followRadius) // if the player is too far from the center of the view:
             {
                 //move the camera such that the player is within the radius focusAreaSize of the view center again:
-                transform.Translate((screenToPlayerVector - screenToPlayerVector.normalized * followRadius) / 2, Space.World);
+                transform.Translate((screenToPlayerVector - screenToPlayerVector.normalized * followRadius) * Time.deltaTime * followSpeed, Space.World);
             }
         }
     }
