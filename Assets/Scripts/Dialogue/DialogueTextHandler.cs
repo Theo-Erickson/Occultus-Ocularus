@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueTextHandler : MonoBehaviour
 {
-    //const int PHRASE_SIZE = 85; //This will change depending on the size and font of the text
+    static string response;
+
     const char SPLIT_SYMBOL = '|';
     const float NORMAL_SCROLL_RATE = 0.4f;
     const float FAST_SCROLL_RATE = 0.2f;
@@ -18,6 +19,7 @@ public class DialogueTextHandler : MonoBehaviour
 
     private int phraseIndex = 0;
     private int charIndex = 0;
+    private bool awaitingUser = false;
 
     void Setup()
     {
@@ -30,6 +32,7 @@ public class DialogueTextHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currentScrollRate = FAST_SCROLL_RATE;
+            awaitingUser = false;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -38,7 +41,7 @@ public class DialogueTextHandler : MonoBehaviour
         }
 
         //Add a new letter after each interval defined by SCROLL_RATE
-        while (Time.time - lastUpdateTime > NORMAL_SCROLL_RATE && phraseIndex < phrases.Length)
+        while (Time.time - lastUpdateTime > NORMAL_SCROLL_RATE && phraseIndex < phrases.Length && awaitingUser == false)
         {
             string phrase = phrases[phraseIndex];
             lastUpdateTime = Time.time;
@@ -50,6 +53,7 @@ public class DialogueTextHandler : MonoBehaviour
             {
                 charIndex = 0;
                 phraseIndex++;
+                awaitingUser = true;
             }
 
             if (phraseIndex == phrases.Length && Input.GetKeyUp(KeyCode.Space))
@@ -59,9 +63,14 @@ public class DialogueTextHandler : MonoBehaviour
         }
     }
 
-    void parseText(string s)
+    void parseText(string message)
     {
-        phrases = s.Split(SPLIT_SYMBOL);
+        phrases = message.Split(SPLIT_SYMBOL);
         //Option to further split each phrase if its too long may be added
+    }
+
+    void constructDialogueBox(string message)
+    {
+
     }
 }
