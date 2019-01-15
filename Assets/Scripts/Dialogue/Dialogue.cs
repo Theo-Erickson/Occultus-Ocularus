@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueTextHandler : MonoBehaviour
+public class Dialogue : MonoBehaviour
 {
-    static string response;
+    public static string response;
 
     const char SPLIT_SYMBOL = '|';
     const float NORMAL_SCROLL_RATE = 0.4f;
@@ -13,7 +13,7 @@ public class DialogueTextHandler : MonoBehaviour
 
     public Text text;
 
-    private string[] phrases;
+    public string[] phrases;
     private float lastUpdateTime;
     private float currentScrollRate;
 
@@ -25,6 +25,10 @@ public class DialogueTextHandler : MonoBehaviour
     {
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
+
+        lastUpdateTime = Time.time;
+
+        phrases = new string[1] { "" };
     }
 
     void Update()
@@ -41,7 +45,7 @@ public class DialogueTextHandler : MonoBehaviour
         }
 
         //Add a new letter after each interval defined by SCROLL_RATE
-        while (Time.time - lastUpdateTime > NORMAL_SCROLL_RATE && phraseIndex < phrases.Length && awaitingUser == false)
+        while (Time.time - lastUpdateTime > currentScrollRate && phraseIndex < phrases.Length && awaitingUser == false)
         {
             string phrase = phrases[phraseIndex];
             lastUpdateTime = Time.time;
@@ -66,11 +70,11 @@ public class DialogueTextHandler : MonoBehaviour
     void parseText(string message)
     {
         phrases = message.Split(SPLIT_SYMBOL);
-        //Option to further split each phrase if its too long may be added
     }
 
-    void constructDialogueBox(string message)
+    public static void constructDialogueBox(string message)
     {
-
+        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject);
+        dialogueBox.BroadcastMessage("parseText", message);
     }
 }
