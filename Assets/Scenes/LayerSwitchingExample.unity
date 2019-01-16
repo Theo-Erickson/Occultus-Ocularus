@@ -412,10 +412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be93b74a6a17a594da2fb5269787f2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 2
   start: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   pastRoomCameraPosition: {x: 0, y: 0, z: 0}
+  followRadius: 3
+  followSpeed: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2791,7 +2793,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -17263,7 +17265,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
