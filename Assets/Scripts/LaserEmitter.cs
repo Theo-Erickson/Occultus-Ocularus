@@ -8,19 +8,21 @@ public class LaserEmitter : MonoBehaviour {
 	[Tooltip("The object to be instantiated as a laser.")]
 	public GameObject laser;
 	[Tooltip("The maximum number of reflections/refractions for the laser.")]
-	public const int maxReflections = 4;
+	public int maxReflections = 10;
 	[Tooltip("How long an infinite laser (a laser shot into the empty sky) should be drawn.")]
-	public const float infiniteRenderSize = 100;
+	public float infiniteRenderSize = 100;
 	[Tooltip("How far to scan for laser hits.")]
-	public const float maxDistance = Mathf.Infinity;
+	public float maxDistance = Mathf.Infinity;
 
 	private GameObject[] lasers;
 
 	// Use this for initialization
 	void Start () {
 		lasers = new GameObject[maxReflections];
-		for(int i = 0; i < lasers.Length; i ++)
-			lasers[i] = GameObject.Instantiate(laser, gameObject.transform);
+		for(int i = 0; i < lasers.Length; i ++) {
+			// Add the lazers in backwards order, so that they render correctly.
+			lasers[lasers.Length - i - 1] = GameObject.Instantiate(laser, gameObject.transform);
+		}
 	}
 	
 	// Sets the laser objects up so they appear to be bouncing around.
@@ -36,7 +38,7 @@ public class LaserEmitter : MonoBehaviour {
 			if(visible) {
 				// Make it visible
 				laser.SetActive(true);
-				laser.layer = gameObject.layer;
+				Util.SetLayerRecursively(laser, gameObject.layer);
 				// Find the intersection between the ray and the layer that the emitter resides in.
 				ContactFilter2D cf = new ContactFilter2D();
 

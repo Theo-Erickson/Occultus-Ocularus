@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4077298369169677341}
   - component: {fileID: 4077298369169677312}
   - component: {fileID: 4077298369169677313}
+  - component: {fileID: 1480185743}
   m_Layer: 17
   m_Name: LaserEmitter
   m_TagString: Untagged
@@ -111,8 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605d2144a27e81b44897b182e7f0aa31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
   ID: 0
   degrees: 45
+  rotateTime: 0.5
 --- !u!114 &4077298369169677313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,9 +128,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f8513540a50834aa8e998bc9a9e1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetObject: {fileID: 4077298370317125808}
   ID: 1
-  toggledObject: {fileID: 4077298370317125808}
   mode: 0
+--- !u!114 &1480185743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077298369169677340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c537830894bd094ab8657beb6bf4c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  ID: 0
+  sprites: []
+  index: 0
 --- !u!1 &4077298370317125808
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,3 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 1619441625166164, guid: c8e01122f096b4a4f9c21d6bccdb14aa, type: 3}
+  maxReflections: 10
+  infiniteRenderSize: 100
+  maxDistance: Infinity

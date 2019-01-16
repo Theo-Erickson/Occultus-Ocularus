@@ -41,19 +41,9 @@ public class PlayerLayerSwitcher : MonoBehaviour
          * SetLayerRecursively so that all children of player will also take the same layer.
          * This is necessary for changing the interaction trigger, joints, etc.
          */
-        SetLayerRecursively(player, desiredPlayerLayer);
+        Util.SetLayerRecursively(player, desiredPlayerLayer);
         // set everything straight after switching layers.
         currentPlayerLayer = desiredPlayerLayer;
-    }
-
-    void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        obj.layer = newLayer;
-    
-        foreach(Transform child in obj.transform)
-        {
-            SetLayerRecursively(child.gameObject, newLayer);
-        }
     }
 
 

@@ -7,12 +7,6 @@ using UnityEngine;
  */
 public class InteractionToggle : Interaction
 {
-    [Tooltip(
-     "This is the game object that will be enabled or disabled. "
-     + "If it is set to null, this object itself will be toggled. "
-     + "This is useful if for example, the object that should be toggled "
-     + "is a child of some other object that should handle the interactions.")]
-    public GameObject toggledObject = null;
 
     public enum Mode {
         Toggle,
@@ -37,18 +31,18 @@ public class InteractionToggle : Interaction
 
     public override void Interact(GameObject sender)
     {
-        if(toggledObject != null)
+        if(targetObject != null)
         {
             switch(mode)
             {
                 case Mode.Toggle:
-                    toggledObject.SetActive(!toggledObject.activeSelf);
+                    targetObject.SetActive(!targetObject.activeSelf);
                     break;
                 case Mode.AlwaysDisable:
-                    toggledObject.SetActive(false);
+                    targetObject.SetActive(false);
                     break;
                 case Mode.AlwaysEnable:
-                    toggledObject.SetActive(true);
+                    targetObject.SetActive(true);
                     break;
             }
         }
