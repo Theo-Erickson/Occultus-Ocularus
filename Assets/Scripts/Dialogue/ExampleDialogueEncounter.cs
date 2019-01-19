@@ -7,7 +7,6 @@ public class ExampleDialogueEncounter : MonoBehaviour
     void Start()
     {
         Dialogue dialogueInstance = Dialogue.constructDialogueBox();
-        dialogueInstance.Setup();
-        dialogueInstance.parseMessage("This is a test.|Hello user this is the second phrase.|This is the third phrase");
+        dialogueInstance.parseMessage("This is a test.|This is the second phrase.|This is the third phrase");
     }
 }

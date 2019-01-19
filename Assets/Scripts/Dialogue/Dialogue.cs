@@ -13,12 +13,12 @@ public class Dialogue : MonoBehaviour
 
     public Text text;
 
-    private string[] phrases;
+    public string[] phrases;
     private float lastUpdateTime;
     private float currentScrollRate;
 
     private int phraseIndex = 0;
-    private int charIndex = 0;
+    private int charIndex = -1;
     private bool awaitingUser = false;
 
     public void Setup()
@@ -52,7 +52,7 @@ public class Dialogue : MonoBehaviour
 
             if (charIndex == phrase.Length)
             {
-                charIndex = 0;
+                charIndex = -1;
                 phraseIndex++;
                 awaitingUser = true;
             }
@@ -71,10 +71,12 @@ public class Dialogue : MonoBehaviour
 
     public static Dialogue constructDialogueBox()
     {
-        Vector3 position = GameObject.Find("DialogueBoxPos").transform.TransformPoint(Vector3.zero);
-        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject, position, Quaternion.identity);
+        Vector2 position = GameObject.Find("DialogueBoxPos").transform.position;
+        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject);
         dialogueBox.transform.parent = GameObject.Find("Canvas").transform;
+        dialogueBox.transform.position = position;
         GameObject text = dialogueBox.transform.GetChild(1).gameObject;
+        text.BroadcastMessage("Setup");
         Dialogue dialogue = (Dialogue)text.GetComponent((typeof(Dialogue))) as Dialogue;
         return dialogue;
     }
