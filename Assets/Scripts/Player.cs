@@ -81,6 +81,7 @@ public class Player : MonoBehaviour {
             if (antiGrav) {
                 this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed;
                 this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed;
+                this.GetComponent<BoxCollider2D>().isTrigger = true;
             }
             // When u walkin
             else {
@@ -94,6 +95,7 @@ public class Player : MonoBehaviour {
                     body.AddForce(jumpForce * Vector3.up);
                     jump = false;
                 }
+                this.GetComponent<BoxCollider2D>().isTrigger = false;
             }
         }
     }
