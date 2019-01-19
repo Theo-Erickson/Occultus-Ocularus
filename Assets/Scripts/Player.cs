@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
 
     //function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
+
+
         //Reset position
         if (Input.GetKeyDown(KeyCode.R)) {
             this.transform.position = Vector3.zero;
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour {
         }
 
         //shift between flying and grounded modes
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
+        if (Input.GetKeyDown(KeyCode.RightShift)) {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.grey;
                 antiGrav = false;
