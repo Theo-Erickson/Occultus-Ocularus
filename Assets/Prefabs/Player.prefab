@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50948675252462286}
   - component: {fileID: 7443616542632638076}
   - component: {fileID: 7443616542632638079}
+  - component: {fileID: 549943170714426841}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -70,7 +71,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.50666666, y: 1.052}
+    oldSize: {x: 0.5, y: 1}
     newSize: {x: 3.8, y: 7.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,3 +165,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &549943170714426841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974393871175172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86b4fb632d7e472fa23fd67f6a4882a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateTag: Prism
+  degrees: 45
+  keyCode: 101
