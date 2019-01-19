@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
-    public static string response;
+    public static bool messageComplete = true;
 
     const char SPLIT_SYMBOL = '|';
     const float NORMAL_SCROLL_RATE = 0.06f;
@@ -21,9 +21,8 @@ public class Dialogue : MonoBehaviour
     private int charIndex = 0;
     private bool awaitingUser = false;
 
-    void Setup()
+    public void Setup()
     {
-        Debug.Log("hi");
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
         phrases = new string[1];
@@ -31,7 +30,6 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(currentScrollRate);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currentScrollRate = FAST_SCROLL_RATE;
@@ -66,17 +64,18 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    void parseText(string message)
+    public void parseMessage(string message)
     {
         phrases = message.Split(SPLIT_SYMBOL);
     }
 
-    public static void constructDialogueBox(string message)
+    public static Dialogue constructDialogueBox()
     {
-        Vector3 position = GameObject.Find("DialogueBoxPos").transform.position;
+        Vector3 position = GameObject.Find("DialogueBoxPos").transform.TransformPoint(Vector3.zero);
         GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject, position, Quaternion.identity);
         dialogueBox.transform.parent = GameObject.Find("Canvas").transform;
-        dialogueBox.BroadcastMessage("Setup");
-        dialogueBox.BroadcastMessage("parseText", message);
+        GameObject text = dialogueBox.transform.GetChild(1).gameObject;
+        Dialogue dialogue = (Dialogue)text.GetComponent((typeof(Dialogue))) as Dialogue;
+        return dialogue;
     }
 }
