@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
                     cScript.mode = CameraScript.CameraMode.FollowPlayer;
                 } else if (cScript.mode == CameraScript.CameraMode.FollowPlayer) {
                     cScript.mode = CameraScript.CameraMode.Fixed;
-                    cScript.SetDestination(cScript.pastRoomCameraPosition, 2.0f);
+                    cScript.SetDestination(cScript.pastCameraPosition, 2.0f);
                 }
                 //if you can't then just "Jump", its placeholder
                 // Jump, apply force in FixedUpdate, recommended by Unity docs.
