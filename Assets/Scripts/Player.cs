@@ -11,16 +11,24 @@ public class Player : MonoBehaviour {
     public float walkForce = 20;
     public float jumpForce = 20;
 
+    [Header("Audio")]
+    public AudioSource backgroundAudio;
+    public AudioSource footsteps;
+
     private Rigidbody2D body;
+    private Vector3 startPoint;
 
     // Use this for initialization
     void Start() {
+        startPoint = this.transform.position;  
         body = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        InputHandler();
+        if(this.transform.position.y < -50) { this.transform.position = startPoint; print("RESPAWN");}
 
+        InputHandler();
+        AudioHandler();
     }
 
     private bool jump = false;
@@ -70,6 +78,19 @@ public class Player : MonoBehaviour {
                 antiGrav = true;
                 body.gravityScale = 0;
                 body.velocity = Vector2.zero;
+            }
+        }
+    }
+
+
+    void AudioHandler(){
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+            if (!footsteps.isPlaying)
+            {
+                footsteps.clip = Resources.Load<AudioClip>("Audio/Footsteps/SoftFootsteps" + Random.Range(1, 4));
+                footsteps.pitch = Random.Range(0.7f, 1.0f);
+                footsteps.volume = Random.Range(0.5f, 1.0f);
+                footsteps.Play();
             }
         }
     }
