@@ -29,7 +29,7 @@ public class InteractionToggle : Interaction
         
     }
 
-    public override void Interact(GameObject sender)
+    public override void Interact()
     {
         if(targetObject != null)
         {

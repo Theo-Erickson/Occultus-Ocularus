@@ -18,8 +18,6 @@ public abstract class Interaction : MonoBehaviour
      + "is a child of some other object that should handle the interactions.")]
     public GameObject targetObject = null;
 
-    [Tooltip("The ID of this interaction. This should be used if an object has more than one interaction.")]
-    public int ID = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +31,7 @@ public abstract class Interaction : MonoBehaviour
     }
 
     /*
-     * Called by triggers, for example, a button. Sender is the object, e.g. button, that
-     * caused the interaction.
+     * Called by triggers, for example, a button.
      */
-    public abstract void Interact(GameObject sender);
+    public abstract void Interact();
 }

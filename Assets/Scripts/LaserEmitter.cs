@@ -70,6 +70,11 @@ public class LaserEmitter : MonoBehaviour {
 					// If so, redirect the laser.
 					if(affector != null) {
 						Ray2D newRay = affector.RedirectLaser(new Ray2D(o, d), hit);
+						if(newRay.direction.magnitude == 0)
+						{
+							visible = false;
+							continue;
+						}
 						o = newRay.origin;
 						d = newRay.direction;
 					}
