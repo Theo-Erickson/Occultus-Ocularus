@@ -16,9 +16,9 @@ public class LaserRefractor : LaserAffector {
 	}
 
 	// "Refracts" the laser. Not true refraction.
-	public override Ray2D RedirectLaser(Ray2D inRay, RaycastHit2D hit) {
+	public Ray2D RedirectLaser(Ray2D inRay, RaycastHit2D hit) {
 		Vector2 o, d;
-		o = hit.point - (Vector2) hit.normal * (transform.localScale.x + 0.01f);
+        o = hit.point - (Vector2)hit.normal; //* (transform.localScale.x + 0.01f);
 		d = -hit.normal;
 		return new Ray2D(o, d);
 	}
