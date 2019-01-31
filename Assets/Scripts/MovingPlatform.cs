@@ -86,7 +86,7 @@ public class MovingPlatform : MonoBehaviour
 
             if (direction == MvDir.horizontal)
             {
-                // If to the right of right bound, go left; if left of left bound, go left
+                // If at bound, turn around or stop if in extendAndRetract mode
                 if (transform.position.x >= front)
                 {
                     forwards = false;
@@ -99,6 +99,12 @@ public class MovingPlatform : MonoBehaviour
                     if (extendAndRetract && !extend)
                         move = false;
                 }
+
+                // If going wrong direction, turn around
+                if (!inverted && !forwards && extend)
+                    forwards = true;
+                else if (inverted && forwards && !extend)
+                    forwards = false;
 
                 // Move right or left
                 if (move)
@@ -122,7 +128,7 @@ public class MovingPlatform : MonoBehaviour
             }
             else if (direction == MvDir.vertical)
             {
-                // If above top bound, go down; if below bottom bound, go up
+                // If at bound, turn around or stop if in extendAndRetract mode
                 if (transform.position.y >= front)
                 {
                     forwards = false;
@@ -135,6 +141,12 @@ public class MovingPlatform : MonoBehaviour
                     if (extendAndRetract && !extend)
                         move = false;
                 }
+
+                // If going wrong direction, turn around
+                if (!inverted && !forwards && extend)
+                    forwards = true;
+                else if (inverted && forwards && !extend)
+                    forwards = false;
 
                 // Move up or down
                 if (move)
