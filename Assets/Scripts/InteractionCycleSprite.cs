@@ -13,7 +13,7 @@ public class InteractionCycleSprite : Interaction
     public Sprite[] sprites = null;
     [Tooltip("The index of the current sprite.")]
     public int index = 0;
-    public override void Interact(GameObject sender)
+    public override void Interact()
     {
         // Use the target object if specified, otherwise use this object.
         GameObject target = targetObject != null ? targetObject : gameObject;

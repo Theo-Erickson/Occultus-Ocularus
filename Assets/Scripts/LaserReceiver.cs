@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LaserReceiver : Interaction, LaserAffector
+public class LaserReceiver : MonoBehaviour, LaserAffector
 {
-    [SerializeField]
-   // private SwitchableDoor door;//private switchDoor door;
+    // private SwitchableDoor door;//private switchDoor door;
     private bool isHit = false;
     private bool isSwitched;
     public UnityEvent Activate;
@@ -45,10 +44,5 @@ public class LaserReceiver : Interaction, LaserAffector
         o = hit.point * 0f;
         d = hit.point * 0f;
         return new Ray2D(o, d);
-    }
-
-    public override void Interact(GameObject sender)
-    {
-        //targetObject
     }
 }

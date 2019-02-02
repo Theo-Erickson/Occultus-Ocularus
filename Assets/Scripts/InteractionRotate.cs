@@ -67,7 +67,7 @@ public class InteractionRotate : Interaction
         }
     }
 
-    public override void Interact(GameObject sender)
+    public override void Interact()
     {
         // Start animation again if the animation has been played already.
         if(rotating == false)
