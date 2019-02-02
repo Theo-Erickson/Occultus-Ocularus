@@ -81,7 +81,7 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (move && distance != 0)
+        if (move && Mathf.Abs(distance) > 0)
         {
 
             if (direction == MvDir.horizontal)
@@ -101,10 +101,13 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // If going wrong direction, turn around
-                if (!inverted && !forwards && extend)
-                    forwards = true;
-                else if (inverted && forwards && !extend)
-                    forwards = false;
+                if (extendAndRetract)
+                {
+                    if (!inverted && !forwards && extend)
+                        forwards = true;
+                    else if (inverted && forwards && !extend)
+                        forwards = false;
+                }
 
                 // Move right or left
                 if (move)
@@ -118,10 +121,10 @@ public class MovingPlatform : MonoBehaviour
                     }
                     else
                     {
-                        if (forwards && (!extendAndRetract || extend))
-                            transform.position = new Vector3(transform.position.x + displacement, transform.position.y, transform.position.z);
-                        else
+                        if (!forwards && (!extendAndRetract || !extend))
                             transform.position = new Vector3(transform.position.x - displacement, transform.position.y, transform.position.z);
+                        else
+                            transform.position = new Vector3(transform.position.x + displacement, transform.position.y, transform.position.z);
                     }
 
                 }
@@ -143,10 +146,13 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // If going wrong direction, turn around
-                if (!inverted && !forwards && extend)
-                    forwards = true;
-                else if (inverted && forwards && !extend)
-                    forwards = false;
+                if (extendAndRetract)
+                {
+                    if (!inverted && !forwards && extend)
+                        forwards = true;
+                    else if (inverted && forwards && !extend)
+                        forwards = false;
+                }
 
                 // Move up or down
                 if (move)
