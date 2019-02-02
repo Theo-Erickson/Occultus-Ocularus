@@ -69,16 +69,12 @@ public class LaserEmitter : MonoBehaviour {
 					LaserAffector affector = hit.collider.gameObject.GetComponent<LaserAffector>();
 					// If so, redirect the laser.
 					if(affector != null) {
-                        //if(affector.Equals(LaserReceiver) {
-                        //affector.RedirectLaser(new Ray2D(o, d), hit);
-                        //}
-                        //else{
-                        Ray2D newRay = affector.RedirectLaser(new Ray2D(o, d), hit);
-                        if (newRay.direction.magnitude == 0)
-                        {
-                            visible = false;
-                            continue;
-                        }
+						Ray2D newRay = affector.RedirectLaser(new Ray2D(o, d), hit);
+						if(newRay.direction.magnitude == 0)
+						{
+							visible = false;
+							continue;
+						}
 						o = newRay.origin;
 						d = newRay.direction;
                         //}

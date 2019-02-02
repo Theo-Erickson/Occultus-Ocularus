@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * This interactor causes an interaction when something enters or exits its trigger and the player presses 'Interact'.
@@ -12,16 +13,10 @@ public class InteractorButton : MonoBehaviour
     public string objectTag = "Player";
     [Tooltip("Whether or not only objects residing in the same layer as this object will cause interactions.")]
     public bool sameLayerOnly = true;
-    [Tooltip("This is the object that is interacted with when something is in this trigger and the 'Interact' key is pressed."
-     + " This value may be None.")]
-    public GameObject interactable = null;
-    [Tooltip("This is the ID of interaction that is triggered when something is in this trigger and the 'Use' key is pressed.")]
-    public int ID = 0;
-    [Tooltip("This is the object that is sent to the interactables as sender when an interaction occurs."
-        + "If this is None, this trigger itself will be sent.")]
-    public GameObject sender = null;
+    [Tooltip("The event to be triggered when the button is interacted with.")]
+    public UnityEvent onInteract;
 
-    public List<GameObject> inTrigger = new List<GameObject>();
+    private List<GameObject> inTrigger = new List<GameObject>();
     private bool triggered = false;
 
     // Start is called before the first frame update
@@ -50,19 +45,7 @@ public class InteractorButton : MonoBehaviour
     void FixedUpdate()
     {
         if(triggered == true) {
-            if(interactable == null)
-                return;
-            bool interacted = false;
-            Interaction[] interactions = interactable.GetComponents<Interaction>();
-            foreach(Interaction interaction in interactions)
-            {
-                if(interaction != null && interaction.ID == ID) {
-                    interaction.Interact(sender != null ? sender : this.gameObject);
-                    interacted = true;
-                }
-            }
-            if(!interacted)
-                Debug.Log("WARNING! Trying to interact with an object with no interaction!");
+            onInteract.Invoke();
             triggered = false;
         }
     }
