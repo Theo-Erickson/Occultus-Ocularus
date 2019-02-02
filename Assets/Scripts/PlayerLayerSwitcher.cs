@@ -59,7 +59,7 @@ public class PlayerLayerSwitcher : MonoBehaviour
         }
         // Todo: make this key intependent
         // toggle the player layer when L is pressed. (layers 16 & 17 correspond to foreground and background in the layer list)
-        if (Input.GetKeyDown(KeyCode.L)) {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
            if (desiredPlayerLayer == 17) {
                 SwitchPlayerLayer(16);
            } else {
