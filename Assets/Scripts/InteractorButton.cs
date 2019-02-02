@@ -16,13 +16,18 @@ public class InteractorButton : MonoBehaviour
     [Tooltip("The event to be triggered when the button is interacted with.")]
     public UnityEvent onInteract;
 
+    [Header("Audio")]
+    public AudioSource interactSound;
+
+
+
     private List<GameObject> inTrigger = new List<GameObject>();
     private bool triggered = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        interactSound = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,13 @@ public class InteractorButton : MonoBehaviour
                     // If sameLayerOnly is false or the object is in the same layer.
                     if(!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
                         triggered = true;
+                        //if (!interactSound.isPlaying)
+                        //{
+                            interactSound.clip = Resources.Load<AudioClip>("Audio/Menu-Click");
+                            interactSound.pitch = 0.7f;
+                            interactSound.volume = 1.0f;
+                            interactSound.Play();
+                        //}
                         break;
                     }
                 }
