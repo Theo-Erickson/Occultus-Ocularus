@@ -11,7 +11,12 @@ public class MoveDoor : MonoBehaviour
     //bools that control if method is called
     public bool calldoordown = false;
     public bool calldoorup = false;
-
+    /*[SerializeField]
+    private float xDelta;
+    [SerializeField]
+    private float yDelta;
+    [SerializeField]
+    private float zDelta;*/
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +43,7 @@ public class MoveDoor : MonoBehaviour
     {
         StartCoroutine(DoorDownCR());
 
-
+        //throw some checks in to stop rapid close/open
 
         isclosed = true;
     }
