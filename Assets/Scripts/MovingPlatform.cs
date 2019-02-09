@@ -207,12 +207,10 @@ public class MovingPlatform : MonoBehaviour
     // Makes player stick to platform when they're standing on it
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Platform collided with something");
 
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && col.enabled)
         {
             col.gameObject.transform.parent = this.transform;
-            Debug.Log("Attached player to platform");
         }
     }
 
