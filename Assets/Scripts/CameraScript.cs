@@ -33,6 +33,8 @@ public class CameraScript : MonoBehaviour {
     private Vector2 screenCenterVector;
     [Tooltip("Stores the vector between the center of the camera view in world space to the player's position (2d).")]
     private Vector2 screenToPlayerVector;
+    // Stores the z(into the screen) distance between the camera and player (calculated when the game starts from (camera z - player z) coordinates)
+    private float CameraToPlayerZDistance;
 
     [Header("FreeCam")]
     public float freeMoveSpeed = 0.2f;
@@ -44,6 +46,7 @@ public class CameraScript : MonoBehaviour {
         pastCameraPosition = start;
         player = GameObject.Find("Player");
         start = destination = transform.position;
+        CameraToPlayerZDistance = transform.position.z - player.transform.position.z;
     }
 
     void Update()
@@ -84,8 +87,12 @@ public class CameraScript : MonoBehaviour {
             screenToPlayerVector = (Vector2)player.transform.position - screenCenterVector; //subtracts the center of the screen coordinates (2d) from the player's coordinates;
             if (screenToPlayerVector.magnitude > followRadius) // if the player is too far from the center of the view:
             {
+                //screenToPlayerVector.z = (transform.position.z - player.transform.position.z) - CameraToPlayerZDistance;
                 //move the camera such that the player is within the radius focusAreaSize of the view center again:
                 transform.Translate((screenToPlayerVector - screenToPlayerVector.normalized * followRadius) * Time.deltaTime * followSpeed, Space.World);
+            }
+            if ((transform.position.z - player.transform.position.z) != CameraToPlayerZDistance) {//warning is ok, because we keep updating the camera z distance each frame to be closer to the correct one;
+                transform.Translate(new Vector3(0, 0, CameraToPlayerZDistance - (transform.position.z - player.transform.position.z)) * Time.deltaTime * followSpeed, Space.World);
             }
         }
         //player can control camera with arrow keys
