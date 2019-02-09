@@ -11,16 +11,24 @@ public class Player : MonoBehaviour {
     public float walkForce = 20;
     public float jumpForce = 20;
 
+    [Header("Audio")]
+    public AudioSource backgroundAudio;
+    public AudioSource footsteps;
+
     private Rigidbody2D body;
+    private Vector3 startPoint;
 
     // Use this for initialization
     void Start() {
+        startPoint = this.transform.position;  
         body = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        InputHandler();
+        if(this.transform.position.y < -50) { this.transform.position = startPoint; print("RESPAWN");}
 
+        InputHandler();
+        AudioHandler();
     }
 
     private bool jump = false;
@@ -29,6 +37,8 @@ public class Player : MonoBehaviour {
 
     //function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
+
+
         //Reset position
         if (Input.GetKeyDown(KeyCode.R)) {
             this.transform.position = Vector3.zero;
@@ -43,7 +53,7 @@ public class Player : MonoBehaviour {
                     cScript.mode = CameraScript.CameraMode.FollowPlayer;
                 } else if (cScript.mode == CameraScript.CameraMode.FollowPlayer) {
                     cScript.mode = CameraScript.CameraMode.Fixed;
-                    cScript.SetDestination(cScript.pastRoomCameraPosition, 2.0f);
+                    cScript.SetDestination(cScript.pastCameraPosition, 2.0f);
                 }
                 //if you can't then just "Jump", its placeholder
                 // Jump, apply force in FixedUpdate, recommended by Unity docs.
@@ -58,7 +68,7 @@ public class Player : MonoBehaviour {
         }
 
         //shift between flying and grounded modes
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
+        if (Input.GetKeyDown(KeyCode.RightShift)) {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.grey;
                 antiGrav = false;
@@ -72,6 +82,19 @@ public class Player : MonoBehaviour {
         }
     }
 
+
+    void AudioHandler(){
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+            if (!footsteps.isPlaying)
+            {
+                footsteps.clip = Resources.Load<AudioClip>("Audio/Footsteps/SoftFootsteps" + Random.Range(1, 4));
+                footsteps.pitch = Random.Range(0.7f, 1.0f);
+                footsteps.volume = Random.Range(0.5f, 1.0f);
+                footsteps.Play();
+            }
+        }
+    }
+
     void FixedUpdate() {
         if (canMove) {
 
@@ -79,6 +102,7 @@ public class Player : MonoBehaviour {
             if (antiGrav) {
                 this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed;
                 this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed;
+                this.GetComponent<BoxCollider2D>().isTrigger = true;
             }
             // When u walkin
             else {
@@ -92,6 +116,7 @@ public class Player : MonoBehaviour {
                     body.AddForce(jumpForce * Vector3.up);
                     jump = false;
                 }
+                this.GetComponent<BoxCollider2D>().isTrigger = false;
             }
         }
     }
