@@ -23,12 +23,6 @@ public class MainMenuController : MonoBehaviour
         SetCharacter(PlayerPrefs.GetInt("character"));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void PlayGame()
     {
         SceneManager.LoadScene(firstScene);
