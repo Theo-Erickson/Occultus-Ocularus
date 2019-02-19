@@ -23,10 +23,10 @@ TagManager:
   - 
   - Background
   - Midground
+  - Midground Laser Transparent
   - Foreground
-  - 
-  - 
-  - 
+  - Foreground Laser Transparent
+  - Laser
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background (Sorting)
+    uniqueID: 4126550477
+    locked: 0
+  - name: Midground (Sorting)
+    uniqueID: 2697123157
+    locked: 0
+  - name: Foreground (Sorting)
+    uniqueID: 949841991
     locked: 0

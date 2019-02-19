@@ -9,8 +9,10 @@ public class PlayerLayerSwitcher : MonoBehaviour
     public GameObject foreground;
     public GameObject midground;
     public GameObject background;
+    public LayerMask foregroundLayer;
+    public LayerMask midgroundLayer;
     private BoxCollider2D playerCollider;
-    private int currentPlayerLayer = 17;
+    private int currentPlayerLayer;
     private bool collisionPlayerFeedbackHappening = false;
     private float collisionPlayerFeedbackZPos;
     private float collisionPlayerFeedbackStartZPos;
@@ -27,18 +29,18 @@ public class PlayerLayerSwitcher : MonoBehaviour
             {
                 collisionPlayerFeedbackHappening = true;
                 collisionPlayerFeedbackStartZPos = player.transform.position.z;
-                if (destinationLayerNum == 17) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - (float)0.5);
-                if (destinationLayerNum == 16) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + (float)0.5);
+                if (destinationLayerNum == foregroundLayer.value) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - (float)0.5);
+                if (destinationLayerNum == midgroundLayer.value) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + (float)0.5);
             }
             else
             {
-                if (destinationLayerNum == 17)
+                if (destinationLayerNum == foregroundLayer.value)
                 {
                     // set the player's depth/z position to be that of the target layer (foreground)
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, foreground.transform.position.z);
                     ChangeLayerOpacity(foreground, 1);
                 }
-                else if (destinationLayerNum == 16)
+                else if (destinationLayerNum == midgroundLayer.value)
                 {
                     // set the player's depth/z position to be that of the target layer (midground)
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, midground.transform.position.z);
@@ -61,27 +63,29 @@ public class PlayerLayerSwitcher : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
-    {
+    void Start()  {
+        foregroundLayer = LayerMask.NameToLayer("Foreground");
+        midgroundLayer = LayerMask.NameToLayer("Midground");
+        currentPlayerLayer = foregroundLayer.value;
+        print(midgroundLayer.value);
+        print(foregroundLayer.value);
     }
 
     void Update()
     {
         if (collisionPlayerFeedbackHappening) {
+            // Moves the player back to the z depth of the current layer to give the "jerk" effect;s
             player.transform.Translate(new Vector3 (0,0, collisionPlayerFeedbackStartZPos - player.transform.position.z) * Time.deltaTime * 5);
             if (collisionPlayerFeedbackStartZPos == player.transform.position.z || (Mathf.Abs(collisionPlayerFeedbackStartZPos - player.transform.position.z) > 1)) collisionPlayerFeedbackHappening = false;
         }
-        else
-        {
 
-        }
-        // Todo: make this key intependent
-        // toggle the player layer when the Left Shift is pressed. (layers 16 & 17 correspond to foreground and background in the layer list)
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-           if (currentPlayerLayer == 17) {
-                SwitchPlayerLayer(16);
+        // toggle the player layer when the Switch Layer Key is pressed. See layer (not sorting layer) list
+        if (Input.GetButtonDown("Switch Layer")) {
+
+           if (currentPlayerLayer == foregroundLayer.value) {
+                SwitchPlayerLayer(midgroundLayer.value);
            } else {
-                SwitchPlayerLayer(17);
+                SwitchPlayerLayer(foregroundLayer.value);
             }
         }
     }
@@ -90,7 +94,7 @@ public class PlayerLayerSwitcher : MonoBehaviour
     void ChangeLayerOpacity(GameObject layerRoot, float opaqueness) {
         // Get all tilemap renderer components in all the children of the layerRoot gameObject
         TilemapRenderer[] tilemapRenderers = layerRoot.GetComponentsInChildren<TilemapRenderer>();
-        // for every tilemapRender component, set its material's "tint color" to be transparent (specifie by the opaqueness arguement)
+        // for every tilemapRender component, set its material's "tint color" to be transparent (specified by the opaqueness arguement)
         for (int i = 0, tilemapRenderersLength = tilemapRenderers.Length; i < tilemapRenderersLength; i++) {
             TilemapRenderer mapRenderer = tilemapRenderers[i];
             mapRenderer.material.color = new Color(mapRenderer.material.color.r, mapRenderer.material.color.g, mapRenderer.material.color.b, opaqueness);

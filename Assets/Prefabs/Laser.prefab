@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 198975284}
   - component: {fileID: 198975286}
   - component: {fileID: 198975285}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Sparks1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4708,7 +4708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4774745071315090}
   - component: {fileID: 7113572217146657147}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4790,7 +4790,7 @@ GameObject:
   - component: {fileID: 4969078430256334065}
   - component: {fileID: 4970292502962396773}
   - component: {fileID: 8499614940314172162}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Sparks2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
