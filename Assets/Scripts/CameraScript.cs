@@ -40,13 +40,13 @@ public class CameraScript : MonoBehaviour {
     // these only apply to the FollowPlayerSmooth game mode:
     [Header("FollowPlayerSmooth")]
     [Tooltip("When the player isn't moving vertically, how far below the center of the screen should the camera show the player")]
-    public float playerRestYOffset;
+    public float playerRestYOffset = 1;
     [Tooltip("The Y velocity of the player at which the camera starts tracking the player in the center of the screen rather than at the 'playerRestYOffset'")]
-    public float playerRestThreshold;
+    public float playerRestThreshold = 1;
     [Tooltip("(Higher = slower) When at player is not at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
     public float followSmoothSpeedX = 40;
     [Tooltip("(Higher = slower) When at player is not at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
-    public float followSmoothSpeedY = 40;
+    public float followSmoothSpeedY = 60;
     [Tooltip("(Higher = slower) When at player is at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
     public float followSmoothRestSpeed = 40;
     private Vector2 cameraMovingTarget;
@@ -111,22 +111,23 @@ public class CameraScript : MonoBehaviour {
             //subtracts the center of the screen coordinates (2d) from the player's coordinates;
             screenToPlayerVector = (Vector2)player.transform.position - screenCenterVector; 
             // gets an offset relative to the player for the camera to head
-            Vector2 desiredCameraTarget = new Vector2(Mathf.Sign(playerRigidbody.velocity.x) * 1, Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f));
+            Vector2 desiredCameraTarget = new Vector2(Mathf.Clamp(playerRigidbody.velocity.x, -1, 1), Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f));
             // if the player is on the ground, she probably want's to see the most in the up direction (rather than centering the player in the screen):
             if (playerScript.touchingGround) desiredCameraTarget.y = desiredCameraTarget.y + playerRestYOffset;
             if (Mathf.Abs(playerRigidbody.velocity.magnitude) < playerRestThreshold) {
                 // if the player is still, move the camera in a linear fashion:
-                cameraMovingTarget = cameraMovingTarget + (desiredCameraTarget - cameraMovingTarget).normalized / followSmoothRestSpeed;
+                Vector2 deltaTarget = desiredCameraTarget - cameraMovingTarget;
+                if (deltaTarget.magnitude > 0.08) cameraMovingTarget = cameraMovingTarget + deltaTarget.normalized / followSmoothRestSpeed;
             } else {
                 // if the player is moving, move the camera in a way that's proportional to how far the camera has to move which can be changed with followSmoothSpeedX & followSmoothSpeedY:
                 cameraMovingTarget = cameraMovingTarget + new Vector2((desiredCameraTarget.x - cameraMovingTarget.x) / followSmoothSpeedX, (desiredCameraTarget.y - cameraMovingTarget.y) / followSmoothSpeedY); //Vector2.Min((desiredCameraTarget - cameraMovingTarget).normalized, desiredCameraTarget - cameraMovingTarget)/20;
             }
             // Debug Visualization:
-            // GameObject.Find("Debug dot green").transform.position = desiredCameraTarget + (Vector2)player.transform.position;
-            // GameObject.Find("Debug dot brown").transform.position = cameraMovingTarget + (Vector2)player.transform.position;
-
+             GameObject.Find("Debug dot green").transform.position = desiredCameraTarget + (Vector2)player.transform.position;
+             GameObject.Find("Debug dot brown").transform.position = cameraMovingTarget + (Vector2)player.transform.position;
+            print(GameObject.Find("Debug dot green"));
             // Finally actually move the camera to the players positon plus the camera target offset:
-            if (screenToPlayerVector.magnitude > 0.01) transform.Translate(cameraMovingTarget + screenToPlayerVector, Space.World);
+            transform.Translate(cameraMovingTarget + screenToPlayerVector, Space.World);
 
             //player can control camera with arrow keys
         } else if (mode == CameraMode.FreeCam) {

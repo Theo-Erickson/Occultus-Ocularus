@@ -1142,9 +1142,9 @@ MonoBehaviour:
   followSpeed: 10
   followRadius: 3
   playerRestYOffset: 1.2
-  playerRestThreshold: 0
+  playerRestThreshold: 1
   followSmoothSpeedX: 40
-  followSmoothSpeedY: 40
+  followSmoothSpeedY: 60
   followSmoothRestSpeed: 40
   freeMoveSpeed: 0.2
   DistFromPlayer: {x: 0, y: 0}
@@ -5735,8 +5735,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1576413186}
   - component: {fileID: 1576413185}
-  m_Layer: 20
-  m_Name: Debug point brown
+  m_Layer: 0
+  m_Name: Debug dot brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5779,7 +5779,7 @@ SpriteRenderer:
   m_SortingLayerID: 949841991
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1592660da2cf34220b8960c755788d70, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.7058824, g: 0.41734493, b: 0.2627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5798,8 +5798,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576413184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 4, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -20, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1953103119}
   m_RootOrder: 3
@@ -6168,8 +6168,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1714877743}
   - component: {fileID: 1714877742}
-  m_Layer: 20
-  m_Name: Debug point green
+  m_Layer: 0
+  m_Name: Debug dot green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6212,7 +6212,7 @@ SpriteRenderer:
   m_SortingLayerID: 949841991
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1592660da2cf34220b8960c755788d70, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.2627451, g: 0.7058824, b: 0.32425126, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6232,7 +6232,7 @@ Transform:
   m_GameObject: {fileID: 1714877741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20, y: 4, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1953103119}
   m_RootOrder: 2
