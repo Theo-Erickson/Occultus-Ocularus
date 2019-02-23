@@ -46,5 +46,10 @@ public class MainMenuController : MonoBehaviour
             player.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
 
