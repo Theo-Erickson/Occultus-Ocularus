@@ -51,5 +51,15 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadScene(int buildNumber)
+    {
+        SceneManager.LoadScene(buildNumber);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }
 
