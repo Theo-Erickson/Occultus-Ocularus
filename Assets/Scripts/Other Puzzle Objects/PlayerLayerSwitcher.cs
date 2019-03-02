@@ -34,7 +34,8 @@ public class PlayerLayerSwitcher : MonoBehaviour
             if (Physics2D.OverlapCircle(player.transform.position, (float)0.1, overlapLayerMask) != null)
             {
                 collisionPlayerFeedbackHappening = true;
-                collisionPlayerFeedbackStartZPos = player.transform.position.z;
+                if (destinationLayerNum == foregroundLayer.value) collisionPlayerFeedbackStartZPos = foreground.transform.position.z;
+                if (destinationLayerNum == midgroundLayer.value) collisionPlayerFeedbackStartZPos = midground.transform.position.z;
                 if (destinationLayerNum == foregroundLayer.value) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - (float)0.5);
                 if (destinationLayerNum == midgroundLayer.value) player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + (float)0.5);
             }
@@ -96,14 +97,13 @@ public class PlayerLayerSwitcher : MonoBehaviour
     void Update()
     {
         if (collisionPlayerFeedbackHappening) {
-            // Moves the player back to the z depth of the current layer to give the "jerk" effect;s
-            player.transform.Translate(new Vector3 (0,0, collisionPlayerFeedbackStartZPos - player.transform.position.z) * Time.deltaTime * 5);
+            // Moves the player back to the z depth of the current layer to give the "jerk" effect
+            player.transform.Translate(new Vector3 (0,0, player.transform.position.z - collisionPlayerFeedbackStartZPos) * Time.deltaTime * 5);
             if (collisionPlayerFeedbackStartZPos == player.transform.position.z || (Mathf.Abs(collisionPlayerFeedbackStartZPos - player.transform.position.z) > 1)) collisionPlayerFeedbackHappening = false;
         }
 
         // toggle the player layer when the Switch Layer Key is pressed. See layer (not sorting layer) list
         if (Input.GetButtonDown("Switch Layer")) {
-
            if (currentPlayerLayer == foregroundLayer.value) {
                 SwitchPlayerLayer(midgroundLayer.value);
            } else {
