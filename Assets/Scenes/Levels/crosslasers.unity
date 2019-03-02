@@ -13982,6 +13982,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserReceiver
       objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserReceiver (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1251,6 +1256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058697, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -11354,6 +11364,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserReceiver (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11455,7 +11470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1865683282}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11487,7 +11502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986305646}
   - component: {fileID: 1986305647}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11651,6 +11666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserReceiver
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}

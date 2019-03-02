@@ -310,6 +310,16 @@ PrefabInstance:
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938307, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938307, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1444b804479b3b44bbd7f1b6a3e0185d, type: 3}
 --- !u!1 &360686237
@@ -554,7 +564,7 @@ GameObject:
   - component: {fileID: 824206415}
   - component: {fileID: 824206414}
   - component: {fileID: 824206413}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground Tilemap Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855482017}
   - component: {fileID: 855482016}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15504,7 +15514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652715730}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15798,7 +15808,7 @@ GameObject:
   - component: {fileID: 1981471804}
   - component: {fileID: 1981471806}
   - component: {fileID: 1981471805}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17631,7 +17641,7 @@ GameObject:
   - component: {fileID: 2094714344}
   - component: {fileID: 2094714345}
   - component: {fileID: 2094714346}
-  m_Layer: 17
+  m_Layer: 21
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17808,24 +17818,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserEmitter
       objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: ID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e8e7cc1c468de44cbd9b1631a792484,
-        type: 3}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72,
-        type: 3}
     - target: {fileID: 4077298369169677315, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17881,6 +17873,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
+      propertyPath: sprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e8e7cc1c468de44cbd9b1631a792484,
+        type: 3}
+    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
 --- !u!1001 &4734461700905137530
@@ -18290,10 +18300,6 @@ PrefabInstance:
     - target: {fileID: 1974393871175172, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974393871175172, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.x

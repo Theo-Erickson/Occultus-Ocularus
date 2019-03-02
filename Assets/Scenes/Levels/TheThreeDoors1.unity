@@ -471,7 +471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &514996200
 MonoBehaviour:
@@ -706,6 +706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserReceiver W
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -1210,7 +1215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 741499657}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1229,7 +1234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855482015
 GameObject:
@@ -1241,7 +1246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855482017}
   - component: {fileID: 855482016}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,7 +1295,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -2527,7 +2532,7 @@ Transform:
   m_Children:
   - {fileID: 1719434893}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1223033939 stripped
 MonoBehaviour:
@@ -14414,7 +14419,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -14602,7 +14607,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -14764,7 +14769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652715730}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14784,7 +14789,7 @@ Transform:
   m_Children:
   - {fileID: 855482017}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1681415774 stripped
 MonoBehaviour:
@@ -15363,7 +15368,7 @@ GameObject:
   - component: {fileID: 1981471804}
   - component: {fileID: 1981471806}
   - component: {fileID: 1981471805}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17899,6 +17904,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72,
         type: 3}
+    - target: {fileID: 4077298370317125808, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -18027,6 +18037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserReceiver Blk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -18382,7 +18397,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}

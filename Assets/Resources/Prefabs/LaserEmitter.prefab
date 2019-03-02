@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4077298369169677312}
   - component: {fileID: 4077298369169677313}
   - component: {fileID: 1480185743}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: LaserEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  ID: 0
   degrees: 45
   rotateTime: 0.5
 --- !u!114 &4077298369169677313
@@ -129,7 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 4077298370317125808}
-  ID: 1
   mode: 0
 --- !u!114 &1480185743
 MonoBehaviour:
@@ -144,8 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  ID: 0
-  sprites: []
+  sprites:
+  - {fileID: 21300000, guid: 4e8e7cc1c468de44cbd9b1631a792484, type: 3}
+  - {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72, type: 3}
   index: 0
 --- !u!1 &4077298370317125808
 GameObject:

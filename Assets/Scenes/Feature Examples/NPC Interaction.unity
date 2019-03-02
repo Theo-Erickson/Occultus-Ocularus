@@ -13300,7 +13300,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054804165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -13420,7 +13420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: Player
-  sameLayerOnly: 1
+  sameLayerOnly: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -13571,7 +13571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: Player
-  sameLayerOnly: 1
+  sameLayerOnly: 0
   onEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -14350,7 +14350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7028fab7d0648c794212d41769c8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueSetup: {fileID: 0}
+  dialogueSetup: {fileID: 5715629648138811321}
 --- !u!114 &1793216600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14364,7 +14364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: Player
-  sameLayerOnly: 1
+  sameLayerOnly: 0
   onEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -14399,7 +14399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: Player
-  sameLayerOnly: 1
+  sameLayerOnly: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7887293720302804312}
   - component: {fileID: 2027514982857538081}
   - component: {fileID: 7191038299030233540}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Diamond Prism
   m_TagString: Prism
   m_Icon: {fileID: 0}

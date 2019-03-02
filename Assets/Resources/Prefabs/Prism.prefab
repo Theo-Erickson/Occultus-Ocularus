@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7302760607711285353}
   - component: {fileID: 7302760607711285354}
   - component: {fileID: 7302760607711285357}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Prism
   m_TagString: Prism
   m_Icon: {fileID: 0}
@@ -135,6 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  ID: 0
   degrees: 45
   rotateTime: 0.5

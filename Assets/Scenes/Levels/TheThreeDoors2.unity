@@ -638,6 +638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserReceiver W
       objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1172,7 +1177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855482017}
   - component: {fileID: 855482016}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,6 +1291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserReceiver Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -1564,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -14688,7 +14698,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -14876,7 +14886,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -15038,7 +15048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652715730}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15637,7 +15647,7 @@ GameObject:
   - component: {fileID: 1981471804}
   - component: {fileID: 1981471806}
   - component: {fileID: 1981471805}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19061,6 +19071,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72,
         type: 3}
+    - target: {fileID: 4077298370317125808, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -19189,6 +19204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserReceiver Blk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -19544,7 +19564,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}

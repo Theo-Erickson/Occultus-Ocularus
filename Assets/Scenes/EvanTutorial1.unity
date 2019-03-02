@@ -865,7 +865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855482017}
   - component: {fileID: 855482016}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13760,7 +13760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652715730}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14158,7 +14158,7 @@ GameObject:
   - component: {fileID: 1981471804}
   - component: {fileID: 1981471806}
   - component: {fileID: 1981471805}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15137,7 +15137,7 @@ GameObject:
   - component: {fileID: 2094714344}
   - component: {fileID: 2094714345}
   - component: {fileID: 2094714346}
-  m_Layer: 17
+  m_Layer: 21
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15425,23 +15425,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e8e7cc1c468de44cbd9b1631a792484,
+    - target: {fileID: 4077298370317125808, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: sprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: f30106402fdc35943b709676f3c6ce72,
-        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
 --- !u!1001 &5246384069781161075
@@ -15455,6 +15446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405744, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405755, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
@@ -15638,6 +15634,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 50948675252462286, guid: b60b13e4510963741b833fd8f53ff0dc,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443616542632638076, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: foreground
@@ -15645,19 +15646,9 @@ PrefabInstance:
       objectReference: {fileID: 1652715729}
     - target: {fileID: 7443616542632638076, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
-      propertyPath: midground
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7443616542632638076, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
       propertyPath: background
       value: 
       objectReference: {fileID: 1221137935}
-    - target: {fileID: 50948675252462286, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7443616542632638079, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: m_FlipX

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5847541926919599184}
   - component: {fileID: 5847541926919599185}
   - component: {fileID: 5847541926919599186}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: LaserReceiver
   m_TagString: Prism
   m_Icon: {fileID: 0}
@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a0195a7f4df34e9ab8a72fbcad29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
-  ID: 0
-  isHit: 0
   Activate:
     m_PersistentCalls:
       m_Calls:

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4734461702111938317}
   - component: {fileID: 4734461702111938316}
   - component: {fileID: 1612253696492745147}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: ButtonRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

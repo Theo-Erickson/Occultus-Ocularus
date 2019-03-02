@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 266667021}
   - component: {fileID: 266667020}
   - component: {fileID: 266667019}
-  m_Layer: 19
+  m_Layer: 18
   m_Name: Foreground LaserTransparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2439,7 +2439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855482017}
   - component: {fileID: 855482016}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76415,7 +76415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652715730}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79130,6 +79130,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 50948675252462286, guid: b60b13e4510963741b833fd8f53ff0dc,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443616542632638076, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: foreground
@@ -79145,11 +79150,6 @@ PrefabInstance:
       propertyPath: background
       value: 
       objectReference: {fileID: 1221137935}
-    - target: {fileID: 50948675252462286, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7443616542632638079, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: m_FlipX
