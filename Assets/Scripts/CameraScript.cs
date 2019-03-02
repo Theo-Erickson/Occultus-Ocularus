@@ -217,8 +217,8 @@ public class CameraScript : MonoBehaviour {
             if (playerScript.touchingGround) {
                 movingTimerY = 0;
                 off = 2;
-                if (cameraGroundMovementPause < 20) cameraGroundMovementPause++;
-                if (desiredCameraTargetY < playerRestYOffset && cameraGroundMovementPause > 19) {
+                if (cameraGroundMovementPause < 40) cameraGroundMovementPause++;
+                if (desiredCameraTargetY < playerRestYOffset && cameraGroundMovementPause > 39) {
                     desiredCameraTargetY += 0.03f;
                 }
             }
@@ -233,7 +233,7 @@ public class CameraScript : MonoBehaviour {
                 }
             }
 
-            print("player: " + playerRigidbody.velocity.y + " counter: " + movingTimerY);
+           //print("player: " + playerRigidbody.velocity.y + " counter: " + movingTimerY);
 
            if (playerRigidbody.velocity.y < -8) off = (-playerRigidbody.velocity.y - 8);
             deltaY = (player.transform.position.y + desiredCameraTargetY - screenCenterVector.y) * Time.deltaTime * (followSmoothSpeedY + off);//(6 / (Mathf.Abs(playerRigidbody.velocity.y)+1)));//* Mathf.Clamp(Mathf.Abs(player.transform.position.y - screenCenterVector.y), 0.1f, 3));

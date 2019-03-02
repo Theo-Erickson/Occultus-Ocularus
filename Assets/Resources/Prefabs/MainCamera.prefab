@@ -103,8 +103,8 @@ MonoBehaviour:
   followRadius: 3
   playerRestYOffset: 1.2
   playerRestThreshold: 1
-  followSmoothSpeedX: 40
-  followSmoothSpeedY: 60
+  followSmoothSpeedX: 2.5
+  followSmoothSpeedY: 2
   followSmoothRestSpeed: 40
   movingTimerXMax: 60
   movingTimerYMax: 60

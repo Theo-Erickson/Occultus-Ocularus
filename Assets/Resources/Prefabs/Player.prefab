@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 3808456141717982565}
   - component: {fileID: 502525659826497850}
   - component: {fileID: 4803240037345144471}
-  m_Layer: 18
+  m_Layer: 21
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -72,11 +72,6 @@ MonoBehaviour:
   ledgeRecoveryEnabled: 1
   backgroundAudio: {fileID: 2044585435650574375}
   footsteps: {fileID: 5234725836872230692}
-  maxJumpTime: 2
-  jump_force: 1200
-  jump_offset: 0
-  jump_shift: -0.1
-  jump_forced_decel: -50
   touchingGround: 0
 --- !u!61 &61809507331186424
 BoxCollider2D:
@@ -132,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974393871175172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65ca56442c87a4b799d57e7fce6c9c1e, type: 3}
   m_Name: 
