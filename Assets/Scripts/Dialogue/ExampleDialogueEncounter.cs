@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ExampleDialogueEncounter : MonoBehaviour
 {
-    public Dialogue dialogueSetup;
-
-    public void Talk()
+    void Start()
     {
-        Dialogue dialogueInstance = dialogueSetup.ConstructDialogueBox(); ;
-        dialogueInstance.ParseMessage("This is a test.|This is the second phrase.|This is the third phrase.");
+        Dialogue dialogueInstance = Dialogue.constructDialogueBox();
+        dialogueInstance.parseMessage("This is a test.|This is the second phrase.|This is the third phrase");
     }
 }

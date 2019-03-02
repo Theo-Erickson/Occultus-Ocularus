@@ -21,16 +21,8 @@ public class Dialogue : MonoBehaviour
     private int charIndex = -1;
     private bool awaitingUser = false;
 
-    PlayerController player;
-
-    public void Awake()
-    {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-    }
-
     public void Setup()
     {
-        player.canMove = false;
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
         phrases = new string[1];
@@ -38,56 +30,54 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (text != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            currentScrollRate = FAST_SCROLL_RATE;
+            awaitingUser = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            currentScrollRate = NORMAL_SCROLL_RATE;
+        }
+
+        //Add a new letter after each interval defined by SCROLL_RATE
+        while (Time.time - lastUpdateTime > currentScrollRate && phraseIndex < phrases.Length && awaitingUser == false)
+        {
+            string phrase = phrases[phraseIndex];
+            lastUpdateTime = Time.time;
+            text.text = phrase.Substring(0, 1 + charIndex);
+
+            charIndex++;
+
+            if (charIndex == phrase.Length)
             {
-                currentScrollRate = FAST_SCROLL_RATE;
-                awaitingUser = false;
+                charIndex = -1;
+                phraseIndex++;
+                awaitingUser = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (phraseIndex == phrases.Length && Input.GetKeyUp(KeyCode.Space))
             {
-                currentScrollRate = NORMAL_SCROLL_RATE;
-            }
-
-            //Add a new letter after each interval defined by SCROLL_RATE
-            while (Time.time - lastUpdateTime > currentScrollRate && phraseIndex < phrases.Length && awaitingUser == false)
-            {
-                string phrase = phrases[phraseIndex];
-                lastUpdateTime = Time.time;
-                text.text = phrase.Substring(0, 1 + charIndex);
-
-                charIndex++;
-
-                if (charIndex == phrase.Length)
-                {
-                    charIndex = -1;
-                    phraseIndex++;
-                    awaitingUser = true;
-                }
-            }
-            if (phraseIndex >= phrases.Length && Input.GetKeyUp(KeyCode.Space))
-            {
-                Destroy(transform.parent.gameObject);
-                player.canMove = true;
+                Destroy(gameObject);
             }
         }
     }
 
-    public void ParseMessage(string message)
+    public void parseMessage(string message)
     {
         phrases = message.Split(SPLIT_SYMBOL);
     }
 
-    public Dialogue ConstructDialogueBox()
+    public static Dialogue constructDialogueBox()
     {
-        GameObject dialogueBox = Instantiate(Resources.Load("Prefabs/DialogueBox") as GameObject);
-        dialogueBox.transform.parent = transform;
-        dialogueBox.transform.position = transform.GetChild(0).position;
-        GameObject textBox = dialogueBox.transform.GetChild(1).gameObject;
-        Dialogue dialogue = textBox.GetComponent<Dialogue>();
-        dialogue.Setup();
+        Vector2 position = GameObject.Find("DialogueBoxPos").transform.position;
+        GameObject dialogueBox = Instantiate(Resources.Load("DialogueBox") as GameObject);
+        dialogueBox.transform.parent = GameObject.Find("Canvas").transform;
+        dialogueBox.transform.position = position;
+        GameObject text = dialogueBox.transform.GetChild(1).gameObject;
+        text.BroadcastMessage("Setup");
+        Dialogue dialogue = (Dialogue)text.GetComponent((typeof(Dialogue))) as Dialogue;
         return dialogue;
     }
 }
