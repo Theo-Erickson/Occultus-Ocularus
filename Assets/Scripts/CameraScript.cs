@@ -218,7 +218,7 @@ public class CameraScript : MonoBehaviour {
                 movingTimerY = 0;
                 off = 2;
                 if (cameraGroundMovementPause < 20) cameraGroundMovementPause++;
-                if (desiredCameraTargetY < playerRestYOffset && cameraGroundMovementPause == 18) {
+                if (desiredCameraTargetY < playerRestYOffset && cameraGroundMovementPause > 19) {
                     desiredCameraTargetY += 0.03f;
                 }
             }
