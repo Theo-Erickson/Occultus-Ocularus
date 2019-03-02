@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonRotate purple
       objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938319, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4734461702111938304, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1127,6 +1132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonRotate Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938319, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4734461702111938304, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
         type: 3}
@@ -1656,6 +1666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonRotateRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938319, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4734461702111938304, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
         type: 3}
@@ -4215,6 +4230,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058698, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058698, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058698, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee9cde7b58274b4aa827fc2e475830e, type: 3}
 --- !u!1001 &1822593381
@@ -4407,6 +4437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734461702111938319, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4734461702111938304, guid: 1444b804479b3b44bbd7f1b6a3e0185d,
         type: 3}
