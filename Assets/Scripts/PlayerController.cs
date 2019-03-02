@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour {
     private int triggerCount;
     private List<Collider2D> overlapingTriggers = new List<Collider2D>();
 
+    private Animator anim;
 
     // Use this for initialization
     void Start() {
@@ -79,21 +80,29 @@ public class PlayerController : MonoBehaviour {
         playerBottomTrigger = GetComponents<BoxCollider2D>()[2];
         playerRightTrigger = GetComponents<BoxCollider2D>()[3];
         playerLeftTrigger = GetComponents<BoxCollider2D>()[4];
+        anim = GetComponent<Animator>();
     }
 
     void Update() {
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
+        InputHandler();
+
         // Flips sprite depending on direction of movement
-        if (Input.GetAxis("Horizontal") < 0) {
+        if (Input.GetAxis("Horizontal") > 0) {
             spriterender.flipX = true;
         }
-        else if (Input.GetAxis("Horizontal") > 0) {
+        else if (Input.GetAxis("Horizontal") < 0) {
             spriterender.flipX = false;
         }
 
-        InputHandler();
-        AudioHandler();
+        // Sets animation variables
+        anim.SetFloat("speed", Mathf.Abs(body.velocity.x));
+        if (Input.GetButtonDown("Jump") && canMove) {
+            anim.SetBool("startJump", true);
+        }
+        else anim.SetBool("startJump", false);
+        anim.SetBool("grounded", touchingGround);
     }
 
     // Function to handle button or mouse events to avoid cluttering update
@@ -137,14 +146,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-
-    void AudioHandler() {
-        if (touchingGround && Mathf.Abs(body.velocity.x) > 0.1 && !footsteps.isPlaying) {
-            footsteps.clip = Resources.Load<AudioClip>("Audio/Footsteps/SoftFootsteps" + Random.Range(1, 4));
-            footsteps.pitch = Random.Range(0.7f, 1.0f);
-            footsteps.volume = Random.Range(0.1f, 0.2f);
-            footsteps.Play();
-        }
+    void PlayFootstep() {
+        footsteps.clip = Resources.Load<AudioClip>("Audio/Footsteps/SoftFootsteps" + Random.Range(1, 4));
+        footsteps.pitch = Random.Range(0.7f, 1.0f);
+        footsteps.volume = Random.Range(0.1f, 0.2f);
+        footsteps.Play();
     }
 
     void FixedUpdate() {
