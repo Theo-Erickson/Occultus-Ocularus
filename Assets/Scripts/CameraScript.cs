@@ -44,12 +44,12 @@ public class CameraScript : MonoBehaviour {
     [Tooltip("The Y velocity of the player at which the camera starts tracking the player in the center of the screen rather than at the 'playerRestYOffset'")]
     public float playerRestThreshold = 1;
     [Tooltip("(Higher = slower) When at player is not at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
-    public float followSmoothSpeedX = 40;
+    public float followSmoothSpeedX = 2.5f;
     [Tooltip("(Higher = slower) When at player is not at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
-    public float followSmoothSpeedY = 60;
+    public float followSmoothSpeedY = 2;
     [Tooltip("(Higher = slower) When at player is at rest, determines how slow the camera should \"catch up\" with the target postiton when in follow smooth mode.")]
     public float followSmoothRestSpeed = 40;
-    private int movingTimerX;
+    private int cameraGroundMovementPause;
     public int movingTimerXMax = 60;
     private int movingTimerY;
     public int movingTimerYMax = 60;
@@ -62,6 +62,8 @@ public class CameraScript : MonoBehaviour {
     public float freeMoveSpeed = 0.2f;
     public Vector2 DistFromPlayer;
     public Vector2 MaxDistFromPlayer = new Vector2(10, 10);
+    float desiredCameraTargetX;
+    float desiredCameraTargetY;
 
 
     void Start() {
@@ -110,54 +112,9 @@ public class CameraScript : MonoBehaviour {
                 //move the camera such that the player is within the radius focusAreaSize of the view center again:
                 transform.Translate((screenToPlayerVector - screenToPlayerVector.normalized * followRadius) * Time.deltaTime * followSpeed, Space.World);
             }
-
-        } else if (mode == CameraMode.FollowPlayerSmooth) {
-            //get the center of the screen (mainCamera) in the unity world units:
-            screenCenterVector = Camera.main.ScreenToWorldPoint(new Vector2((Screen.width / 2), (Screen.height / 2)));
-            //subtracts the center of the screen coordinates (2d) from the player's coordinates;
-            screenToPlayerVector = (Vector2)player.transform.position - screenCenterVector;
-            float xInput = Input.GetAxis("Horizontal");
-            if (Mathf.Abs(xInput) > 0.5 && movingTimerX < movingTimerXMax) {
-                movingTimerX++;
-            } else if (xInput == 0) {
-                movingTimerX = 0;
-             }
-              if (playerRigidbody.velocity.y > 0.1 && movingTimerY < movingTimerYMax) {
-                  movingTimerY++;
-              }
-              else if (playerRigidbody.velocity.y < 0.1) {
-                  movingTimerY = 0;
-              }
-
-
-
-              Vector2 desiredCameraTarget = new Vector2(0,0);
-            if (playerScript.touchingGround) desiredCameraTarget.y = desiredCameraTarget.y + playerRestYOffset;
-            // gets an offset relative to the player for the camera to head
-            desiredCameraTarget.x = Mathf.Sign(xInput) * Mathf.Pow(movingTimerX, 4) / Mathf.Pow(movingTimerXMax, 4);
-              desiredCameraTarget.y = player.transform.position.y;
-            //   Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f)
-            //Vector2 desiredCameraTarget = new Vector2(Mathf.Sign(xInput)*Mathf.Clamp(Mathf.Pow(movingTimer,4)/Mathf.Pow(movingTimerMax, 4),-1,1), Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f));
-            // if the player is on the ground, she probably want's to see the most in the up direction (rather than centering the player in the screen):
-            if (Mathf.Abs(playerRigidbody.velocity.magnitude) < playerRestThreshold) {
-                // if the player is still, move the camera in a linear fashion:
-                Vector2 deltaTarget = desiredCameraTarget - cameraMovingTarget;
-                if (deltaTarget.magnitude > 0.08) cameraMovingTarget = cameraMovingTarget + deltaTarget.normalized / followSmoothRestSpeed;
-            } else {
-                desiredCameraTarget.y = (player.transform.position.y - transform.position.y) * Time.deltaTime * followSmoothSpeedY;
-                // if the player is moving, move the camera in a way that's proportional to how far the camera has to move which can be changed with followSmoothSpeedX & followSmoothSpeedY:
-                cameraMovingTarget = cameraMovingTarget + new Vector2((desiredCameraTarget.x - cameraMovingTarget.x) / followSmoothSpeedX, (desiredCameraTarget.y - cameraMovingTarget.y));//(desiredCameraTarget.y - cameraMovingTarget.y) / followSmoothSpeedY); //Vector2.Min((desiredCameraTarget - cameraMovingTarget).normalized, desiredCameraTarget - cameraMovingTarget)/20;
-            }
-            // Debug Visualization:
-             GameObject.Find("Debug dot green").transform.position = desiredCameraTarget + (Vector2)player.transform.position;
-             GameObject.Find("Debug dot brown").transform.position = cameraMovingTarget + (Vector2)player.transform.position;
-             
-            // Finally actually move the camera to the players positon plus the camera target offset:
-            transform.Translate(new Vector2((desiredCameraTarget + screenToPlayerVector).x, (player.transform.position.y - screenCenterVector.y) * Time.deltaTime * followSmoothSpeedY), Space.World);
-
-
             //player can control camera with arrow keys
-        } else if (mode == CameraMode.FreeCam) {
+        }
+        else if (mode == CameraMode.FreeCam) {
             //move left and right
             if (Input.GetKey(KeyCode.RightArrow) && DistFromPlayer.x < MaxDistFromPlayer.x) {
                 this.transform.position = new Vector3(this.transform.position.x + freeMoveSpeed, this.transform.position.y, this.transform.position.z);
@@ -241,5 +198,72 @@ public class CameraScript : MonoBehaviour {
         start = transform.position;
         timeToReachTarget = time;
         this.destination = destination;
+    }
+
+    public void FixedUpdate() {
+        // putting the camera following in fixed update keeps jitter between the player and camera low.
+        if (mode == CameraMode.FollowPlayerSmooth) {
+            //get the center of the screen (mainCamera) in the unity world units:
+            screenCenterVector = Camera.main.ScreenToWorldPoint(new Vector2((Screen.width / 2), (Screen.height / 2)));
+            //subtracts the center of the screen coordinates (2d) from the player's coordinates;
+            screenToPlayerVector = (Vector2)player.transform.position - screenCenterVector;
+
+            float xInput = Input.GetAxis("Horizontal");
+            float deltaX, deltaY;
+            float foo = 1.5f;
+
+            float off = 0;
+            // Figure out Y-axis camera motion (deltaY):
+            if (playerScript.touchingGround) {
+                movingTimerY = 0;
+                off = 2;
+                if (cameraGroundMovementPause < 20) cameraGroundMovementPause++;
+                if (desiredCameraTargetY < playerRestYOffset && cameraGroundMovementPause == 18) {
+                    desiredCameraTargetY += 0.03f;
+                }
+            }
+            else {
+                cameraGroundMovementPause = 0;
+                if (movingTimerY < movingTimerYMax) movingTimerY++;
+                if (playerRigidbody.velocity.y < 0 && desiredCameraTargetY > -foo) {
+                    desiredCameraTargetY -= 0.04f;
+                } else 
+                if (playerRigidbody.velocity.y > 0 && desiredCameraTargetY < foo) {
+                    desiredCameraTargetY += 0.08f;
+                }
+            }
+
+            print("player: " + playerRigidbody.velocity.y + " counter: " + movingTimerY);
+
+           if (playerRigidbody.velocity.y < -8) off = (-playerRigidbody.velocity.y - 8);
+            deltaY = (player.transform.position.y + desiredCameraTargetY - screenCenterVector.y) * Time.deltaTime * (followSmoothSpeedY + off);//(6 / (Mathf.Abs(playerRigidbody.velocity.y)+1)));//* Mathf.Clamp(Mathf.Abs(player.transform.position.y - screenCenterVector.y), 0.1f, 3));
+
+            // Figure out X-axis camera motion (deltaX):
+            if (Mathf.Abs(player.transform.position.x + (int)xInput - screenCenterVector.x) > 0.02) {
+                if ((int)xInput > 0.01 && desiredCameraTargetX < 1.5) desiredCameraTargetX = desiredCameraTargetX + 0.02f;
+                else if ((int)xInput < -0.01 && desiredCameraTargetX > -1.5) desiredCameraTargetX = desiredCameraTargetX - 0.02f;
+            }
+            if ((int)xInput == 0) {
+                if (desiredCameraTargetX > 0.04) desiredCameraTargetX = desiredCameraTargetX - 0.04f;
+                if (desiredCameraTargetX < -0.04) desiredCameraTargetX = desiredCameraTargetX + 0.04f;
+                deltaX = (player.transform.position.x + desiredCameraTargetX - screenCenterVector.x) * Time.deltaTime * (followSmoothSpeedX + Mathf.Clamp(Mathf.Abs(player.transform.position.x - screenCenterVector.x), 0f, 10)+1);
+            }
+            else {
+                deltaX = (player.transform.position.x + desiredCameraTargetX - screenCenterVector.x) * Time.deltaTime * (followSmoothSpeedX + Mathf.Clamp(Mathf.Abs(player.transform.position.x - screenCenterVector.x), 0f, 10));
+            }
+            //   Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f)
+            //Vector2 desiredCameraTarget = new Vector2(Mathf.Sign(xInput)*Mathf.Clamp(Mathf.Pow(movingTimer,4)/Mathf.Pow(movingTimerMax, 4),-1,1), Mathf.Clamp(playerRigidbody.velocity.y, 0, 1.5f));
+            // if the player is on the ground, she probably want's to see the most in the up direction (rather than centering the player in the screen):
+            // Debug Visualization:
+           // GameObject.Find("Debug dot green").transform.position = new Vector2(desiredCameraTargetX, desiredCameraTargetY) + (Vector2)player.transform.position;
+            //GameObject.Find("Debug dot brown").transform.position = cameraMovingTarget + (Vector2)player.transform.position;
+
+            // Finally actually move the camera to the players positon plus the camera target offset:
+            transform.Translate(new Vector2(deltaX, deltaY), Space.World);
+            //transform.Translate(new Vector2((player.transform.position.x + desiredCameraTargetX - screenCenterVector.x) * Time.deltaTime * (followSmoothSpeedX + Mathf.Abs(desiredCameraTargetX)), (player.transform.position.y - screenCenterVector.y) * Time.deltaTime * followSmoothSpeedY), Space.World);
+
+
+
+        }
     }
 }
