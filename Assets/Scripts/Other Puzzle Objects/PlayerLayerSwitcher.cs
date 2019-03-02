@@ -83,6 +83,30 @@ public class PlayerLayerSwitcher : MonoBehaviour
 
     // Use this for initialization
     void Start()  {
+        if (foreground == null)
+        {
+            foreground = GameObject.Find("foreground");
+        }
+        if (midground == null)
+        {
+            midground = GameObject.Find("foreground");
+        }
+        if (background == null)
+        {
+            background = GameObject.Find("foreground");
+        }
+
+        if (foreground && midground && background)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
+
+
         playerLayer = LayerMask.NameToLayer("Player");
         foregroundLayer = LayerMask.NameToLayer("Foreground");
         foregroundLaserLayer = LayerMask.NameToLayer("Foreground Laser Transparent");
@@ -92,7 +116,10 @@ public class PlayerLayerSwitcher : MonoBehaviour
         foregroundSortingLayer = foreground.GetComponentInChildren<Renderer>().sortingLayerID;
         midgroundSortingLayer = midground.GetComponentInChildren<Renderer>().sortingLayerID;
         Debug.Log(foregroundSortingLayer);
-}
+
+  
+
+    }
 
     void Update()
     {
