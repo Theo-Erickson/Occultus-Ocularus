@@ -217,23 +217,25 @@ public class PlayerController : MonoBehaviour {
         touchingWall = 0;
         hangingOnLedge = false;
         foreach (Collider2D objCollider in overlapingTriggers) {
-            if (playerBottomTrigger.IsTouching(objCollider)) {
-                touchingGround = true;
-                touchingWall = 0;
-                hangingOnLedge = false;
-                if (isEnter && otherCol.gameObject.tag == "Platform") otherCol.gameObject.GetComponent<MovingPlatform>().stickPlayer(gameObject);
-            }
-            else if (playerLeftTrigger.IsTouching(objCollider)) {
-                touchingWall = 1;
-                hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
-            }
-            else if (playerRightTrigger.IsTouching(objCollider)) {
-                touchingWall = -1;
-                hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
-            }
+            if (!objCollider.isTrigger) {
+                if (playerBottomTrigger.IsTouching(objCollider)) {
+                    touchingGround = true;
+                    touchingWall = 0;
+                    hangingOnLedge = false;
+                    if (isEnter && otherCol.gameObject.tag == "Platform") otherCol.gameObject.GetComponent<MovingPlatform>().stickPlayer(gameObject);
+                }
+                else if (playerLeftTrigger.IsTouching(objCollider)) {
+                    touchingWall = 1;
+                    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
+                }
+                else if (playerRightTrigger.IsTouching(objCollider)) {
+                    touchingWall = -1;
+                    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
+                }
 
-            if (!isEnter && otherCol.gameObject.tag == "Platform") {
-                otherCol.gameObject.GetComponent<MovingPlatform>().unStickPlayer(); ;
+                if (!isEnter && otherCol.gameObject.tag == "Platform") {
+                    otherCol.gameObject.GetComponent<MovingPlatform>().unStickPlayer(); ;
+                }
             }
             //print(touchingWall + " G: " + touchingGround + " h:" + hangingOnLedge);
         }
@@ -303,7 +305,7 @@ public class PlayerController : MonoBehaviour {
                 }
                 if (walljumpTimer != 0) walljumpTimer--;
             }
-            if (ledgeRecoveryEnabled && jumpStart && hangingOnLedge) {
+            if (ledgeRecoveryEnabled && jumpStart && hangingOnLedge && body.velocity.y < 1) {
                 body.velocity = new Vector2(-touchingWall, 4);
             }
         }
