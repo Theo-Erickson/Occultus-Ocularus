@@ -137,3 +137,5 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   degrees: 90
   rotateTime: 1
+  rotationDirection: 1
+  toggleDirection: 1

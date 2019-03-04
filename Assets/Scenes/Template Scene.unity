@@ -9986,6 +9986,11 @@ PrefabInstance:
       propertyPath: degrees
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 7302760607711285357, guid: 4420316b44c0f4c4fa2a7d93b52225af,
+        type: 3}
+      propertyPath: toggleDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7302760607711285355, guid: 4420316b44c0f4c4fa2a7d93b52225af,
         type: 3}
       propertyPath: m_LocalPosition.x

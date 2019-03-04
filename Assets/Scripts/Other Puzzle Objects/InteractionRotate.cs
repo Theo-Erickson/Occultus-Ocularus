@@ -12,6 +12,11 @@ public class InteractionRotate : Interaction
     [Tooltip("After this amount of seconds, the object will have rotated 'degrees' degrees. This value must be positive.")]
     public float rotateTime = 0.5f;
 
+    public enum rotDirection { clockwise, counterClockwise }
+    public rotDirection rotationDirection = rotDirection.clockwise;
+    [Tooltip("Whether the prisim will rotate back and forth rather than going all the way around. Initial rotation direction set by Rotation Direction.")]
+    public bool toggleDirection = false;
+
     // Set to infinity so the object doesn't start out rotating.
     private float t = Mathf.Infinity;
     private bool rotating;
@@ -19,7 +24,12 @@ public class InteractionRotate : Interaction
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (rotationDirection == rotDirection.clockwise) {
+            degrees = -Mathf.Abs(degrees);
+        }
+        else {
+            degrees = Mathf.Abs(degrees);
+        }
     }
 
     // Update is called once per frame
@@ -33,6 +43,7 @@ public class InteractionRotate : Interaction
         
         if(rotating)
         {
+
             GameObject target = targetObject != null ? targetObject : gameObject;
             if(rotateTime == 0)
             {
@@ -74,6 +85,16 @@ public class InteractionRotate : Interaction
         {
             rotating = true;
             t = 0;
+            if (toggleDirection) {
+                if (rotationDirection == rotDirection.clockwise) {
+                    rotationDirection = rotDirection.counterClockwise;
+                    degrees = -Mathf.Abs(degrees);
+                }
+                else {
+                    rotationDirection = rotDirection.clockwise;
+                    degrees = Mathf.Abs(degrees);
+                }
+            };
         }
     }
 }

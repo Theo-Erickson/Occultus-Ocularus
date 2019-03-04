@@ -13,6 +13,8 @@ public class LaserEmitter : MonoBehaviour {
     public float infiniteRenderSize = 100;
     [Tooltip("How far to scan for laser hits.")]
     public float maxDistance = Mathf.Infinity;
+    [Tooltip("whether the player can block this laser.")]
+    public bool willHitPlayer = false;
 
     private LayerMask laserCollisionMask;
     private GameObject[] lasers;
@@ -106,10 +108,10 @@ public class LaserEmitter : MonoBehaviour {
         }
     }
 
-    private static LayerMask getLaserCollistionMask(GameObject Emitter) {
+    private LayerMask getLaserCollistionMask(GameObject Emitter) {
         int laserLayer = LayerMask.NameToLayer("Laser");
         int playerLayer = LayerMask.NameToLayer("Player");
-        if (!Physics2D.GetIgnoreLayerCollision(laserLayer, playerLayer)) {
+        if (willHitPlayer) {
             return LayerMask.GetMask(LayerMask.LayerToName(Emitter.layer), "Player");
         }
         else {
