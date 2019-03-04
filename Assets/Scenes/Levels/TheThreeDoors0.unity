@@ -18351,7 +18351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18427,11 +18427,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
-        type: 3}
-      propertyPath: isclosed
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058697, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
@@ -18511,6 +18506,11 @@ PrefabInstance:
     - target: {fileID: 7686641126589058698, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: isclosed
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

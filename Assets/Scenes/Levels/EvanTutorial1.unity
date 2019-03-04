@@ -14051,11 +14051,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
-        type: 3}
-      propertyPath: isclosed
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058697, guid: fee9cde7b58274b4aa827fc2e475830e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14135,6 +14130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686641126589058699, guid: fee9cde7b58274b4aa827fc2e475830e,
+        type: 3}
+      propertyPath: isclosed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee9cde7b58274b4aa827fc2e475830e, type: 3}
@@ -15424,14 +15424,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
-      propertyPath: ID
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4077298370317125808, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: m_Layer
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480185743, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
+      propertyPath: ID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -15586,7 +15586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15649,11 +15649,6 @@ PrefabInstance:
       propertyPath: background
       value: 
       objectReference: {fileID: 1221137935}
-    - target: {fileID: 7443616542632638079, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7443616542632638079, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

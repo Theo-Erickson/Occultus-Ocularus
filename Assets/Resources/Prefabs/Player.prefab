@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1974393871175172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   canMove: 1
   frozen: 0
   antiGrav: 0
-  maxWalkSpeed: 3
+  maxWalkSpeed: 5
   walkForce: 40
   jumpMode: 0
   maxJumpTime: 2
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.95}
+  m_Size: {x: 0.45, y: 0.95}
   m_EdgeRadius: 0
 --- !u!50 &50948675252462286
 Rigidbody2D:
@@ -425,7 +425,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.08}
+  m_Size: {x: 0.4, y: 0.08}
   m_EdgeRadius: 0
 --- !u!61 &3808456141717982565
 BoxCollider2D:

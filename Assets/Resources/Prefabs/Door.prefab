@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4471179300471207632}
   - component: {fileID: 7686641126589058696}
   m_Layer: 18
-  m_Name: DoorPlatform
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: 0
   extendAndRetract: 1
-  distance: 3
+  distance: -3
   speed: 4
   direction: 1
 --- !u!61 &7686641126589058696
