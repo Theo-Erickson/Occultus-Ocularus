@@ -19,6 +19,11 @@ public class InteractorButton : MonoBehaviour
     [Header("Audio")]
     public AudioSource interactSound;
 
+    [Header("Animation (set to enable animation)")]
+    public Animator anim;
+    public bool toggleAnimation;
+    private bool buttonIsUp = true;
+    private float startYpos;
 
 
     private List<GameObject> inTrigger = new List<GameObject>();
@@ -28,6 +33,7 @@ public class InteractorButton : MonoBehaviour
     void Start()
     {
         interactSound = this.GetComponent<AudioSource>();
+        startYpos = transform.position.y;
     }
 
     // Update is called once per frame
@@ -46,6 +52,21 @@ public class InteractorButton : MonoBehaviour
                             interactSound.pitch = 0.7f;
                             interactSound.volume = 1.0f;
                             interactSound.Play();
+                        if (anim) {
+                            if(!toggleAnimation) anim.Play("ButtonPush", 0, 0);
+                            else {
+                                if (buttonIsUp) {
+                                    buttonIsUp = false;
+                                    transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
+                                    anim.Play("ButtonDown");
+                                }
+                                else {
+                                    buttonIsUp = true;
+                                    anim.Play("ButtonUp");
+                                }
+                            }
+                        }
+
                         //}
                         break;
                     }

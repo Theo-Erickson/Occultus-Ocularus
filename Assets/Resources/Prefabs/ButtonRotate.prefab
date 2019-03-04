@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4734461702111938317}
   - component: {fileID: 4734461702111938316}
   - component: {fileID: 1612253696492745147}
+  - component: {fileID: 9195367230212746053}
   m_Layer: 18
   m_Name: ButtonRotate
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 64f68a4c90e4646f786fe35fdb0a84f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e5db4d731aa24c1292b436254caab3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,7 +155,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 1612253696492745147}
+  anim: {fileID: 9195367230212746053}
+  toggleAnimation: 0
 --- !u!82 &1612253696492745147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -251,3 +254,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &9195367230212746053
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734461702111938319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9949766c094584a86aa7408f1b50be31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
