@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7686641126589058697}
   - component: {fileID: 7686641126589058698}
-  - component: {fileID: 7686641126589058699}
+  - component: {fileID: 4471179300471207632}
   - component: {fileID: 7686641126589058696}
   m_Layer: 18
-  m_Name: Door
+  m_Name: DoorPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7686641126589058699
+--- !u!114 &4471179300471207632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,13 +90,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7686641126589058700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee7afb0793cf0f4db6b7dd228604f2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 771ecdbc37def47bd8a6e3c0e5b5b8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isclosed: 0
-  heighty: 0
-  calldoordown: 0
-  calldoorup: 0
+  move: 0
+  extendAndRetract: 1
+  distance: 3
+  speed: 4
+  direction: 1
 --- !u!61 &7686641126589058696
 BoxCollider2D:
   m_ObjectHideFlags: 0
