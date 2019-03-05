@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
     public AudioSource backgroundAudio;
     public AudioSource footsteps;
 
+    [Header("Development Features")]
+    public bool allowResetting = true;
+    public bool allowFlying = true;
+
     private Rigidbody2D body;
     private Vector3 startPoint;
     private SpriteRenderer spriterender;
@@ -66,9 +70,10 @@ public class PlayerController : MonoBehaviour {
     private int walljumpTimer;
     private bool hangingOnLedge = true;
     private int triggerCount;
-    private List<Collider2D> overlapingTriggers = new List<Collider2D>();
+    private List<Collider2D> overlappingTriggers = new List<Collider2D>();
 
     private Animator anim;
+
 
     // Use this for initialization
     void Start() {
@@ -108,7 +113,7 @@ public class PlayerController : MonoBehaviour {
     // Function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
         // Reset position
-        if (Input.GetKeyDown(KeyCode.R)) ResetPlayer();
+        if (allowResetting && Input.GetKeyDown(KeyCode.R)) ResetPlayer();
         // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
         jump = Input.GetButton("Jump");
         jumpStart = !prevJump && jump;
@@ -131,7 +136,7 @@ public class PlayerController : MonoBehaviour {
 
 
         // Shift between flying and grounded modes
-        if (Input.GetKeyDown(KeyCode.RightShift)) {
+        if (allowFlying && Input.GetKeyDown(KeyCode.RightShift)) {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.white;
                 antiGrav = false;
@@ -195,34 +200,33 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D otherCol) {
         triggerCount++;
-        //overlapingTriggers;
-        checkTriggers(otherCol, true);
+        overlappingTriggers.Add(otherCol);
+        WallGroundCheck(otherCol);
 
+        if (otherCol.gameObject.tag == "Platform")
+            otherCol.gameObject.GetComponent<MovingPlatform>().StickPlayer(gameObject);
     }
 
     void OnTriggerExit2D(Collider2D otherCol) {
         triggerCount--;
-        //overlapingTriggers;
-        checkTriggers(otherCol, false);
+        overlappingTriggers.Remove(overlappingTriggers.Find(x => x.Equals(otherCol)));
+        WallGroundCheck(otherCol);
+
+        if (otherCol.gameObject.tag == "Platform")
+            otherCol.gameObject.GetComponent<MovingPlatform>().UnstickPlayer();
     }
 
-    void checkTriggers(Collider2D otherCol, bool isEnter) {
-        if (isEnter) {
-            overlapingTriggers.Add(otherCol);
-        }
-        else {
-            overlapingTriggers.Remove(overlapingTriggers.Find(x => x.Equals(otherCol)));
-        }
+    void WallGroundCheck(Collider2D otherCol) {
         touchingGround = false;
         touchingWall = 0;
         hangingOnLedge = false;
-        foreach (Collider2D objCollider in overlapingTriggers) {
+        foreach (Collider2D objCollider in overlappingTriggers) {
             if (!objCollider.isTrigger) {
                 if (playerBottomTrigger.IsTouching(objCollider)) {
                     touchingGround = true;
                     touchingWall = 0;
                     hangingOnLedge = false;
-                    if (isEnter && otherCol.gameObject.tag == "Platform") otherCol.gameObject.GetComponent<MovingPlatform>().stickPlayer(gameObject);
+
                 }
                 else if (playerLeftTrigger.IsTouching(objCollider)) {
                     touchingWall = 1;
@@ -232,12 +236,7 @@ public class PlayerController : MonoBehaviour {
                     touchingWall = -1;
                     hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
                 }
-
-                if (!isEnter && otherCol.gameObject.tag == "Platform") {
-                    otherCol.gameObject.GetComponent<MovingPlatform>().unStickPlayer(); ;
-                }
             }
-            //print(touchingWall + " G: " + touchingGround + " h:" + hangingOnLedge);
         }
     }
 
