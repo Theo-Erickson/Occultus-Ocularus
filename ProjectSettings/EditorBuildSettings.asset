@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/LayerSwitchingExample.unity
-    guid: 435e070f9afb99648a9bb4e60eeaf62d
+    path: Assets/Scenes/MainMenu.unity
+    guid: ae2e43377d4104ac1bca7a9af4609b9b
+  - enabled: 1
+    path: Assets/Scenes/MallIntro.unity
+    guid: 180ab117328111e42bd6a788f396a4f9
+  - enabled: 1
+    path: Assets/Scenes/OutsideMall;Rooftops.unity
+    guid: 8bb36f5c851dc41b49b257c1ef650e98
   m_configObjects: {}
