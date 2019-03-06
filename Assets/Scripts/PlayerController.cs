@@ -91,22 +91,22 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
-        InputHandler();
+        if (canMove) {
+            InputHandler();
 
-        // Flips sprite depending on direction of movement
-        if (Input.GetAxis("Horizontal") > 0) {
-            spriterender.flipX = true;
-        }
-        else if (Input.GetAxis("Horizontal") < 0) {
-            spriterender.flipX = false;
+            // Flips sprite depending on direction of movement
+            if (Input.GetAxis("Horizontal") > 0)
+                spriterender.flipX = true;
+            else if (Input.GetAxis("Horizontal") < 0)
+                spriterender.flipX = false;
         }
 
         // Sets animation variables
         anim.SetFloat("speed", Mathf.Abs(body.velocity.x));
-        if (Input.GetButtonDown("Jump") && canMove) {
+        if (Input.GetButtonDown("Jump") && canMove)
             anim.SetBool("startJump", true);
-        }
-        else anim.SetBool("startJump", false);
+        else
+            anim.SetBool("startJump", false);
         anim.SetBool("grounded", touchingGround);
     }
 

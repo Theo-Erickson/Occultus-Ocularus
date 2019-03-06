@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (5)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -333,7 +333,7 @@ Transform:
   m_Children:
   - {fileID: 1814695527}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &278348924
 Sprite:
@@ -864,8 +864,20 @@ Transform:
   m_Children:
   - {fileID: 1961146666}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &498414752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8837726542047142419, guid: 2960dd19a0267450eb1cdba08b7845e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1506018828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &733998411
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +907,7 @@ Transform:
   m_LocalScale: {x: 1800, y: 1000, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &733998413
 SpriteRenderer:
@@ -4016,7 +4028,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &962315578
 MonoBehaviour:
@@ -4080,7 +4092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1009565758
 GameObject:
@@ -4159,7 +4171,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &1044695870
 Sprite:
@@ -4419,7 +4431,7 @@ PrefabInstance:
     - target: {fileID: 3605850141601055751, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3605850141601055751, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
         type: 3}
@@ -4685,6 +4697,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
+--- !u!114 &1253425719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1143949149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c9621f58ddc3f4fbc994d724d7aec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1286517909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4695,7 +4719,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (6)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -5102,7 +5126,7 @@ Transform:
   m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &1487172793
 Sprite:
@@ -5362,7 +5386,7 @@ PrefabInstance:
     - target: {fileID: 2202917112584409223, guid: 2960dd19a0267450eb1cdba08b7845e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2202917112584409223, guid: 2960dd19a0267450eb1cdba08b7845e4,
         type: 3}
@@ -5463,7 +5487,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (4)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -5647,7 +5671,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1608667622
 MonoBehaviour:
@@ -5693,7 +5717,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (2)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -5812,7 +5836,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (3)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -18039,7 +18063,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (1)
+      value: stair collison platform
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -18466,13 +18490,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940613806}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -2.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.016013047, w: 0.9998718}
+  m_LocalPosition: {x: 1.75, y: -3.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.835}
 --- !u!1 &1954592859
 GameObject:
   m_ObjectHideFlags: 0
@@ -18944,10 +18968,55 @@ PrefabInstance:
       propertyPath: nextScene
       value: OutsideMall;Rooftops
       objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1253425719}
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: fadeOutUIImage
+      value: 
+      objectReference: {fileID: 498414752}
     - target: {fileID: 3546765133345632774, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.381
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db867e681625471eb1971ad79647fae, type: 3}
