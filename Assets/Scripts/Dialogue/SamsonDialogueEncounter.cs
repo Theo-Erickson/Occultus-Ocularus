@@ -16,7 +16,7 @@ public class SamsonDialogueEncounter : MonoBehaviour
             "got potential.\nHow about I show you around?|" +
             "Don’t talk much, do you? That’s fine, most\nNewbies don’t. Hell, " +
             "I didn’t talk much at all until I was at least an Apprentice.|" +
-            "Exactly. Okay, meet me outside — I’ll help you out.|" +
+            "Exactly. Okay, meet me outside — I’ll help you\nout.|" +
             "Oh, by the way, I’m Samson. If it matters.");
     }
 }
