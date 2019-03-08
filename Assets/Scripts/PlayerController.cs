@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour {
     private int triggerCount;
     private List<Collider2D> overlappingTriggers = new List<Collider2D>();
 
+    private string currentScene;
     private Animator anim;
 
 
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour {
         playerRightTrigger = GetComponents<BoxCollider2D>()[3];
         playerLeftTrigger = GetComponents<BoxCollider2D>()[4];
         anim = GetComponent<Animator>();
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
     void Update() {
@@ -151,11 +154,41 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void PlayFootstep() {
-        footsteps.clip = Resources.Load<AudioClip>("Audio/Footsteps/SoftFootsteps" + Random.Range(1, 4));
-        footsteps.pitch = Random.Range(0.7f, 1.0f);
-        footsteps.volume = Random.Range(0.1f, 0.2f);
+    void PlaySoftFootstep() {
+        if (currentScene.Equals("OutsideMall;Rooftops")) {
+            footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/Soft Footsteps/SoftFootsteps" + Random.Range(1, 4));
+            footsteps.pitch = Random.Range(0.7f, 1.0f);
+            footsteps.volume = Random.Range(0.1f, 0.2f);
+            footsteps.Play();
+        }
+    }
+
+    void PlayHardFootstep() {
+        if (currentScene.Equals("MallIntro")) {
+            footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/Hard Footsteps/footsteps_" + Random.Range(1, 8));
+            footsteps.pitch = Random.Range(0.7f, 1.0f);
+            footsteps.volume = Random.Range(0.3f, 0.4f);
+            footsteps.Play();
+        }
+
+    }
+
+    void PlayJumpSound() {
+        footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/jump");
+        footsteps.volume = 0.6f;
         footsteps.Play();
+    }
+
+    void PlayLandSound() {
+        footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/land");
+        footsteps.volume = 0.5f;
+        footsteps.Play();
+    }
+
+    void StopFootstep()
+    {
+        if (!footsteps.clip.name.Equals("jump"))
+            footsteps.Stop();
     }
 
     void FixedUpdate() {

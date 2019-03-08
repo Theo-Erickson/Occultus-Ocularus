@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
@@ -22,15 +23,17 @@ public class Dialogue : MonoBehaviour
     private bool awaitingUser = false;
 
     PlayerController player;
+    IDialogueEncounter dialogueEncounter;
 
     public void Awake()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
-    public void Setup()
+    public void Setup(IDialogueEncounter de)
     {
         player.canMove = false;
+        dialogueEncounter = de;
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
         phrases = new string[1];
@@ -69,6 +72,7 @@ public class Dialogue : MonoBehaviour
             }
             if (phraseIndex >= phrases.Length && Input.GetKeyUp(KeyCode.Space))
             {
+                dialogueEncounter.DialogueFinished();
                 Destroy(transform.parent.gameObject);
                 player.canMove = true;
             }
@@ -87,7 +91,6 @@ public class Dialogue : MonoBehaviour
         dialogueBox.transform.position = transform.GetChild(0).position;
         GameObject textBox = dialogueBox.transform.GetChild(1).gameObject;
         Dialogue dialogue = textBox.GetComponent<Dialogue>();
-        dialogue.Setup();
         return dialogue;
     }
 }

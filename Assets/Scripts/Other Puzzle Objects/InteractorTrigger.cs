@@ -38,6 +38,8 @@ public class InteractorTrigger : MonoBehaviour
             if(!sameLayerOnly || other.gameObject.layer == gameObject.layer) {
                 if(onEnter == null)
                     return;
+                if (other.isTrigger)
+                    return;
                 onEnter.Invoke();
             }
         }
@@ -50,6 +52,8 @@ public class InteractorTrigger : MonoBehaviour
             // If sameLayerOnly is false or the object is in the same layer.
             if(!sameLayerOnly || other.gameObject.layer == gameObject.layer) {
                 if(onExit == null)
+                    return;
+                if (other.isTrigger)
                     return;
                 onExit.Invoke();
             }

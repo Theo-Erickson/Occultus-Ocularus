@@ -42,13 +42,13 @@ public class InteractorButton : MonoBehaviour
         if(Input.GetButtonDown("Interact")) {
             foreach(GameObject go in inTrigger) {
                 // If no tag is specified or the object's tag matches the specified tag.
-                if(String.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
+                if(string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
                     // If sameLayerOnly is false or the object is in the same layer.
                     if(!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
                         triggered = true;
                         //if (!interactSound.isPlaying)
                         //{
-                            interactSound.clip = Resources.Load<AudioClip>("Audio/Menu-Click");
+                            interactSound.clip = Resources.Load<AudioClip>("Audio/SFX/UI/Menu-Click");
                             interactSound.pitch = 0.7f;
                             interactSound.volume = 1.0f;
                             interactSound.Play();
@@ -66,9 +66,7 @@ public class InteractorButton : MonoBehaviour
                                 }
                             }
                         }
-
-                        //}
-                        break;
+                      //}
                     }
                 }
             }

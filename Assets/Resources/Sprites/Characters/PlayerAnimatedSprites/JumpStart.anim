@@ -154,7 +154,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayFootstep
+    functionName: PlayJumpSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

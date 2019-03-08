@@ -18,6 +18,7 @@ public class LevelTransition : MonoBehaviour
     private bool fadeCompleted;
     private bool loading;
     private bool fadeStarted;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -33,7 +34,32 @@ public class LevelTransition : MonoBehaviour
             StartCoroutine(Fade(FadeDirection.In));
     }
 
-    private IEnumerator Fade(FadeDirection fadeDirection)
+    public void FadeAway(SpriteRenderer sr)
+    {
+        spriteRenderer = sr;
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+
+        if (!fadeStarted)
+        {
+            fadeStartValue = 1;
+            fadeEndValue = 0;
+        }
+        fadeStarted = true;
+
+        while (fadeStartValue >= fadeEndValue)
+        {
+            SetTransparencySR(FadeDirection.Out);
+            yield return null;
+        }
+        fadeOutUIImage.enabled = false;
+
+    }
+
+private IEnumerator Fade(FadeDirection fadeDirection)
     {
 
         if (!fadeStarted)
@@ -91,6 +117,15 @@ public class LevelTransition : MonoBehaviour
     private void SetTransparency(FadeDirection fadeDirection)
     {
         fadeOutUIImage.color = new Color(fadeOutUIImage.color.r, fadeOutUIImage.color.g, fadeOutUIImage.color.b, fadeStartValue);
+        if (fadeDirection == FadeDirection.Out)
+            fadeStartValue -= Time.deltaTime / fadeSpeed;
+        else
+            fadeStartValue += Time.deltaTime / fadeSpeed;
+    }
+
+    private void SetTransparencySR(FadeDirection fadeDirection)
+    {
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, fadeStartValue);
         if (fadeDirection == FadeDirection.Out)
             fadeStartValue -= Time.deltaTime / fadeSpeed;
         else

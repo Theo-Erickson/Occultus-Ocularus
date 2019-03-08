@@ -1,3 +1,0 @@
-Play step_initial as the first step sound, then play a random step sound
-
-These files except step_initial have an anticipation sound at the beginning. The actual step sound occurs after 0.25 seconds in all files.
