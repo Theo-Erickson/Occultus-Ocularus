@@ -681,18 +681,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &622341402 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-    type: 3}
-  m_PrefabInstance: {fileID: 3546765132673288363}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2ec56debba64ece88dd68cddbb6853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &733998411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,7 +3778,7 @@ GameObject:
   - component: {fileID: 932512906}
   - component: {fileID: 932512905}
   m_Layer: 0
-  m_Name: LevelTheme
+  m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3806,7 +3794,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b04a2157e24cdbd4ba03133876f0b372, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd1fe08bc33955943876bffa4b7e3d9a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -18139,26 +18127,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelTransition
       objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: fadeOutUIImage
-      value: 
-      objectReference: {fileID: 4594652}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: nextScene
-      value: OutsideMall;Rooftops
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 960582976}
     - target: {fileID: 3546765133345632772, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18214,66 +18182,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeLoadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 622341402}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: fadeOutUIImage
       value: 
       objectReference: {fileID: 4594652}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+      propertyPath: nextScene
+      value: OutsideMall;Rooftops
       objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
-      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 960582976}
     - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
       propertyPath: m_RootOrder
