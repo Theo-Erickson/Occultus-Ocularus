@@ -77,6 +77,8 @@ public class CameraScript : MonoBehaviour {
     float desiredCameraTargetX;
     float desiredCameraTargetY;
 
+    private string fixedCamPosition;
+
 
     void Start() {
         pastCameraPosition = start;
@@ -99,11 +101,14 @@ public class CameraScript : MonoBehaviour {
             if (this.transform.parent == player.transform) {
                 this.transform.parent = null;
             }
-            LerpToPosition(this.transform.position, destination);
 
-            //Camera is set to follow player
+            LerpToPosition(this.transform.position, destination);
         }
-        else if (mode == CameraMode.FollowPlayer) {
+        else
+            Camera.main.fieldOfView = 100;
+
+        //Camera is set to follow player
+        if (mode == CameraMode.FollowPlayer) {
 
             //So unity only makes it happen once for better performance
             if (this.transform.parent != player.transform) {
@@ -154,7 +159,6 @@ public class CameraScript : MonoBehaviour {
         }
     }
 
-
     //NOT IN USE RIGHT NOW
     // Makes the camera Lerp from it's current position to another and stops character from moving
     private void LerpToPosition(Vector3 start, Vector3 end) {
@@ -163,12 +167,12 @@ public class CameraScript : MonoBehaviour {
         print("Lerp");
         //Disable the player movement when the camera is shifting
         if (Vector3.Distance(transform.position, end) > 1) {
-            player.GetComponent<PlayerController>().canMove = false;
+            playerScript.canMove = false;
             //Stop the player from moving when you are transitioning with the camera 
             playerRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         }
         else {
-            player.GetComponent<PlayerController>().canMove = true;
+            playerScript.canMove = true;
             //Give player the contraints on all rotations + Z axis position
             playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
@@ -176,24 +180,24 @@ public class CameraScript : MonoBehaviour {
 
     //Check for conditions to change camera mode
     public void CheckCameraMode() {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        if (Input.GetKey(KeyCode.Alpha1)) {
             mode = CameraMode.Fixed;
             DistFromPlayer = Vector2.zero;
-            player.GetComponent<PlayerController>().canMove = true;
+            playerScript.canMove = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             mode = CameraMode.FollowPlayer;
             DistFromPlayer = Vector2.zero;
-            player.GetComponent<PlayerController>().canMove = true;
+            playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyUp(KeyCode.Alpha1)) {
             mode = CameraMode.FollowPlayerRadius;
             DistFromPlayer = Vector2.zero;
-            player.GetComponent<PlayerController>().canMove = true;
+            playerScript.canMove = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4)) {
             mode = CameraMode.FreeCam;
-            player.GetComponent<PlayerController>().canMove = false;
+            playerScript.canMove = false;
         }
     }
 
@@ -201,7 +205,7 @@ public class CameraScript : MonoBehaviour {
         t = 0;
         start = transform.position;
         timeToReachTarget = time;
-        destination = start;
+        this.destination = start;
     }
 
     // Use to tell the camera where to move to in fixed mode
@@ -210,6 +214,22 @@ public class CameraScript : MonoBehaviour {
         start = transform.position;
         timeToReachTarget = time;
         this.destination = destination;
+    }
+
+    public void SetFixedCamPosition(string position)
+    {
+        fixedCamPosition = position;
+        if (fixedCamPosition.Equals("Puzzle1"))
+        {
+            destination = new Vector3(33, 15, -5);
+            Camera.main.fieldOfView = 106;
+
+        }
+        else if (fixedCamPosition.Equals("Puzzle2"))
+        {
+            destination = new Vector3(67, 19, -5);
+            Camera.main.fieldOfView = 140;
+        }
     }
 
     public void FixedUpdate() {
