@@ -78,6 +78,7 @@ public class CameraScript : MonoBehaviour {
     float desiredCameraTargetY;
 
     private float destFov;
+    int lerpTimer;
     private string fixedCamPosition = "Disabled";
 
 
@@ -100,7 +101,7 @@ public class CameraScript : MonoBehaviour {
         if (mode == CameraMode.Fixed)
         {
             if (!fixedCamPosition.Equals("Disabled"))
-                {
+            {
                 //remove this camera being parented to the child. Disables direct following
                 if (this.transform.parent == player.transform)
                 {
@@ -119,13 +120,14 @@ public class CameraScript : MonoBehaviour {
                     destFov = 140f;
                 }
 
-                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 150);
-                LerpToPosition(this.transform.position, destination);
-            }
+                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 300);
 
+                if (destination == transform.position)
+                    lerpTimer = 0;
+                else
+                    transform.position = Vector3.Lerp(this.transform.position, destination, (float)1 / 30 * lerpTimer++);
+            }
         }
-        else
-            Camera.main.fieldOfView = 100;
 
         //Camera is set to follow player
         if (mode == CameraMode.FollowPlayer) {
@@ -184,7 +186,7 @@ public class CameraScript : MonoBehaviour {
     private void LerpToPosition(Vector3 start, Vector3 end) {
         t += Time.deltaTime / timeToReachTarget;
         transform.position = Vector3.Lerp(start, end, t);
-        print("Lerp");
+
         //Disable the player movement when the camera is shifting
         if (Vector3.Distance(transform.position, end) > 1) {
             playerScript.canMove = false;
@@ -200,8 +202,17 @@ public class CameraScript : MonoBehaviour {
 
     //Check for conditions to change camera mode
     public void CheckCameraMode() {
-        if (Input.GetKey(KeyCode.Alpha1)) {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && !fixedCamPosition.Equals("Disabled")) {
             mode = CameraMode.Fixed;
+            DistFromPlayer = Vector2.zero;
+            playerScript.canMove = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1) && mode == CameraMode.Fixed) {
+            mode = CameraMode.FollowPlayerSmooth;
+            playerScript.canMove = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        mode = CameraMode.FollowPlayerRadius;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
@@ -210,15 +221,18 @@ public class CameraScript : MonoBehaviour {
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyUp(KeyCode.Alpha1)) {
-            mode = CameraMode.FollowPlayerRadius;
-            DistFromPlayer = Vector2.zero;
-            playerScript.canMove = true;
-        }
         else if (Input.GetKeyDown(KeyCode.Alpha4)) {
             mode = CameraMode.FreeCam;
             playerScript.canMove = false;
         }
+    }
+
+    public void SetCameraMode(string newmode)
+    {
+        if (newmode.Equals("Fixed"))
+            mode = CameraMode.Fixed;
+        else if (newmode.Equals("FollowPlayerSmooth"))
+            mode = CameraMode.FollowPlayerSmooth;
     }
 
     public void resetPosition(Vector3 destination, float time) {
@@ -262,6 +276,11 @@ public class CameraScript : MonoBehaviour {
             float foo = 1.5f;
 
             float off = 0;
+
+            destFov = 100;
+            // zoom to target FOV level
+            Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 150);
+
             // Figure out Y-axis camera motion (deltaY):
             if (playerScript.touchingGround) {
                 if (playerEverJumped) {

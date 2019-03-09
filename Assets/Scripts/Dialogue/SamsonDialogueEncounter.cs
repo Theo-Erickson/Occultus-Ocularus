@@ -16,7 +16,7 @@ public class SamsonDialogueEncounter : MonoBehaviour, IDialogueEncounter
             "you just crawled out of?|Thanks.|You know, you look like you’ve " +
             "got potential.\nHow about I show you around?|" +
             "Don’t talk much, do you? That’s fine, most\nNewbies don’t.|" +
-            "Well said.. Okay, meet me outside — I’ll help you\nout.|" +
+            "Well said.. Okay, meet me outside — I’ll help\nyou out.|" +
             "Oh, by the way, I’m Samson. Nice to meet you.");
     }
 

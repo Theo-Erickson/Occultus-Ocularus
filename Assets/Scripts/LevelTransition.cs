@@ -56,6 +56,7 @@ public class LevelTransition : MonoBehaviour
             yield return null;
         }
         fadeOutUIImage.enabled = false;
+        fadeStarted = false;
 
     }
 

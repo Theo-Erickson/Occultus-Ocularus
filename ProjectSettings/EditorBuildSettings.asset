@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/OutsideMall;Rooftops.unity
     guid: 457803f5de39c44989dd0347e4fbaaa0
   - enabled: 1
-    path: Assets/Scenes/Mall-Rooftops Transiton Levels/MallIntro-Transition.unity
-    guid: 180ab117328111e42bd6a788f396a4f9
-  - enabled: 1
-    path: Assets/Scenes/Mall-Rooftops Transiton Levels/OutsideMall;Rooftops-Transition.unity
-    guid: 8bb36f5c851dc41b49b257c1ef650e98
-  - enabled: 1
     path: Assets/Scenes/EndMenu.unity
     guid: d416b22350f224398a704adbd1ab5dbe
   m_configObjects: {}
