@@ -24,6 +24,7 @@ public class Dialogue : MonoBehaviour
 
     PlayerController player;
     IDialogueEncounter dialogueEncounter;
+    public GameObject dialogueBox;
 
     public void Awake()
     {
@@ -86,9 +87,7 @@ public class Dialogue : MonoBehaviour
 
     public Dialogue ConstructDialogueBox()
     {
-        GameObject dialogueBox = Instantiate(Resources.Load("Prefabs/DialogueBox") as GameObject);
-        dialogueBox.transform.parent = transform;
-        dialogueBox.transform.position = transform.GetChild(0).position;
+        dialogueBox.SetActive(true);
         GameObject textBox = dialogueBox.transform.GetChild(1).gameObject;
         Dialogue dialogue = textBox.GetComponent<Dialogue>();
         return dialogue;
