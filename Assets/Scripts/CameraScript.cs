@@ -78,7 +78,7 @@ public class CameraScript : MonoBehaviour {
     float desiredCameraTargetY;
 
     private float destFov;
-    private string fixedCamPosition = "";
+    private string fixedCamPosition = "Disabled";
 
 
     void Start() {
@@ -97,26 +97,32 @@ public class CameraScript : MonoBehaviour {
 
 
         //Camera is a set a point and does not travel with player
-        if (mode == CameraMode.Fixed) {
-            //remove this camera being parented to the child. Disables direct following
-            if (this.transform.parent == player.transform) {
-                this.transform.parent = null;
+        if (mode == CameraMode.Fixed)
+        {
+            if (!fixedCamPosition.Equals("Disabled"))
+                {
+                //remove this camera being parented to the child. Disables direct following
+                if (this.transform.parent == player.transform)
+                {
+                    this.transform.parent = null;
+                }
+
+                if (fixedCamPosition.Equals("Puzzle1"))
+                {
+                    destination = new Vector3(33, 15, -5);
+                    destFov = 106f;
+
+                }
+                else if (fixedCamPosition.Equals("Puzzle2"))
+                {
+                    destination = new Vector3(67, 19, -5);
+                    destFov = 140f;
+                }
+
+                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 150);
+                LerpToPosition(this.transform.position, destination);
             }
 
-            if (fixedCamPosition.Equals("Puzzle1"))
-            {
-                destination = new Vector3(33, 15, -5);
-                destFov = 106f;
-
-            }
-            else if (fixedCamPosition.Equals("Puzzle2"))
-            {
-                destination = new Vector3(67, 19, -5);
-                destFov = 140f;
-            }
-
-            Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 150);
-            LerpToPosition(this.transform.position, destination);
         }
         else
             Camera.main.fieldOfView = 100;
