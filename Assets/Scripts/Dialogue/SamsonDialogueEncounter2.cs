@@ -37,8 +37,6 @@ public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
     {
         levelTransition.FadeAway(GetComponent<SpriteRenderer>());
         foreach(BoxCollider2D bc in GetComponents<BoxCollider2D>())
-        {
             bc.enabled = false;
-        }
     }
 }

@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8170532486456144647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -446,8 +446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -326.9, y: -15}
-  m_SizeDelta: {x: 117.5, y: 50}
+  m_AnchoredPosition: {x: -331.3, y: -15}
+  m_SizeDelta: {x: 78.95, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1574699770503270046
 CanvasRenderer:
@@ -490,7 +490,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Focus camera on puzzle: hold <b>1</b>'
+  m_Text: 'Zoom Camera In/Out: <b>1</b>'
 --- !u!1 &6798372291537028661
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class SamsonDialogueEncounter : MonoBehaviour, IDialogueEncounter
 
     public void DialogueFinished()
     {
+        foreach (BoxCollider2D bc in GetComponents<BoxCollider2D>())
+            bc.enabled = false;
         GetComponent<MovingPlatform>().Extend();
     }
 }

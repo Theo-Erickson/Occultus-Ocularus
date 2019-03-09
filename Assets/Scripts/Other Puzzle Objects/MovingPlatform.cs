@@ -23,6 +23,8 @@ public class MovingPlatform : MonoBehaviour
     [Header("Movement Mode")]
     [Tooltip("If true, the platform shifts between extended and retracted positions. Otherwise, the platform moves continuously.")]
     public bool extendAndRetract;
+    [Tooltip("If moving continuously, will pause at each end for this many seconds")]
+    public float pauseTime;
 
     [Header("Movement Properties")]
     [Tooltip("Distance platform moves, can be positive or negative")]
@@ -40,6 +42,10 @@ public class MovingPlatform : MonoBehaviour
     private float displacement;
     private bool forwards;
     private Vector3 originalPosition;
+
+    private float timePaused;
+    private bool paused;
+    private bool canPause;
 
     float platformPosition;
     GameObject collidingPlayer;
@@ -81,9 +87,11 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (paused)
+            PauseMoving();
+
         if (move && Mathf.Abs(distance) > 0)
         {
 
@@ -92,12 +100,16 @@ public class MovingPlatform : MonoBehaviour
                 // If at bound, turn around or stop if in extendAndRetract mode
                 if (transform.position.x >= front)
                 {
+                    if (pauseTime > 0 && canPause)
+                        PauseMoving();
                     forwards = false;
                     if (extendAndRetract && extend)
                         move = false;
                 }
                 else if (transform.position.x <= back)
                 {
+                    if (pauseTime > 0 && canPause)
+                        PauseMoving();
                     forwards = true;
                     if (extendAndRetract && !extend)
                         move = false;
@@ -115,6 +127,7 @@ public class MovingPlatform : MonoBehaviour
                 // Move right or left
                 if (move)
                 {
+                    canPause = true;
                     if (!inverted)
                     {
                         if (forwards && (!extendAndRetract || extend))
@@ -140,12 +153,16 @@ public class MovingPlatform : MonoBehaviour
                 // If at bound, turn around or stop if in extendAndRetract mode
                 if (transform.position.y >= front)
                 {
+                    if (pauseTime > 0 && canPause)
+                        PauseMoving();
                     forwards = false;
                     if (extendAndRetract && extend)
                         move = false;
                 }
                 else if (transform.position.y <= back)
                 {
+                    if (pauseTime > 0 && canPause)
+                        PauseMoving();
                     forwards = true;
                     if (extendAndRetract && !extend)
                         move = false;
@@ -163,6 +180,7 @@ public class MovingPlatform : MonoBehaviour
                 // Move up or down
                 if (move)
                 {
+                    canPause = true;
                     if (!inverted)
                     {
                         if (forwards && (!extendAndRetract || extend))
@@ -184,6 +202,26 @@ public class MovingPlatform : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PauseMoving()
+    {
+        if (timePaused < pauseTime)
+        {
+            paused = true;
+            extendAndRetract = true;
+            timePaused += Time.deltaTime;
+            move = false;
+        }
+        else
+        {
+            paused = false;
+            extendAndRetract = false;
+            timePaused = 0;
+            move = true;
+            canPause = false;
+        }
+
     }
 
     public void StartMoving()
@@ -216,6 +254,7 @@ public class MovingPlatform : MonoBehaviour
 
     // Called by player class when they jump or walk onto platform: Makes player stick to platform when they're standing on it.
     public void StickPlayer(GameObject player) {
+        collidingPlayer = player;
         if (direction == MvDir.vertical) {
             platformPosition = transform.position.y;
         }
