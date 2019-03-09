@@ -77,7 +77,8 @@ public class CameraScript : MonoBehaviour {
     float desiredCameraTargetX;
     float desiredCameraTargetY;
 
-    private string fixedCamPosition;
+    private float destFov;
+    private string fixedCamPosition = "";
 
 
     void Start() {
@@ -102,6 +103,19 @@ public class CameraScript : MonoBehaviour {
                 this.transform.parent = null;
             }
 
+            if (fixedCamPosition.Equals("Puzzle1"))
+            {
+                destination = new Vector3(33, 15, -5);
+                destFov = 106f;
+
+            }
+            else if (fixedCamPosition.Equals("Puzzle2"))
+            {
+                destination = new Vector3(67, 19, -5);
+                destFov = 140f;
+            }
+
+            Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 150);
             LerpToPosition(this.transform.position, destination);
         }
         else
@@ -219,17 +233,6 @@ public class CameraScript : MonoBehaviour {
     public void SetFixedCamPosition(string position)
     {
         fixedCamPosition = position;
-        if (fixedCamPosition.Equals("Puzzle1"))
-        {
-            destination = new Vector3(33, 15, -5);
-            Camera.main.fieldOfView = 106;
-
-        }
-        else if (fixedCamPosition.Equals("Puzzle2"))
-        {
-            destination = new Vector3(67, 19, -5);
-            Camera.main.fieldOfView = 140;
-        }
     }
 
     public void FixedUpdate() {
