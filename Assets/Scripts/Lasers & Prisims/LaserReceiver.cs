@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LaserReceiver : MonoBehaviour, LaserAffector
+public class LaserReceiver : MonoBehaviour, ILaserAffector
 {
-    // private SwitchableDoor door;//private switchDoor door;
-    private bool isHit = false;
-    private bool isSwitched;
     public UnityEvent Activate;
     public UnityEvent Deactivate;
 
+    private bool isHit;
+    private bool activated;
+
+    UnityAction action;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +22,10 @@ public class LaserReceiver : MonoBehaviour, LaserAffector
     // Update is called once per frame
     void Update()
     {
-        if(!isHit)
+        if (!isHit && activated)
         {
-            if(!isSwitched) {
-                Deactivate.Invoke();
-                isSwitched = true;
-            }
+            Deactivate.Invoke();
+            activated = false;
         }
         isHit = false;
     }
@@ -34,15 +33,13 @@ public class LaserReceiver : MonoBehaviour, LaserAffector
     public Ray2D RedirectLaser(Ray2D inRay, RaycastHit2D hit)
     {
         isHit = true;
-        if(isSwitched)
+        if(!activated)
         {
             Activate.Invoke();
-            isSwitched = false;
+            activated = true;
         }
-         
-        Vector2 o, d;
-        o = hit.point * 0f;
-        d = hit.point * 0f;
-        return new Ray2D(o, d);
+
+        Vector2 o = new Vector2(0, 0);
+        return new Ray2D(o, o);
     }
 }

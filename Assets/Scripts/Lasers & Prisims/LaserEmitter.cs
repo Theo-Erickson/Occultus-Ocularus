@@ -6,14 +6,14 @@ using UnityEngine;
 public class LaserEmitter : MonoBehaviour {
 
     [Tooltip("The object to be instantiated as a laser.")]
-    public GameObject laser;
+    public GameObject laserObject;
     [Tooltip("The maximum number of reflections/refractions for the laser.")]
     public int maxReflections = 10;
     [Tooltip("How long an infinite laser (a laser shot into the empty sky) should be drawn.")]
     public float infiniteRenderSize = 100;
     [Tooltip("How far to scan for laser hits.")]
     public float maxDistance = Mathf.Infinity;
-    [Tooltip("whether the player can block this laser.")]
+    [Tooltip("Whether the player can block this laser.")]
     public bool willHitPlayer = false;
 
     private LayerMask laserCollisionMask;
@@ -21,11 +21,11 @@ public class LaserEmitter : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        laserCollisionMask = getLaserCollistionMask(gameObject);
+        laserCollisionMask = GetLaserCollisionMask(gameObject);
         lasers = new GameObject[maxReflections];
         for (int i = 0; i < lasers.Length; i++) {
-            // Add the lazers in backwards order, so that they render correctly.
-            lasers[lasers.Length - i - 1] = GameObject.Instantiate(laser, gameObject.transform);
+            // Add the lasers in backwards order, so that they render correctly.
+            lasers[lasers.Length - i - 1] = Instantiate(laserObject, gameObject.transform);
         }
     }
 
@@ -42,7 +42,7 @@ public class LaserEmitter : MonoBehaviour {
             if (visible) {
                 // Make it visible
                 laser.SetActive(true);
-                Util.SetSortingLayerRecursively(laser, gameObject.transform.parent.gameObject.GetComponent<Renderer>().sortingLayerID); //lasers are now given their own layer "Laser" but not their own sorting Layer.
+                Util.SetSortingLayerRecursively(laser, gameObject.transform.parent.gameObject.GetComponent<Renderer>().sortingLayerID); // Lasers are given their own layer "Laser" but not their own sorting Layer.
                                                                                                                                         // Find the intersection between the ray and the layer that the emitter resides in.
                 ContactFilter2D cf = new ContactFilter2D();
 
@@ -70,23 +70,22 @@ public class LaserEmitter : MonoBehaviour {
                     laser.transform.localScale = scale;
 
                     // Determine whether a laser redirection is available in the hit object. (Reflection or refraction)
-                    LaserAffector affector = hit.collider.gameObject.GetComponent<LaserAffector>();
+                    ILaserAffector affector = hit.collider.gameObject.GetComponent<ILaserAffector>();
                     // If so, redirect the laser.
                     if (affector != null) {
                         Ray2D newRay = affector.RedirectLaser(new Ray2D(o, d), hit);
-                        if (newRay.direction.magnitude == 0) {
+                        if (newRay.direction.magnitude <= 0) {
                             visible = false;
                             continue;
                         }
                         o = newRay.origin;
                         d = newRay.direction;
-                        //}
                     }
                     // Otherwise, set the following laser objects to invisible.
                     else
                         visible = false;
                 }
-                // If nothing was hit, i.e. the lazer is shot into the empty sky.
+                // If nothing was hit, i.e. the laser is shot into the empty sky.
                 else {
                     // Draw it with length infiniteRenderSize.
                     laser.transform.position = (o + d * infiniteRenderSize * 0.5f);
@@ -108,7 +107,7 @@ public class LaserEmitter : MonoBehaviour {
         }
     }
 
-    private LayerMask getLaserCollistionMask(GameObject Emitter) {
+    private LayerMask GetLaserCollisionMask(GameObject Emitter) {
         int laserLayer = LayerMask.NameToLayer("Laser");
         int playerLayer = LayerMask.NameToLayer("Player");
         if (willHitPlayer) {

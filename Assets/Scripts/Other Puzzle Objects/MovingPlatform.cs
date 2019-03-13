@@ -252,6 +252,12 @@ public class MovingPlatform : MonoBehaviour
             extend = true;
     }
 
+    public void ExtendOrRetract()
+    {
+        move = true;
+        extend = !extend;
+    }
+
     // Called by player class when they jump or walk onto platform: Makes player stick to platform when they're standing on it.
     public void StickPlayer(GameObject player) {
         collidingPlayer = player;

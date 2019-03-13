@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 48326238468614641}
   - component: {fileID: 3737037641556468206}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ControlsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3822429093652234956}
   - component: {fileID: 8649783265161559481}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MainControlsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 2324119740405893148}
   - component: {fileID: 1270666488874592317}
   m_Layer: 5
-  m_Name: Gradient left
+  m_Name: GradientLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 1574699770503270046}
   - component: {fileID: 5562773543251716730}
   m_Layer: 5
-  m_Name: CameraControls
+  m_Name: CameraControlsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8797437345864837785}
   m_Layer: 5
-  m_Name: Complete controls overlay
+  m_Name: CompleteControlsOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5276963727896295066}
   m_Layer: 5
-  m_Name: Minimalist controls overlay
+  m_Name: MinimalistControlsOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 6482749212919335628}
   - component: {fileID: 2552435100870095676}
   m_Layer: 5
-  m_Name: Gradient top
+  m_Name: GradientTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

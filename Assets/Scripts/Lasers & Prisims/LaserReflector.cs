@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 // Reflects lasers.
-public class LaserReflector : MonoBehaviour, LaserAffector {
+public class LaserReflector : MonoBehaviour, ILaserAffector {
 
 	// Use this for initialization
 	void Start () {

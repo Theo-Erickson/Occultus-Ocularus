@@ -115,6 +115,8 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   degrees: 45
   rotateTime: 0.5
+  rotationDirection: 0
+  toggleDirection: 0
 --- !u!114 &4077298369169677313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2540eb618b5b61146be45bf6ca82b2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 1619441625166164, guid: c8e01122f096b4a4f9c21d6bccdb14aa, type: 3}
+  laserObject: {fileID: 1619441625166164, guid: c8e01122f096b4a4f9c21d6bccdb14aa,
+    type: 3}
   maxReflections: 10
   infiniteRenderSize: 100
   maxDistance: Infinity
+  willHitPlayer: 0

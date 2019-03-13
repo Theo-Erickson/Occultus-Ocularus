@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Refracs lasers.
-public class LaserRefractor : MonoBehaviour, LaserAffector {
+public class LaserRefractor : MonoBehaviour, ILaserAffector {
 
     public LaserEmitter emitter;
 
