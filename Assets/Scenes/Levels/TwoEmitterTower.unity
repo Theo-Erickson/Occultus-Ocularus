@@ -639,7 +639,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExtendOrRetract
+      value: StartMoving
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -3107,7 +3107,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: move
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -3152,7 +3152,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: extendAndRetract
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -3316,7 +3316,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExtendOrRetract
+      value: StartMoving
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -22869,7 +22869,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: move
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -22914,7 +22914,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: extendAndRetract
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -25566,7 +25566,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExtendOrRetract
+      value: StartMoving
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -26635,7 +26635,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: move
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -26680,7 +26680,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: extendAndRetract
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -152120,7 +152120,7 @@ PrefabInstance:
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Extend
+      value: ExtendOrRetract
       objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
@@ -154829,11 +154829,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 27.600098
       objectReference: {fileID: 0}
-    - target: {fileID: 6798372291537028661, guid: 2960dd19a0267450eb1cdba08b7845e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6287706489482582678, guid: 2960dd19a0267450eb1cdba08b7845e4,
         type: 3}
       propertyPath: m_IsActive
@@ -154843,6 +154838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraControlsText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798372291537028661, guid: 2960dd19a0267450eb1cdba08b7845e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2960dd19a0267450eb1cdba08b7845e4, type: 3}

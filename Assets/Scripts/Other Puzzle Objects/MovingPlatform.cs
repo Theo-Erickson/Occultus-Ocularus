@@ -21,7 +21,9 @@ public class MovingPlatform : MonoBehaviour
     public bool move;
 
     [Header("Movement Mode")]
-    [Tooltip("If true, the platform shifts between extended and retracted positions. Otherwise, the platform moves continuously.")]
+    [Tooltip("True: the platform shifts between extended and retracted positions, stopping at " +
+    	"the end of its track until it is told to extend or retract away from its current position. " +
+    	"False: the platform moves continuously, with a pause at either end of [pause time] seconds.")]
     public bool extendAndRetract;
     [Tooltip("If moving continuously, will pause at each end for this many seconds")]
     public float pauseTime;
@@ -127,7 +129,8 @@ public class MovingPlatform : MonoBehaviour
                 // Move right or left
                 if (move)
                 {
-                    canPause = true;
+                    if (!extendAndRetract)
+                        canPause = true;
                     if (!inverted)
                     {
                         if (forwards && (!extendAndRetract || extend))
@@ -180,7 +183,8 @@ public class MovingPlatform : MonoBehaviour
                 // Move up or down
                 if (move)
                 {
-                    canPause = true;
+                    if (!extendAndRetract)
+                        canPause = true;
                     if (!inverted)
                     {
                         if (forwards && (!extendAndRetract || extend))
@@ -226,17 +230,22 @@ public class MovingPlatform : MonoBehaviour
 
     public void StartMoving()
     {
+        extendAndRetract = false;
         move = true;
     }
 
     public void StopMoving()
     {
+        extendAndRetract = false;
         move = false;
     }
 
     public void Extend()
     {
+        extendAndRetract = true;
         move = true;
+        paused = false;
+        canPause = false;
         if (!inverted)
             extend = true;
         else
@@ -245,7 +254,10 @@ public class MovingPlatform : MonoBehaviour
 
     public void Retract()
     {
+        extendAndRetract = true;
         move = true;
+        paused = false;
+        canPause = false;
         if (!inverted)
             extend = false;
         else
@@ -255,6 +267,8 @@ public class MovingPlatform : MonoBehaviour
     public void ExtendOrRetract()
     {
         move = true;
+        paused = false;
+        canPause = false;
         extend = !extend;
     }
 
