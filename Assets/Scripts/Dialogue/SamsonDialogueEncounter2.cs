@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
 {
+    public TextAsset dialogueText;
     public Dialogue dialogueSetup;
+
     public PlayerController player;
     public LevelTransition levelTransition;
+    public Light cityLight;
 
     private bool talkedToSamson;
+    private bool lightsOut;
+
+    private void Start()
+    {
+        player.canMove = false;
+    }
 
     private void Update()
     {
+        if (lightsOut && cityLight.intensity >= 8)
+            cityLight.intensity -= 1f;
         if (!talkedToSamson)
             player.canMove = false;
     }
@@ -19,18 +30,9 @@ public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
     public void Talk()
     {
         talkedToSamson = true;
-        Dialogue dialogueInstance = dialogueSetup.ConstructDialogueBox();
+        Dialogue dialogueInstance = dialogueSetup.ActivateDialogueBox();
         dialogueInstance.Setup(this);
-        dialogueInstance.ParseMessage("Welcome to —!|" +
-            "Awww, crap. Something messed up the power\ngrid. How am I supposed " +
-            "to give you a dramatic\npresentation now?|" +
-            "Hey, since you’re fresh out of the fountain….no Halo or anything….|" +
-            "How about this: you go figure out how to get the power back on. " +
-            "It’ll probably take some thinking, and it’ll be a big help to " +
-            "everyone in the city.|" +
-            "It’ll make more sense once you start. Go ahead, try lining up the " +
-            "lasers over there. Anyway...I’ll\nmeet you once you’re done! See ya " +
-            "later!");
+        dialogueInstance.ParseMessage(dialogueText.ToString());
     }
 
     public void DialogueFinished()
@@ -38,5 +40,13 @@ public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
         levelTransition.FadeAway(GetComponent<SpriteRenderer>());
         foreach(BoxCollider2D bc in GetComponents<BoxCollider2D>())
             bc.enabled = false;
+    }
+
+    public void DialogueAction(string action)
+    {
+        if (action.Equals("Lights go out"))
+            lightsOut = true;
+        else
+            Debug.Log("DialogAction: " + action);
     }
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be93b74a6a17a594da2fb5269787f2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 2
+  mode: 3
   start: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   pastCameraPosition: {x: 0, y: 0, z: 0}

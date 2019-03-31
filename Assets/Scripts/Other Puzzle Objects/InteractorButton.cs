@@ -9,7 +9,7 @@ using UnityEngine.Events;
  */
 public class InteractorButton : MonoBehaviour
 {
-    [Tooltip("Objects with this tag will cause interactions. If tag is empty, all objects will cause interactions.")] 
+    [Tooltip("Objects with this tag will cause interactions. If tag is empty, all objects will cause interactions.")]
     public string objectTag = "Player";
     [Tooltip("Whether or not only objects residing in the same layer as this object will cause interactions.")]
     public bool sameLayerOnly = true;
@@ -39,21 +39,22 @@ public class InteractorButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Interact")) {
-            foreach(GameObject go in inTrigger) {
+        if (Input.GetButtonDown("Interact")) {
+            foreach (GameObject go in inTrigger) {
                 // If no tag is specified or the object's tag matches the specified tag.
-                if(string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
+                if (string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
                     // If sameLayerOnly is false or the object is in the same layer.
-                    if(!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
+                    if (!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
                         triggered = true;
-                        //if (!interactSound.isPlaying)
-                        //{
+                        if (interactSound != null && interactSound.enabled) {
                             interactSound.clip = Resources.Load<AudioClip>("Audio/SFX/UI/Menu-Click");
                             interactSound.pitch = 0.7f;
                             interactSound.volume = 1.0f;
                             interactSound.Play();
+                        }
                         if (anim) {
-                            if(!toggleAnimation) anim.Play("ButtonPush", 0, 0);
+                            if (!toggleAnimation)
+                                anim.Play("ButtonPush", 0, 0);
                             else {
                                 if (buttonIsUp) {
                                     buttonIsUp = false;
@@ -65,8 +66,8 @@ public class InteractorButton : MonoBehaviour
                                     anim.Play("ButtonUp");
                                 }
                             }
+
                         }
-                      //}
                     }
                 }
             }
@@ -75,7 +76,7 @@ public class InteractorButton : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(triggered == true) {
+        if (triggered == true) {
             onInteract.Invoke();
             triggered = false;
         }
@@ -84,7 +85,7 @@ public class InteractorButton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Don't do anything if the other collider is a trigger.
-        if(other.isTrigger)
+        if (other.isTrigger)
             return;
 
         inTrigger.Add(other.gameObject);
@@ -92,9 +93,9 @@ public class InteractorButton : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.isTrigger)
+        if (other.isTrigger)
             return;
-        
+
         inTrigger.Remove(other.gameObject);
     }
 }

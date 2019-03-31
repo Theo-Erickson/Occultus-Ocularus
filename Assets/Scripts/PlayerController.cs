@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
     private BoxCollider2D playerLeftTrigger;
 
     private float h; //stores the horizontal axis input value
-    private float prevh; //stores the previous horizontal axis reading
+    //private float prevh; //stores the previous horizontal axis reading
     private bool jump = false;
     private bool prevJump = false;
     bool jumpStart;
@@ -115,23 +115,15 @@ public class PlayerController : MonoBehaviour {
 
     // Function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
+
         // Reset position
         if (allowResetting && Input.GetKeyDown(KeyCode.R)) ResetPlayer();
         // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
         jump = Input.GetButton("Jump");
         jumpStart = !prevJump && jump;
-        // If you can move freely, switch camera modes
-        if (antiGrav) {
-            CameraScript cScript = Camera.main.GetComponent<CameraScript>();
-            if (cScript.mode == CameraScript.CameraMode.Fixed) {
-                cScript.mode = CameraScript.CameraMode.FollowPlayer;
-            }
-            else if (cScript.mode == CameraScript.CameraMode.FollowPlayer) {
-                cScript.mode = CameraScript.CameraMode.Fixed;
-                cScript.SetDestination(cScript.pastCameraPosition, 2.0f);
-            }
-            // If not in antigrav and the player just pressed the jump key:
-        } else if (jumpMode == JumpMode.VelocityBased && jumpStart && touchingGround) {
+
+        // If not in antigrav and the player just pressed the jump key:
+        if (!antiGrav && jumpMode == JumpMode.VelocityBased && jumpStart && touchingGround) {
             // Only jump if touching the ground
             allowedToJump = true;
             jumpTime = 0.0f;
@@ -185,8 +177,7 @@ public class PlayerController : MonoBehaviour {
         footsteps.Play();
     }
 
-    void StopFootstep()
-    {
+    void StopFootstep() {
         if (!footsteps.clip.name.Equals("jump"))
             footsteps.Stop();
     }
@@ -195,11 +186,11 @@ public class PlayerController : MonoBehaviour {
         if (canMove) {
             // If you are allowed free flight
             if (antiGrav) {
-                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed;
-                this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed;
+                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed * 5;
+                this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed * 5;
                 playerCollider.isTrigger = true;
             } else {
-                playerCollider.isTrigger = false; // so the player isn't no-cliping after exiting anti-grav mode
+                playerCollider.isTrigger = false; // so the player isn't no-clipping after exiting anti-grav mode
 
                 // -- Jumping Logic: --
                 if (jumpMode == JumpMode.VelocityBased) VelocityBasedJump();
@@ -208,7 +199,7 @@ public class PlayerController : MonoBehaviour {
                 prevJump = jump;
 
                 // -- Walking Logic: --
-                prevh = h;
+                // prevh = h;
                 h = Input.GetAxis("Horizontal");
 
                 if (System.Math.Abs(h) < 0.01 && touchingGround) { //when ther'es little-to-no sideways input && we're on the ground bring the player to a stop
