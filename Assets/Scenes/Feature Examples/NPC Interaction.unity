@@ -12990,6 +12990,18 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+--- !u!114 &499071138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1932802555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c9621f58ddc3f4fbc994d724d7aec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &623497555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13000,7 +13012,7 @@ PrefabInstance:
     - target: {fileID: 2426558130871322746, guid: ad3293c9fee4045c9a81244841ff353a,
         type: 3}
       propertyPath: m_Name
-      value: MainCamera (1)
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 2426558130871322758, guid: ad3293c9fee4045c9a81244841ff353a,
         type: 3}
@@ -13089,6 +13101,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &763731409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880140856363401746, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3605850141308869969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &825224766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13422,6 +13440,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactSound: {fileID: 0}
+  anim: {fileID: 0}
+  toggleAnimation: 0
 --- !u!82 &1054804171
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13530,6 +13550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4472afc518df4568b3d249a253bd258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueText: {fileID: 4900000, guid: 36199744cde04490da6de324b291a17b, type: 3}
   dialogueSetup: {fileID: 5715629648138811321}
 --- !u!114 &1054804173
 MonoBehaviour:
@@ -14322,7 +14343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7028fab7d0648c794212d41769c8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueText: {fileID: 4900000, guid: d47ec47d70d7c415ca96d3bd9315c8b5, type: 3}
   dialogueSetup: {fileID: 5715629648138811321}
+  moveWhenFinished: 0
 --- !u!114 &1793216600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14400,6 +14423,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactSound: {fileID: 0}
+  anim: {fileID: 0}
+  toggleAnimation: 0
 --- !u!61 &1793216602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18811,6 +18836,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5715629648138811321, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+        type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 763731409}
+    - target: {fileID: 5715629648138811321, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 499071138}
+    - target: {fileID: 2881084489140527899, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 499071138}
+    - target: {fileID: 2881084489140527899, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+        type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 763731409}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99e7c45f2213e4ae28122e7684bdb7f4, type: 3}
 --- !u!114 &5715629648138811321 stripped
