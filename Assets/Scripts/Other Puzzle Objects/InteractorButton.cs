@@ -13,6 +13,7 @@ public class InteractorButton : MonoBehaviour
     public string objectTag = "Player";
     [Tooltip("Whether or not only objects residing in the same layer as this object will cause interactions.")]
     public bool sameLayerOnly = true;
+    public bool onGroundOnly;
     [Tooltip("The event to be triggered when the button is interacted with.")]
     public UnityEvent onInteract;
 
@@ -22,6 +23,8 @@ public class InteractorButton : MonoBehaviour
     [Header("Animation (set to enable animation)")]
     public Animator anim;
     public bool toggleAnimation;
+
+
     private bool buttonIsUp = true;
     private float startYpos;
 
@@ -45,28 +48,29 @@ public class InteractorButton : MonoBehaviour
                 if (string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
                     // If sameLayerOnly is false or the object is in the same layer.
                     if (!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
-                        triggered = true;
-                        if (interactSound != null && interactSound.enabled) {
-                            interactSound.clip = Resources.Load<AudioClip>("Audio/SFX/UI/Menu-Click");
-                            interactSound.pitch = 0.7f;
-                            interactSound.volume = 1.0f;
-                            interactSound.Play();
-                        }
-                        if (anim) {
-                            if (!toggleAnimation)
-                                anim.Play("ButtonPush", 0, 0);
-                            else {
-                                if (buttonIsUp) {
-                                    buttonIsUp = false;
-                                    transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
-                                    anim.Play("ButtonDown");
-                                }
+                        if (!onGroundOnly || (go.GetComponent<PlayerController>() != null && go.GetComponent<PlayerController>().touchingGround)) {
+                            triggered = true;
+                            if (interactSound != null && interactSound.enabled) {
+                                interactSound.clip = Resources.Load<AudioClip>("Audio/SFX/UI/Menu-Click");
+                                interactSound.pitch = 0.7f;
+                                interactSound.volume = 1.0f;
+                                interactSound.Play();
+                            }
+                            if (anim) {
+                                if (!toggleAnimation)
+                                    anim.Play("ButtonPush", 0, 0);
                                 else {
-                                    buttonIsUp = true;
-                                    anim.Play("ButtonUp");
+                                    if (buttonIsUp) {
+                                        buttonIsUp = false;
+                                        transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
+                                        anim.Play("ButtonDown");
+                                    }
+                                    else {
+                                        buttonIsUp = true;
+                                        anim.Play("ButtonUp");
+                                    }
                                 }
                             }
-
                         }
                     }
                 }

@@ -13412,6 +13412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTag: Player
   sameLayerOnly: 0
+  onGroundOnly: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -14395,6 +14396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTag: Player
   sameLayerOnly: 0
+  onGroundOnly: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:

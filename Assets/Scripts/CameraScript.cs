@@ -211,13 +211,13 @@ public class CameraScript : MonoBehaviour {
             mode = CameraMode.FollowPlayerSmooth;
             playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-        mode = CameraMode.FollowPlayerRadius;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            mode = CameraMode.FollowPlayerRadius;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            mode = CameraMode.FollowPlayer;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        mode = CameraMode.FollowPlayerSmooth;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }

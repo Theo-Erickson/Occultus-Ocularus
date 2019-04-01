@@ -78,11 +78,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "<size=18>Controls</size>\nMove: <b>A and D</b>\n      or <b>Left/Right
-    arrows</b>\nJump: <b>Up arrow</b>\n      or <b>W</b>\nInteract: <b>Space</b>\nShift
+  m_Text: "<size=18>Detailed Controls</size>\nMove: <b>Left/Right arrows</b>\n      or
+    <b>A and D</b>\nJump: <b>Up arrow</b>\n      or <b>W</b>\nInteract: <b>Space</b>\nShift
     layers: <b>Left shift</b>\nFly: <b>Right shift</b>\nReset position: <b>R</b>\n\nFixed
-    camera: <b>1</b>\nFollowing camera: <b>2</b> \nSmooth following camera: <b>3</b>
-    \nFree camera: <b>4</b>\n"
+    camera: <b>1</b>\nSmooth following camera: <b>3</b> \nFree camera: <b>4</b>\n"
 --- !u!1 &1880057468518725066
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +174,7 @@ GameObject:
   - component: {fileID: 2202917112584409220}
   - component: {fileID: 2202917112584409221}
   - component: {fileID: 2202917112584409218}
+  - component: {fileID: 5316961704729641953}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -264,6 +264,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5316961704729641953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202917112584409219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b359d32df26844bf9aceb8ca965a88f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4557163604815134730
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8797437345864837785}
   m_Layer: 5
-  m_Name: CompleteControlsOverlay
+  m_Name: DetailedControlsOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

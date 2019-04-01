@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void StopFootstep() {
-        if (!footsteps.clip.name.Equals("jump"))
+        if (footsteps.clip != null && !footsteps.clip.name.Equals("jump"))
             footsteps.Stop();
     }
 
