@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour {
     public bool allowResetting = true;
     public bool allowFlying = true;
 
-    private Rigidbody2D body;
     private Vector3 startPoint;
     private SpriteRenderer spriterender;
     private BoxCollider2D playerCollider;
@@ -56,7 +55,10 @@ public class PlayerController : MonoBehaviour {
     //private float prevh; //stores the previous horizontal axis reading
     private bool jump = false;
     private bool prevJump = false;
-    bool jumpStart;
+    private bool jumpStart;
+
+    [HideInInspector]
+    public Rigidbody2D body;
 
     // For determining whether the player is touching the ground
     [HideInInspector]

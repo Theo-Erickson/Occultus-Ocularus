@@ -32,6 +32,7 @@ public class Dialogue : MonoBehaviour
     public void Setup(IDialogueEncounter de)
     {
         player.canMove = false;
+        player.body.velocity = Vector2.zero;
         dialogueEncounter = de;
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
