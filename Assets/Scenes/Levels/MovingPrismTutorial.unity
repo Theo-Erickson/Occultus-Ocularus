@@ -17337,7 +17337,7 @@ PrefabInstance:
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: distance
-      value: 13
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7238454490778408650, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -17804,7 +17804,7 @@ MonoBehaviour:
   extendAndRetract: 1
   pauseTime: 0
   distance: -4
-  speed: 4
+  speed: 6
   direction: 0
 --- !u!1 &842340864
 GameObject:
@@ -144098,7 +144098,7 @@ MonoBehaviour:
   extendAndRetract: 1
   pauseTime: 0
   distance: -4
-  speed: 4
+  speed: 6
   direction: 0
 --- !u!114 &1458565936 stripped
 MonoBehaviour:
