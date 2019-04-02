@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Menus/Main Menu.unity
     guid: ae2e43377d4104ac1bca7a9af4609b9b
   - enabled: 1
-    path: Assets/Scenes/MallIntro.unity
+    path: Assets/Scenes/Levels/1st Set of Levels/Mall.unity
     guid: 5191489791667437a913d9e4f6eabfd0
   - enabled: 1
-    path: Assets/Scenes/OutsideMall;Rooftops.unity
+    path: Assets/Scenes/Levels/1st Set of  Levels/Outside Mall.unity
     guid: 457803f5de39c44989dd0347e4fbaaa0
   - enabled: 1
-    path: Assets/Scenes/EndMenu.unity
+    path: Assets/Scenes/Menus/End Menu.unity
     guid: d416b22350f224398a704adbd1ab5dbe
   m_configObjects: {}

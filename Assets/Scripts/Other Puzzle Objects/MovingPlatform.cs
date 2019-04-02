@@ -16,22 +16,17 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-
-
-    [Header("Movement Mode")]
-    [Tooltip("If set to true, platform will start moving on its own. If false, platform will only move upon StartMoving(), Extend(), Retract(), or ExtendOrRetract().")]
-    public bool moveOnStart;
-    [Tooltip("If moving continuously, will pause at each end for this many seconds")]
-    public float pauseTime;
-
-    [Header("Movement Properties")]
     [Tooltip("Distance platform moves, can be positive or negative")]
     public float distance;
     [Tooltip("The platform's speed in m/s")]
     public float speed;
-    public enum MvDir {horizontal, vertical};
+    public enum MvDir { horizontal, vertical };
     [Tooltip("Make platform move side-to-side or up-and-down")]
     public MvDir direction;
+    [Tooltip("If set to true, platform will start moving on its own. If false, platform will only move upon StartMoving(), Extend(), Retract(), or ExtendOrRetract().")]
+    public bool moveOnStart;
+    [Tooltip("If moving continuously, will pause at each end for this many seconds")]
+    public float pauseTime;
 
     private bool move;
     private bool extendAndRetract;
