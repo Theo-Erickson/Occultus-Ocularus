@@ -57,19 +57,19 @@ public class InteractorButton : MonoBehaviour
                                 interactSound.Play();
                             }
                             if (anim) {
-                                if (!toggleAnimation)
-                                    anim.Play("ButtonPush", 0, 0);
-                                else {
-                                    if (buttonIsUp) {
-                                        buttonIsUp = false;
-                                        transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
-                                        anim.Play("ButtonDown");
-                                    }
-                                    else {
-                                        buttonIsUp = true;
-                                        anim.Play("ButtonUp");
-                                    }
+                            transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
+                            if (!toggleAnimation) anim.Play("ButtonPush", 0, 0);
+                            else {
+                                if (buttonIsUp) {
+                                    buttonIsUp = false;
+                                    anim.Play("ButtonDown");
                                 }
+                                else {
+                                    transform.position = new Vector3(transform.position.x, startYpos -0.3f, transform.position.z);
+                                    buttonIsUp = true;
+                                    anim.Play("ButtonUp");
+                                }
+                            }
                             }
                         }
                     }
