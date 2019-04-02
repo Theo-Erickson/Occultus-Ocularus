@@ -17,14 +17,10 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
 
-    [Tooltip("If true, platform will move on its own")]
-    public bool move;
 
     [Header("Movement Mode")]
-    [Tooltip("True: the platform shifts between extended and retracted positions, stopping at " +
-    	"the end of its track until it is told to extend or retract away from its current position. " +
-    	"False: the platform moves continuously, with a pause at either end of [pause time] seconds.")]
-    public bool extendAndRetract;
+    [Tooltip("If set to true, platform will start moving on its own. If false, platform will only move upon StartMoving(), Extend(), Retract(), or ExtendOrRetract().")]
+    public bool moveOnStart;
     [Tooltip("If moving continuously, will pause at each end for this many seconds")]
     public float pauseTime;
 
@@ -37,6 +33,8 @@ public class MovingPlatform : MonoBehaviour
     [Tooltip("Make platform move side-to-side or up-and-down")]
     public MvDir direction;
 
+    private bool move;
+    private bool extendAndRetract;
     private bool extend;
     private float back;
     private float front;
@@ -55,8 +53,9 @@ public class MovingPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = this.transform.position;
+        move = moveOnStart;
         displacement = speed / 60;
+        originalPosition = this.transform.position;
         if (distance < 0)
             inverted = true;
 
@@ -87,8 +86,9 @@ public class MovingPlatform : MonoBehaviour
                 back = originalPosition.y + distance;
                 front = originalPosition.y;
             }
+            extend = true;
         }
-        extend = true;
+
     }
 
     void FixedUpdate()
@@ -216,8 +216,8 @@ public class MovingPlatform : MonoBehaviour
         {
             paused = true;
             extendAndRetract = true;
-            timePaused += Time.deltaTime;
             move = false;
+            timePaused += Time.deltaTime;
         }
         else
         {
@@ -230,18 +230,21 @@ public class MovingPlatform : MonoBehaviour
 
     }
 
+    // Starts platform moving back and forth, pausing at each end if pauseTime is greater than zero
     public void StartMoving()
     {
         extendAndRetract = false;
         move = true;
     }
 
+    // Immediately stops the platform in place
     public void StopMoving()
     {
         extendAndRetract = false;
         move = false;
     }
 
+    // Starts platform moving towards the far end of its path, where it then stops
     public void Extend()
     {
         extendAndRetract = true;
@@ -254,6 +257,7 @@ public class MovingPlatform : MonoBehaviour
             extend = false;
     }
 
+    // Starts platform moving towards the beginning of its path, where it then stops
     public void Retract()
     {
         extendAndRetract = true;
@@ -266,8 +270,10 @@ public class MovingPlatform : MonoBehaviour
             extend = true;
     }
 
+    // Starts platform moving towards the opposite end of the path from where it was last moving towards, then stops
     public void ExtendOrRetract()
     {
+        extendAndRetract = true;
         move = true;
         paused = false;
         canPause = false;
@@ -285,7 +291,7 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    // Called by player class when they jump or walk off of platform (Unsticks player from platform)
+    // Called by player class when they jump or walk off of platform: Unsticks player from platform
     public void UnstickPlayer() {
         collidingPlayer = null;
     }
