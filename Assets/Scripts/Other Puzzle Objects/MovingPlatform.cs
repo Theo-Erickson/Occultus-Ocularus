@@ -73,6 +73,7 @@ public class MovingPlatform : MonoBehaviour
                 back = originalPosition.y;
                 front = originalPosition.y + distance;
             }
+            extend = false;
         }
         else if (inverted)
         {
@@ -87,6 +88,7 @@ public class MovingPlatform : MonoBehaviour
                 front = originalPosition.y;
             }
         }
+        extend = true;
     }
 
     void FixedUpdate()
