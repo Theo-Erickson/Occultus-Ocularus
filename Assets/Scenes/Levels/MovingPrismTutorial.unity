@@ -17100,7 +17100,7 @@ PrefabInstance:
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
       propertyPath: m_Name
-      value: Elevator 2
+      value: Elevator Black
       objectReference: {fileID: 0}
     - target: {fileID: 4698747267947370624, guid: d7b68913038584c76af9b8ba6a034cad,
         type: 3}
@@ -17979,7 +17979,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_Name
-      value: LaserReceiver L Doors
+      value: LaserReceiver Door Gold
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599187, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -18299,12 +18299,12 @@ PrefabInstance:
     - target: {fileID: 5847541926919599185, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599185, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599185, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -19395,7 +19395,7 @@ PrefabInstance:
     - target: {fileID: 7686641126589058700, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: m_Name
-      value: 'Door1 '
+      value: Door Gold
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058697, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
@@ -19465,12 +19465,12 @@ PrefabInstance:
     - target: {fileID: 7686641126589058698, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058698, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41bae0e185c634c9a9372b78b46df184, type: 3}
