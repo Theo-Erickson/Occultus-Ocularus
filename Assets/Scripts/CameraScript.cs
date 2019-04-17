@@ -111,6 +111,7 @@ public class CameraScript : MonoBehaviour {
                 }
                 
                 destination = fixedCamera.transform.position;
+                destination.z = transform.position.z;
                 destFov = fixedCamera.fieldOfView;
 
                 Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 300);
@@ -118,7 +119,7 @@ public class CameraScript : MonoBehaviour {
                 if (destination == transform.position)
                     lerpTimer = 0;
                 else
-                    transform.position = Vector3.Lerp(this.transform.position, destination, (float)1 / 30 * lerpTimer++);
+                    transform.position = Vector3.Lerp(this.transform.position, destination, 1.0f / 30 * lerpTimer++);
             }
         }
 
