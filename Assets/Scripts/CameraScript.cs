@@ -81,8 +81,6 @@ public class CameraScript : MonoBehaviour {
 
     private float destFov;
     int lerpTimer;
-    private string fixedCamPosition = "Disabled";
-
 
     void Start() {
         pastCameraPosition = start;
@@ -216,7 +214,7 @@ public class CameraScript : MonoBehaviour {
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && !fixedCamPosition.Equals("Disabled")) {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && fixedCamera != null) {
            Debug.Log("setting camera mode");
             mode = CameraMode.Fixed;
             DistFromPlayer = Vector2.zero;
@@ -265,13 +263,8 @@ public class CameraScript : MonoBehaviour {
         timeToReachTarget = time;
         this.destination = destination;
     }
-
     public void SetFixedCamera(Camera camera) {
-        fixedCamera = camera;
-    }
-    public void SetFixedCamPosition(string position)
-    {
-        fixedCamPosition = position;
+        camera = fixedCamera;
     }
 
     private bool jumpLastPressed = false;
