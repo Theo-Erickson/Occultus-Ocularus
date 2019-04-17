@@ -10,7 +10,9 @@ public class CameraScript : MonoBehaviour {
     	"a radius?")]
     public CameraMode mode;
 
-    [Header("Positioning")]
+    [Header("Positioning")] 
+    [Tooltip("Fixed camera target (optional)")]
+    public Camera fixedCamera = null;
     [Tooltip("Used so the camera knows where it came from")]
     public Vector3 start;
     [Tooltip("Tells the camera where to go")]
@@ -100,25 +102,16 @@ public class CameraScript : MonoBehaviour {
         //Camera is a set a point and does not travel with player
         if (mode == CameraMode.Fixed)
         {
-            if (!fixedCamPosition.Equals("Disabled"))
+            if (fixedCamera != null)
             {
                 //remove this camera being parented to the child. Disables direct following
                 if (this.transform.parent == player.transform)
                 {
                     this.transform.parent = null;
                 }
-
-                if (fixedCamPosition.Equals("Puzzle1"))
-                {
-                    destination = new Vector3(33, 15, -5);
-                    destFov = 106f;
-
-                }
-                else if (fixedCamPosition.Equals("Puzzle2"))
-                {
-                    destination = new Vector3(67, 19, -5);
-                    destFov = 140f;
-                }
+                
+                destination = fixedCamera.transform.position;
+                destFov = fixedCamera.fieldOfView;
 
                 Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, destFov, Time.deltaTime * 300);
 
@@ -272,6 +265,9 @@ public class CameraScript : MonoBehaviour {
         this.destination = destination;
     }
 
+    public void SetFixedCamera(Camera camera) {
+        fixedCamera = camera;
+    }
     public void SetFixedCamPosition(string position)
     {
         fixedCamPosition = position;
