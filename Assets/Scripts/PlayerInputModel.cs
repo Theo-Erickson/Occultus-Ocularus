@@ -67,7 +67,9 @@ public class PlayerInputModel {
     public bool uiCancelPressed => uiInputActive && isCancelPressed;
     public bool uiMenuPressed => isMenuPressed;
     
-    #region MovementAndNavigation
+    #region MovementAndNavigation  
+        
+    // movement + ui navigation: wasd / arrow keys / left stick / dpad
     private Vector2 inputVector => Vector2.ClampMagnitude(
         (useLegacyKeyboardInput ? legacyInputVector : newKeyboardInputVector) +
         gamepadInputVector,
@@ -94,6 +96,8 @@ public class PlayerInputModel {
     #endregion 
     #region JumpInputBindings
 
+    // jump button (dedicated)
+    // space or uparrow (depending on input mapping), south gamepad button ("A")
     private bool isJumpPressed => keyboardJumpPressed || gamepadJumpPressed;
 
     private bool keyboardJumpPressed =>
@@ -107,6 +111,8 @@ public class PlayerInputModel {
     #endregion
     #region InteractInputBindings
 
+    // triggers player interaction with all objects
+    // e / enter or space depending on input binding. gamepad: west button ("X")
     private bool isInteractPressed => keyboardInteractPressed || gamepadInteractPressed;
     private bool keyboardInteractPressed =>
         useLegacyKeyboardInput ? Input.GetButton("Interact") :
@@ -119,15 +125,20 @@ public class PlayerInputModel {
     #endregion
     #region CameraInputBindings
 
+    // toggles camera (new input binding, distinct from directly setting the camera mode)
+    // tab or 't' key. Gamepad: right trigger
     private bool isCameraTogglePressed => keyboardCameraTogglePressed || gamepadCameraTogglePressed;
     private bool keyboardCameraTogglePressed => useLegacyKeyboardInput 
         ? Input.GetButton("ToggleCamera") 
-        : Keyboard.current.digit3Key.isPressed;
+        : Keyboard.current.tabKey.isPressed || Keyboard.current.tKey.isPressed;
     private bool gamepadCameraTogglePressed =>
         Gamepad.current != null && Gamepad.current.rightTrigger.isPressed;
     
     #endregion
     #region FlyInputBindings
+    
+    // toggles fly / noclip mode
+    // right shift key. Gamepad: north button ("Y" / triangle)
 
     private bool isFlyPressed => keyboardFlyPressed || gamepadFlyPressed;
     private bool keyboardFlyPressed => useLegacyKeyboardInput
@@ -138,6 +149,9 @@ public class PlayerInputModel {
 
     #endregion
     #region UIAcceptBindings
+    
+    // button to accept (press buttons) in the UI, and advance / skip through dialog
+    // set as 'space', 'enter'. Gamepad: south button ("A")
 
     private bool isAcceptPressed => keyboardAcceptPressed || gamepadAcceptPressed;
     private bool keyboardAcceptPressed => useLegacyKeyboardInput
@@ -148,6 +162,9 @@ public class PlayerInputModel {
     
     #endregion
     #region UICancelBindings
+    
+    // button to cancel / go back when navigating through the UI (currently unused)
+    // keyboard: 'esc', gamepad: east button ("B")
 
     private bool isCancelPressed => keyboardCancelPressed || gamepadCancelPressed;
 
@@ -159,6 +176,9 @@ public class PlayerInputModel {
 
     #endregion
     #region UIMenuBindings
+    
+    // button to open (and toggle) the game menu
+    // 'esc' (same as ui-cancel) on keyboard. gamepad: 'select'
     
     private bool isMenuPressed => keyboardMenuPressed || gamepadMenuPressed;
 

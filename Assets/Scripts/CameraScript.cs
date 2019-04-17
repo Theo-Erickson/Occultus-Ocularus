@@ -200,9 +200,30 @@ public class CameraScript : MonoBehaviour {
         }
     }
     
+    // temp fix for current lack of GetButtonDown() equivalent in PlayerInputModel.
+    // will likely get replaced by events later
+    private bool cameraToggleLastPress = false;
+    private bool cameraTogglePressedThisFrame = false;
+    
     //Check for conditions to change camera mode
     public void CheckCameraMode() {
+                
+        // Added for gamepad support (right trigger). Can also activate with 'tab' or 't'.
+        // will replace this code later with events (hopefully...)
+        bool cameraTogglePressed = PlayerInputModel.instance.cameraTogglePressed;
+        cameraTogglePressedThisFrame = !cameraToggleLastPress && cameraTogglePressed;
+        cameraToggleLastPress = cameraTogglePressed;
+        if (cameraTogglePressedThisFrame) {
+            Debug.Log("toggling camera...");
+            if (mode == CameraMode.Fixed) {
+                mode = CameraMode.FollowPlayerSmooth;
+            } else {
+                mode = CameraMode.Fixed;
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && !fixedCamPosition.Equals("Disabled")) {
+           Debug.Log("setting camera mode");
             mode = CameraMode.Fixed;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
@@ -217,6 +238,7 @@ public class CameraScript : MonoBehaviour {
             playerScript.canMove = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            Debug.Log("setting camera mode...");
         mode = CameraMode.FollowPlayerSmooth;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
