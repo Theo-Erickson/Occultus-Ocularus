@@ -13,9 +13,7 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("Whether to allow the player to fly freely")] public bool antiGrav = false;
     public float maxWalkSpeed = 1;
     public float walkForce = 20;
-
-    [SerializeField] public PlayerInputMapping playerInput;
-
+    
     public enum JumpMode { VelocityBased, GravityBased }
     [Header("Jumping")]
     [Tooltip("Is the jump using a velocity function or gravity?")]
