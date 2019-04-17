@@ -119,10 +119,8 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         flyButtonPressed = PlayerInputModel.instance.flyPressed;
         
         if (canMove) {
-            InputHandler();
-
             // Flips sprite depending on direction of movement
-            h = PlayerInputModel.instance.movement.x;
+            h = movement.x;
             if (h > 0)
                 spriterender.flipX = true;
             else if (h < 0)
@@ -137,14 +135,23 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
             anim.SetBool("startJump", false);
         anim.SetBool("grounded", touchingGround);
     }
-
-    
-    
-    // Function to handle button or mouse events to avoid cluttering update
-    void InputHandler() {
-        // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
-        jump = PlayerInputModel.instance.jumpPressed;
-        jumpStart = !prevJump && jump;
+    public void EnterUIOrDialog() {
+        PlayerInputModel.instance.enterUI();
+//        playerInput.Player.Disable();
+//        playerInput.Interaction.Disable();
+//        playerInput.Camera.Disable();
+//        playerInput.UI.Enable();
+//        playerInput.Dialog.Enable();
+        canMove = false;
+    }
+    public void ExitUIOrDialog() {
+        PlayerInputModel.instance.exitUI();
+//        playerInput.Player.Enable();
+//        playerInput.Interaction.Enable();
+//        playerInput.Camera.Enable();
+//        playerInput.UI.Disable();
+//        playerInput.Dialog.Disable();
+        canMove = true;
     }
     
     #region FootstepAudio
@@ -213,7 +220,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         }
     }
     public void OnJump(InputAction.CallbackContext context) {
-        if (context.performed) {
+        if (context.performed && canMove) {
             // Signal jump pressed
             jump = jumpStart = true;
             

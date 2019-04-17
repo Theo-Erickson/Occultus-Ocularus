@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Resources/InputMappings/PlayerInputMapping (currently unused!).inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Resources/InputMappings/PlayerInputMapping.inputactions'
 
 using System;
 using UnityEngine;
@@ -45,6 +45,9 @@ public class PlayerInputMapping : InputActionAssetReference
         // LayerSwitching
         m_LayerSwitching = asset.GetActionMap("LayerSwitching");
         m_LayerSwitching_ToggleLayerSwitching = m_LayerSwitching.GetAction("ToggleLayerSwitching");
+        // Dialog
+        m_Dialog = asset.GetActionMap("Dialog");
+        m_Dialog_Next = m_Dialog.GetAction("Next");
         m_Initialized = true;
     }
     private void Uninitialize()
@@ -91,6 +94,12 @@ public class PlayerInputMapping : InputActionAssetReference
         }
         m_LayerSwitching = null;
         m_LayerSwitching_ToggleLayerSwitching = null;
+        if (m_DialogActionsCallbackInterface != null)
+        {
+            Dialog.SetCallbacks(null);
+        }
+        m_Dialog = null;
+        m_Dialog_Next = null;
         m_Initialized = false;
     }
     public void SetAsset(InputActionAsset newAsset)
@@ -101,6 +110,7 @@ public class PlayerInputMapping : InputActionAssetReference
         var CameraCallbacks = m_CameraActionsCallbackInterface;
         var InteractionCallbacks = m_InteractionActionsCallbackInterface;
         var LayerSwitchingCallbacks = m_LayerSwitchingActionsCallbackInterface;
+        var DialogCallbacks = m_DialogActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
         Player.SetCallbacks(PlayerCallbacks);
@@ -108,6 +118,7 @@ public class PlayerInputMapping : InputActionAssetReference
         Camera.SetCallbacks(CameraCallbacks);
         Interaction.SetCallbacks(InteractionCallbacks);
         LayerSwitching.SetCallbacks(LayerSwitchingCallbacks);
+        Dialog.SetCallbacks(DialogCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -409,6 +420,46 @@ public class PlayerInputMapping : InputActionAssetReference
             return new LayerSwitchingActions(this);
         }
     }
+    // Dialog
+    private InputActionMap m_Dialog;
+    private IDialogActions m_DialogActionsCallbackInterface;
+    private InputAction m_Dialog_Next;
+    public struct DialogActions
+    {
+        private PlayerInputMapping m_Wrapper;
+        public DialogActions(PlayerInputMapping wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Next { get { return m_Wrapper.m_Dialog_Next; } }
+        public InputActionMap Get() { return m_Wrapper.m_Dialog; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled { get { return Get().enabled; } }
+        public InputActionMap Clone() { return Get().Clone(); }
+        public static implicit operator InputActionMap(DialogActions set) { return set.Get(); }
+        public void SetCallbacks(IDialogActions instance)
+        {
+            if (m_Wrapper.m_DialogActionsCallbackInterface != null)
+            {
+                Next.started -= m_Wrapper.m_DialogActionsCallbackInterface.OnNext;
+                Next.performed -= m_Wrapper.m_DialogActionsCallbackInterface.OnNext;
+                Next.cancelled -= m_Wrapper.m_DialogActionsCallbackInterface.OnNext;
+            }
+            m_Wrapper.m_DialogActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Next.started += instance.OnNext;
+                Next.performed += instance.OnNext;
+                Next.cancelled += instance.OnNext;
+            }
+        }
+    }
+    public DialogActions @Dialog
+    {
+        get
+        {
+            if (!m_Initialized) Initialize();
+            return new DialogActions(this);
+        }
+    }
     private int m_SpaceToJumpSchemeIndex = -1;
     public InputControlScheme SpaceToJumpScheme
     {
@@ -461,4 +512,8 @@ public interface IInteractionActions
 public interface ILayerSwitchingActions
 {
     void OnToggleLayerSwitching(InputAction.CallbackContext context);
+}
+public interface IDialogActions
+{
+    void OnNext(InputAction.CallbackContext context);
 }

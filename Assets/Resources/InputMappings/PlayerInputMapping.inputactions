@@ -977,6 +977,76 @@
                     "modifiers": ""
                 }
             ]
+        },
+        {
+            "name": "Dialog",
+            "id": "20e251f0-16aa-4159-9c69-90e22c2aeea6",
+            "actions": [
+                {
+                    "name": "Next",
+                    "id": "ab260b0d-d2be-4126-8eea-e72209e857bd",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "564c1f1c-0c70-4161-b598-83899db02e2b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "a56c3542-9df5-4b17-bdf4-ef245d464dd8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "3edbebc5-0be4-45ad-906c-ad5c530b7083",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "791218f7-1f1c-4cac-83e8-6c1005f8c6ff",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
         }
     ],
     "controlSchemes": [
