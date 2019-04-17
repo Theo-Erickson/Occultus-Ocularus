@@ -261,7 +261,7 @@ public class CameraScript : MonoBehaviour {
         this.destination = destination;
     }
     public void SetFixedCamera(Camera camera) {
-        camera = fixedCamera;
+        fixedCamera = camera;
     }
 
     private bool jumpLastPressed = false;
