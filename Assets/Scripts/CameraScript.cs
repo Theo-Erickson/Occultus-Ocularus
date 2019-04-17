@@ -301,7 +301,7 @@ public class CameraScript : MonoBehaviour, ICameraActions {
 
             float xInput;
             if (playerScript.canMove)
-                xInput = PlayerInputModel.instance.movement.x;
+                xInput = player.GetComponent<PlayerController>().movement.x;
             else
                 xInput = 0;
             float deltaX, deltaY;

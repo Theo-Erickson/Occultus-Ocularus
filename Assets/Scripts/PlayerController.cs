@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Experimental.Input;
@@ -100,25 +102,11 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         anim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene().name;
     }
-    
-    // quick-fix to cover lack of Input.GetButtonDown() equivalent
-    // may get replaced eventually by input event callbacks (to trigger animations, jump actions, etc)
-    private bool jumpPressed = false;             // equivalent to Input.GetButton("Jump"), set by Update()
-    private bool jumpPressedThisFrame = false;    // equivalent to Input.GetButtonDown("Jump"), set by Update()
-    private bool flyButtonPressed = false;
-    private bool flyButtonPressedThisFrame = false;
-
     void Update() {
-//        PlayerInputModel.instance.DebugLogInput();
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
-        // see above
-        jumpPressedThisFrame = !jumpPressed && PlayerInputModel.instance.jumpPressed;
-        jumpPressed = PlayerInputModel.instance.jumpPressed;
-        flyButtonPressedThisFrame = !flyButtonPressed && PlayerInputModel.instance.flyPressed;
-        flyButtonPressed = PlayerInputModel.instance.flyPressed;
-        
-        if (canMove) {
+        if (canMove)
+        {
             // Flips sprite depending on direction of movement
             h = movement.x;
             if (h > 0)
@@ -126,13 +114,8 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
             else if (h < 0)
                 spriterender.flipX = false;
         }
-
         // Sets animation variables
         anim.SetFloat("speed", Mathf.Abs(body.velocity.x));
-        if (jumpPressedThisFrame && canMove)
-            anim.SetBool("startJump", true);
-        else
-            anim.SetBool("startJump", false);
         anim.SetBool("grounded", touchingGround);
     }
     public void EnterUIOrDialog() {
@@ -193,8 +176,9 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
     }
     #endregion
     #region InputCallbacks
+
+    public Vector2 movement { get; set; } = Vector2.zero;
     
-    private Vector2 movement;
     public void OnMove(InputAction.CallbackContext context) {
         movement = context.ReadValue<Vector2>();
     }
@@ -225,13 +209,15 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
             jump = jumpStart = true;
             
             // If not in antigrav and the player just pressed the jump key:
-            if (!antiGrav && jumpMode == JumpMode.VelocityBased && touchingGround) {
-                // Only jump if touching the ground
+            if (!antiGrav && jumpMode == JumpMode.VelocityBased && touchingGround)
+            {
                 allowedToJump = true;
                 jumpTime = 0.0f;
             }
+            anim.SetBool("startJump", true);
         } else {
             jump = jumpStart = false;
+            anim.SetBool("startJump", false);
         }
     }
     #endregion
