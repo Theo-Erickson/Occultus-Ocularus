@@ -6,7 +6,9 @@ using UnityEngine.Experimental.Input;
 using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 using Random = UnityEngine.Random;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IPlayerActions {
+    [SerializeField] public PlayerInputMapping playerInput;
+    
     [Header("Movement")]
     [Tooltip("On/Off for player movement input")] public bool canMove;
     [Tooltip("Freeze all movement IE no gravity")] public bool frozen;
@@ -80,6 +82,10 @@ public class PlayerController : MonoBehaviour {
     private string currentScene;
     private Animator anim;
 
+    void Awake() {
+        playerInput.Enable();
+        playerInput.Player.SetCallbacks(this);
+    }
 
     // Use this for initialization
     void Start() {
@@ -136,39 +142,12 @@ public class PlayerController : MonoBehaviour {
     
     // Function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
-
-        // Reset position
-        if (allowResetting && Input.GetKeyDown(KeyCode.R)) ResetPlayer();
         // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
-        
         jump = PlayerInputModel.instance.jumpPressed;
         jumpStart = !prevJump && jump;
-
-        // If not in antigrav and the player just pressed the jump key:
-        if (!antiGrav && jumpMode == JumpMode.VelocityBased && jumpStart && touchingGround)
-        {
-            // Only jump if touching the ground
-            allowedToJump = true;
-            jumpTime = 0.0f;
-        }
-
-
-        // Shift between flying and grounded modes
-        if (allowFlying && flyButtonPressedThisFrame)
-        {
-            if (antiGrav) {
-                this.GetComponent<Renderer>().material.color = Color.white;
-                antiGrav = false;
-                body.gravityScale = 1;
-            } else {
-                this.GetComponent<Renderer>().material.color = Color.red;
-                antiGrav = true;
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
-            }
-        }
     }
-
+    
+    #region FootstepAudio
     void PlaySoftFootstep() {
         if (currentScene.Equals("OutsideMall;Rooftops")) {
             footsteps.clip =
@@ -205,13 +184,57 @@ public class PlayerController : MonoBehaviour {
         if (footsteps.clip != null && !footsteps.clip.name.Equals("jump"))
             footsteps.Stop();
     }
-
+    #endregion
+    #region InputCallbacks
+    
+    private Vector2 movement;
+    public void OnMove(InputAction.CallbackContext context) {
+        movement = context.ReadValue<Vector2>();
+    }
+    public void OnResetPlayer(InputAction.CallbackContext context) {        
+        // Reset position
+        if (allowResetting && context.performed) {
+            ResetPlayer();
+        }
+    }
+    public void OnToggleFlying(InputAction.CallbackContext context) {
+        // Shift between flying and grounded modes
+        if (allowFlying && context.performed) {
+            if (antiGrav) {
+                this.GetComponent<Renderer>().material.color = Color.white;
+                antiGrav = false;
+                body.gravityScale = 1;
+            } else {
+                this.GetComponent<Renderer>().material.color = Color.red;
+                antiGrav = true;
+                body.gravityScale = 0;
+                body.velocity = Vector2.zero;
+            }
+        }
+    }
+    public void OnJump(InputAction.CallbackContext context) {
+        if (context.performed) {
+            // Signal jump pressed
+            jump = jumpStart = true;
+            
+            // If not in antigrav and the player just pressed the jump key:
+            if (!antiGrav && jumpMode == JumpMode.VelocityBased && touchingGround) {
+                // Only jump if touching the ground
+                allowedToJump = true;
+                jumpTime = 0.0f;
+            }
+        } else {
+            jump = jumpStart = false;
+        }
+    }
+    #endregion
+    
     void FixedUpdate() {
         if (canMove) {
             // If you are allowed free flight
             if (antiGrav)
             {
-                Vector2 movement = PlayerInputModel.instance.movement;
+//                Vector2 movement = PlayerInputModel.instance.movement;
                 transform.position += (Vector3.up * movement.y * maxWalkSpeed * 5 +
                                       Vector3.right * movement.x * maxWalkSpeed * 5) 
                                       * Time.deltaTime;
@@ -227,7 +250,7 @@ public class PlayerController : MonoBehaviour {
 
                 // -- Walking Logic: --
                 // prevh = h;
-                h = PlayerInputModel.instance.movement.x;
+                h = movement.x;
 
                 if (System.Math.Abs(h) < 0.01 && touchingGround) { //when ther'es little-to-no sideways input && we're on the ground bring the player to a stop
                     // increse the stopLerpTime, 

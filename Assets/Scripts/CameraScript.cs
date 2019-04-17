@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Input;
 
-public class CameraScript : MonoBehaviour {
+public class CameraScript : MonoBehaviour, ICameraActions {
+    public PlayerInputMapping playerInput;
     public enum CameraMode { Fixed, FollowPlayer, FollowPlayerRadius, FollowPlayerSmooth, FreeCam }
 
     [Header("Camera Mode")]
@@ -82,6 +84,10 @@ public class CameraScript : MonoBehaviour {
     private float destFov;
     int lerpTimer;
 
+    void Awake() {
+        playerInput.Camera.SetCallbacks(this);
+    }
+
     void Start() {
         pastCameraPosition = start;
         player = GameObject.Find("Player");
@@ -93,10 +99,6 @@ public class CameraScript : MonoBehaviour {
     }
 
     void Update() {
-        //check if camera mode should change
-        CheckCameraMode();
-
-
         //Camera is a set a point and does not travel with player
         if (mode == CameraMode.Fixed)
         {
@@ -192,52 +194,59 @@ public class CameraScript : MonoBehaviour {
         }
     }
     
-    // temp fix for current lack of GetButtonDown() equivalent in PlayerInputModel.
-    // will likely get replaced by events later
-    private bool cameraToggleLastPress = false;
-    private bool cameraTogglePressedThisFrame = false;
-    
-    //Check for conditions to change camera mode
-    public void CheckCameraMode() {
-                
-        // Added for gamepad support (right trigger). Can also activate with 'tab' or 't'.
-        // will replace this code later with events (hopefully...)
-        bool cameraTogglePressed = PlayerInputModel.instance.cameraTogglePressed;
-        cameraTogglePressedThisFrame = !cameraToggleLastPress && cameraTogglePressed;
-        cameraToggleLastPress = cameraTogglePressed;
-        if (cameraTogglePressedThisFrame) {
-            if (mode == CameraMode.Fixed) {
-                mode = CameraMode.FollowPlayerSmooth;
-            } else {
+    #region InputHandling
+
+    // Toggles camera. Activated by 't' or 'tab' (keyboard) or right trigger (gamepad)
+    public void OnToggleCamera(InputAction.CallbackContext context) {
+        if (context.performed) {
+            if (mode != CameraMode.Fixed && fixedCamera != null) {
                 mode = CameraMode.Fixed;
+                DistFromPlayer = Vector2.zero;
+                playerScript.canMove = true;
+            } else {
+                mode = CameraMode.FollowPlayerSmooth;
+                playerScript.canMove = true;
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && fixedCamera != null) {
-            mode = CameraMode.Fixed;
-            DistFromPlayer = Vector2.zero;
-            playerScript.canMove = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1) && mode == CameraMode.Fixed) {
-            mode = CameraMode.FollowPlayerSmooth;
-            playerScript.canMove = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+    }
+    
+    public void OnSetCameraMode1(InputAction.CallbackContext context) {
+        OnToggleCamera(context);
+    }
+
+    public void OnSetCameraMode2(InputAction.CallbackContext context) {
+        if (context.performed) {
             mode = CameraMode.FollowPlayerRadius;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+    }
+
+    public void OnSetCameraMode3(InputAction.CallbackContext context) {
+        if (context.performed) {
             mode = CameraMode.FollowPlayerSmooth;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+    }
+
+    public void OnSetCameraMode4(InputAction.CallbackContext context) {
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
             mode = CameraMode.FreeCam;
             playerScript.canMove = false;
         }
     }
-
+    
+    #endregion
+    #region ScriptEvents
+    
+    // UnityEvent: Sets a proxy camera to tell our camera where to go (and what fov to use)
+    // when the camera's mode is set to FixedCamera. Only uses x / y coords; disregards z.
+    public void SetFixedCamera(Camera camera) {
+        fixedCamera = camera;
+    }
+    
+    // UnityEvent: Sets the camera mode from a string (enums are not supported as UnityEvent arguments) :(
     public void SetCameraMode(string newmode)
     {
         if (newmode.Equals("Fixed"))
@@ -245,24 +254,28 @@ public class CameraScript : MonoBehaviour {
         else if (newmode.Equals("FollowPlayerSmooth"))
             mode = CameraMode.FollowPlayerSmooth;
     }
-
-    public void resetPosition(Vector3 destination, float time) {
-        t = 0;
-        start = transform.position;
-        timeToReachTarget = time;
-        this.destination = start;
-    }
-
+    
     // Use to tell the camera where to move to in fixed mode
+    // FIXME: is this still used??
     public void SetDestination(Vector3 destination, float time) {
         t = 0;
         start = transform.position;
         timeToReachTarget = time;
         this.destination = destination;
     }
-    public void SetFixedCamera(Camera camera) {
-        fixedCamera = camera;
+    
+    // FIXME: is this still used??
+    public void resetPosition(Vector3 destination, float time) {
+        t = 0;
+        start = transform.position;
+        timeToReachTarget = time;
+        this.destination = start;
     }
+    
+    #endregion
+
+    
+    
 
     private bool jumpLastPressed = false;
 
