@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputMapping (currently unused!)",
+    "name": "PlayerInputMapping",
     "maps": [
         {
             "name": "Player",
@@ -802,19 +802,6 @@
                     "id": "c88753df-f12e-4c22-a6c4-b83bafe3851d",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "Press",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
-                    "action": "ToggleCamera",
-                    "chainWithPrevious": false,
-                    "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
-                },
-                {
-                    "name": "",
-                    "id": "762b559a-665d-4e89-b10e-bf9f8facda3c",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
                     "action": "ToggleCamera",

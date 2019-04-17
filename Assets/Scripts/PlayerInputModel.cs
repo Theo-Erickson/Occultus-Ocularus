@@ -126,11 +126,11 @@ public class PlayerInputModel {
     #region CameraInputBindings
 
     // toggles camera (new input binding, distinct from directly setting the camera mode)
-    // tab or 't' key. Gamepad: right trigger
+    // 't' key / right trigger. '1' effectively does the same thing
     private bool isCameraTogglePressed => keyboardCameraTogglePressed || gamepadCameraTogglePressed;
     private bool keyboardCameraTogglePressed => useLegacyKeyboardInput 
         ? Input.GetButton("ToggleCamera") 
-        : Keyboard.current.tabKey.isPressed || Keyboard.current.tKey.isPressed;
+        : Keyboard.current.tKey.isPressed;
     private bool gamepadCameraTogglePressed =>
         Gamepad.current != null && Gamepad.current.rightTrigger.isPressed;
     
