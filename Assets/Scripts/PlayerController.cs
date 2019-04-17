@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour {
     private bool flyButtonPressedThisFrame = false;
 
     void Update() {
-        PlayerInputModel.instance.DebugLogInput();
+//        PlayerInputModel.instance.DebugLogInput();
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
         // see above

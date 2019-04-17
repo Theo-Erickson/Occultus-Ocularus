@@ -49,6 +49,13 @@ public class PlayerInputModel {
     public void DebugLogInput() {
         Debug.Log($"movement: {movement} (gamepad: {gamepadInputVector}), jumpPressed: {jumpPressed}, interactPressed: {interactPressed}");
     }
+
+    public void enterUI() {
+        inputMode = InputMode.UI;
+    }
+    public void exitUI() {
+        inputMode = InputMode.Game;
+    }
     
     public Vector2 movement => movementActive ? inputVector : Vector2.zero;
     public Vector2 navigation => uiInputActive ? inputVector : Vector2.zero;
