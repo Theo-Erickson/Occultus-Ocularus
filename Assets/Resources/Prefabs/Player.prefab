@@ -522,15 +522,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+DeviceLostEvent,
-      Unity.InputSystem, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null
+      Unity.InputSystem, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+DeviceRegainedEvent,
-      Unity.InputSystem, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null
+      Unity.InputSystem, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null
   m_ActionEvents: []
   m_AutoSwitchControlScheme: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: '{258d52f5-ae0f-43d3-8e09-05502b20174c}'
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
