@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 
 /*
  * This interactor causes an interaction when something enters or exits its trigger and the player presses 'Interact'.
@@ -38,11 +39,14 @@ public class InteractorButton : MonoBehaviour
         interactSound = this.GetComponent<AudioSource>();
         startYpos = transform.position.y;
     }
+    private bool interactLastPressed = false;
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Interact")) {
+    void Update() {
+        bool interactPressed = PlayerInputModel.instance.interactPressed;
+        bool interactDown = interactPressed && interactPressed != interactLastPressed;
+        interactLastPressed = interactPressed;
+        if (interactDown) {
             foreach (GameObject go in inTrigger) {
                 // If no tag is specified or the object's tag matches the specified tag.
                 if (string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {

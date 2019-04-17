@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Experimental.Input;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour {
     [Header("Movement")]
@@ -11,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public float maxWalkSpeed = 1;
     public float walkForce = 20;
 
+    [SerializeField] public PlayerInputMapping playerInput;
 
     public enum JumpMode { VelocityBased, GravityBased }
     [Header("Jumping")]
@@ -94,15 +97,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        PlayerInputModel.instance.DebugLogInput();
+        
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
         if (canMove) {
             InputHandler();
 
             // Flips sprite depending on direction of movement
-            if (Input.GetAxis("Horizontal") > 0)
+            h = PlayerInputModel.instance.movement.x;
+            if (h > 0)
                 spriterender.flipX = true;
-            else if (Input.GetAxis("Horizontal") < 0)
+            else if (h < 0)
                 spriterender.flipX = false;
         }
 
@@ -121,11 +127,12 @@ public class PlayerController : MonoBehaviour {
         // Reset position
         if (allowResetting && Input.GetKeyDown(KeyCode.R)) ResetPlayer();
         // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
-        jump = Input.GetButton("Jump");
+        jump = PlayerInputModel.instance.jumpPressed;
         jumpStart = !prevJump && jump;
 
         // If not in antigrav and the player just pressed the jump key:
-        if (!antiGrav && jumpMode == JumpMode.VelocityBased && jumpStart && touchingGround) {
+        if (!antiGrav && jumpMode == JumpMode.VelocityBased && jumpStart && touchingGround)
+        {
             // Only jump if touching the ground
             allowedToJump = true;
             jumpTime = 0.0f;
@@ -133,13 +140,13 @@ public class PlayerController : MonoBehaviour {
 
 
         // Shift between flying and grounded modes
-        if (allowFlying && Input.GetKeyDown(KeyCode.RightShift)) {
+        if (allowFlying && Input.GetKeyDown(KeyCode.RightShift))
+        {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.white;
                 antiGrav = false;
                 body.gravityScale = 1;
-            }
-            else {
+            } else {
                 this.GetComponent<Renderer>().material.color = Color.red;
                 antiGrav = true;
                 body.gravityScale = 0;
@@ -150,7 +157,8 @@ public class PlayerController : MonoBehaviour {
 
     void PlaySoftFootstep() {
         if (currentScene.Equals("OutsideMall;Rooftops")) {
-            footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/Soft Footsteps/SoftFootsteps" + Random.Range(1, 4));
+            footsteps.clip =
+                Resources.Load<AudioClip>("Audio/SFX/Characters/Soft Footsteps/SoftFootsteps" + Random.Range(1, 4));
             footsteps.pitch = Random.Range(0.7f, 1.0f);
             footsteps.volume = Random.Range(0.1f, 0.2f);
             footsteps.Play();
@@ -159,12 +167,12 @@ public class PlayerController : MonoBehaviour {
 
     void PlayHardFootstep() {
         if (currentScene.Equals("MallIntro")) {
-            footsteps.clip = Resources.Load<AudioClip>("Audio/SFX/Characters/Hard Footsteps/footsteps_" + Random.Range(1, 8));
+            footsteps.clip =
+                Resources.Load<AudioClip>("Audio/SFX/Characters/Hard Footsteps/footsteps_" + Random.Range(1, 8));
             footsteps.pitch = Random.Range(0.7f, 1.0f);
             footsteps.volume = Random.Range(0.3f, 0.4f);
             footsteps.Play();
         }
-
     }
 
     void PlayJumpSound() {
@@ -188,8 +196,11 @@ public class PlayerController : MonoBehaviour {
         if (canMove) {
             // If you are allowed free flight
             if (antiGrav) {
-                this.transform.position = this.transform.position + Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed * 5;
-                this.transform.position = this.transform.position + Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed * 5;
+                this.transform.position = this.transform.position +
+                                          Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed * 5;
+                this.transform.position = this.transform.position +
+                                          Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed *
+                                          5;
                 playerCollider.isTrigger = true;
             } else {
                 playerCollider.isTrigger = false; // so the player isn't no-clipping after exiting anti-grav mode
@@ -202,23 +213,27 @@ public class PlayerController : MonoBehaviour {
 
                 // -- Walking Logic: --
                 // prevh = h;
-                h = Input.GetAxis("Horizontal");
+                h = PlayerInputModel.instance.movement.x;
 
                 if (System.Math.Abs(h) < 0.01 && touchingGround) { //when ther'es little-to-no sideways input && we're on the ground bring the player to a stop
                     // increse the stopLerpTime, 
                     stopLerpTime += 3.5f * Time.deltaTime;
                     // slow down the x velocity by an value between the current x velocity and 0, determined by how far along stopLerpTime is, 
-                    body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, stopLerpTime), body.velocity.y);//new Vector2(0, 0);//
+                    body.velocity =
+                        new Vector2(Mathf.Lerp(body.velocity.x, 0, stopLerpTime),
+                            body.velocity.y); //new Vector2(0, 0);//
                 } else {
                     // when we start moving, reset stopLerpTime
                     stopLerpTime = 0;
                     if (h * body.velocity.x < maxWalkSpeed) {
                         //if we just did a wall jump (wallJumpTimer > 0), decrese the effectiveness of the players horizontal control, so they can't keep planting themselves back on the wall.
-                        if (walljumpTimer != 0) body.AddForce(Vector2.right * h * Mathf.Max(0, walkForce / (walljumpTimer / 2)));
+                        if (walljumpTimer != 0)
+                            body.AddForce(Vector2.right * h * Mathf.Max(0, walkForce / (walljumpTimer / 2)));
                         else body.AddForce(Vector2.right * h * walkForce);
                     }
-                    if (Mathf.Abs(body.velocity.x) > maxWalkSpeed) body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * maxWalkSpeed, body.velocity.y);
 
+                    if (Mathf.Abs(body.velocity.x) > maxWalkSpeed)
+                        body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * maxWalkSpeed, body.velocity.y);
                 }
             }
         }
@@ -246,19 +261,23 @@ public class PlayerController : MonoBehaviour {
         touchingGround = false;
         touchingWall = 0;
         hangingOnLedge = false;
-        foreach (Collider2D objCollider in overlappingTriggers) {
-            if (!objCollider.isTrigger) {
-                if (playerBottomTrigger.IsTouching(objCollider)) {
+        foreach (Collider2D objCollider in overlappingTriggers)
+        {
+            if (!objCollider.isTrigger)
+            {
+                if (playerBottomTrigger.IsTouching(objCollider))
+                {
                     touchingGround = true;
                     touchingWall = 0;
                     hangingOnLedge = false;
-
                 }
-                else if (playerLeftTrigger.IsTouching(objCollider)) {
+                else if (playerLeftTrigger.IsTouching(objCollider))
+                {
                     touchingWall = 1;
                     hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
                 }
-                else if (playerRightTrigger.IsTouching(objCollider)) {
+                else if (playerRightTrigger.IsTouching(objCollider))
+                {
                     touchingWall = -1;
                     hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
                 }
@@ -272,7 +291,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void VelocityBasedJump() {
-        if (jump && jumpTime <= maxJumpTime && allowedToJump) {
+        if (jump && jumpTime <= maxJumpTime && allowedToJump)
+        {
             //float coef = 0.0f;
             //float force = 0.0f;
 
@@ -298,39 +318,55 @@ public class PlayerController : MonoBehaviour {
             */
             jumpTime += Time.deltaTime;
         }
-        else if (!touchingGround) {
+        else if (!touchingGround)
+        {
             allowedToJump = false;
-            if (this.GetComponent<Rigidbody2D>().velocity.y >= 0) {
+            if (this.GetComponent<Rigidbody2D>().velocity.y >= 0)
+            {
                 body.AddForce(jump_forced_decel * this.GetComponent<Rigidbody2D>().mass * Vector3.up);
             }
         }
     }
 
     private void GravityBasedJump() {
-        if (touchingGround) {
+        if (touchingGround)
+        {
             walljumpTimer = 0;
             // if the jump was just started
-            if (jumpStart) {
+            if (jumpStart)
+            {
                 jumpTimer = jumpExtensionTime;
                 body.AddForce(jumpForce * Vector3.up);
             }
         }
-        else {
-            if (jump && jumpTimer != 0) {
-                body.AddForce(-Physics2D.gravity - (1 / jumpTimer) * Vector2.up);  // counteract gravity while the user is holding the jump button & jump timer hasn't gotten to zero.
+        else
+        {
+            if (jump && jumpTimer != 0)
+            {
+                body.AddForce(-Physics2D.gravity -
+                              (1 / jumpTimer) *
+                              Vector2.up); // counteract gravity while the user is holding the jump button & jump timer hasn't gotten to zero.
                 jumpTimer--;
-            } else {
+            }
+            else
+            {
                 jumpTimer = 0;
             }
-            if (wallJumpingEnabled) {
-                if (jumpStart && touchingWall != 0) {
+
+            if (wallJumpingEnabled)
+            {
+                if (jumpStart && touchingWall != 0)
+                {
                     walljumpTimer = 60;
                     jumpTimer = jumpExtensionTime;
                     if (!hangingOnLedge) body.velocity = new Vector2(touchingWall * 4, 4);
                 }
+
                 if (walljumpTimer != 0) walljumpTimer--;
             }
-            if (ledgeRecoveryEnabled && jumpStart && hangingOnLedge && body.velocity.y < 1) {
+
+            if (ledgeRecoveryEnabled && jumpStart && hangingOnLedge && body.velocity.y < 1)
+            {
                 body.velocity = new Vector2(-touchingWall, 4);
             }
         }
