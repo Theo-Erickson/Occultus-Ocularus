@@ -29,16 +29,19 @@ public class PlayerInputModel {
     [SerializeField] public bool jumpDisabled { get; set; } = false;
     [SerializeField] public bool interactDisabled { get; set; } = false;
     [SerializeField] public bool cameraActionsDisabled { get; set; } = false;
+    [SerializeField] public bool flyDisabled { get; set; } = false;
+
 
     void Reset(InputMode mode) {
         inputMode = mode;
-        movementDisabled = jumpDisabled = interactDisabled = cameraActionsDisabled = false;
+        movementDisabled = jumpDisabled = interactDisabled = flyDisabled = cameraActionsDisabled = false;
     }
     public bool uiInputActive => inputMode == InputMode.UI;
     public bool gameInputActive => inputMode == InputMode.Game;
     public bool movementActive => gameInputActive && !movementDisabled;
     public bool jumpActive => gameInputActive && !jumpDisabled;
     public bool interactActive => gameInputActive && !interactDisabled;
+    public bool flyActive => gameInputActive && !flyDisabled;
     public bool cameraActionsActive => gameInputActive && !cameraActionsDisabled;
     
     #endregion
@@ -47,13 +50,16 @@ public class PlayerInputModel {
         Debug.Log($"movement: {movement} (gamepad: {gamepadInputVector}), jumpPressed: {jumpPressed}, interactPressed: {interactPressed}");
     }
     
-    
-    
     public Vector2 movement => movementActive ? inputVector : Vector2.zero;
     public Vector2 navigation => uiInputActive ? inputVector : Vector2.zero;
-    public bool jumpPressed => jumpActive ? isJumpPressed : false;
-    public bool interactPressed => jumpActive ? isInteractPressed : false;
-
+    public bool jumpPressed => jumpActive && isJumpPressed;
+    public bool interactPressed => interactActive && isInteractPressed;
+    public bool cameraTogglePressed => cameraActionsActive && isCameraTogglePressed;
+    public bool flyPressed => flyActive && isFlyPressed;
+    public bool uiAcceptPressed => uiInputActive && isAcceptPressed;
+    public bool uiCancelPressed => uiInputActive && isCancelPressed;
+    public bool uiMenuPressed => isMenuPressed;
+    
     #region MovementAndNavigation
     private Vector2 inputVector => Vector2.ClampMagnitude(
         (useLegacyKeyboardInput ? legacyInputVector : newKeyboardInputVector) +
@@ -79,26 +85,81 @@ public class PlayerInputModel {
         : Vector2.zero;
     
     #endregion 
-    #region JumpInputBindings    
-    private bool isJumpPressed => useLegacyKeyboardInput
-        ? Input.GetButtonDown("Jump")
-        : (keyboardJumpPressCount + gamepadJumpPressCount) > 0;
-    private int keyboardJumpPressCount => 
-        useSpaceToJump ? (Keyboard.current.spaceKey.isPressed ? 1 : 0) :
-        useSpaceToInteract ? (Keyboard.current.upArrowKey.isPressed ? 1 : 0) : 0;
-    private int gamepadJumpPressCount => 
-        Gamepad.current != null && Gamepad.current.buttonSouth.isPressed ? 1 : 0;
+    #region JumpInputBindings
+
+    private bool isJumpPressed => keyboardJumpPressed || gamepadJumpPressed;
+
+    private bool keyboardJumpPressed =>
+        useLegacyKeyboardInput ? Input.GetButton("Jump") :
+        useSpaceToJump ? (Keyboard.current.spaceKey.isPressed) :
+        useSpaceToInteract ? (Keyboard.current.upArrowKey.isPressed) :
+        false;
+    private bool gamepadJumpPressed =>
+        Gamepad.current != null && Gamepad.current.buttonSouth.isPressed;
+    
     #endregion
     #region InteractInputBindings
 
-    private bool isInteractPressed => useLegacyKeyboardInput
-        ? Input.GetButtonDown("Interact")
-        : (keyboardInteractPressCount + gamepadInteractPressCount) > 0;
-    private int keyboardInteractPressCount =>
-        useSpaceToJump ? (Keyboard.current.eKey.isPressed || Keyboard.current.enterKey.isPressed ? 1 : 0) :
-        useSpaceToInteract ? (Keyboard.current.spaceKey.isPressed ? 1 : 0) : 0;
-    private int gamepadInteractPressCount =>
-        Gamepad.current != null && Gamepad.current.buttonEast.isPressed ? 1 : 0;
+    private bool isInteractPressed => keyboardInteractPressed || gamepadInteractPressed;
+    private bool keyboardInteractPressed =>
+        useLegacyKeyboardInput ? Input.GetButton("Interact") :
+        useSpaceToJump ? (Keyboard.current.eKey.isPressed || Keyboard.current.enterKey.isPressed) :
+        useSpaceToInteract ? (Keyboard.current.spaceKey.isPressed) :
+        false;
+    private bool gamepadInteractPressed =>
+        Gamepad.current != null && Gamepad.current.buttonWest.isPressed;
+    
+    #endregion
+    #region CameraInputBindings
 
+    private bool isCameraTogglePressed => keyboardCameraTogglePressed || gamepadCameraTogglePressed;
+    private bool keyboardCameraTogglePressed => useLegacyKeyboardInput 
+        ? Input.GetButton("ToggleCamera") 
+        : Keyboard.current.digit3Key.isPressed;
+    private bool gamepadCameraTogglePressed =>
+        Gamepad.current != null && Gamepad.current.rightTrigger.isPressed;
+    
+    #endregion
+    #region FlyInputBindings
+
+    private bool isFlyPressed => keyboardFlyPressed || gamepadFlyPressed;
+    private bool keyboardFlyPressed => useLegacyKeyboardInput
+        ? Input.GetButton("ToggleFly")
+        : Keyboard.current.rightShiftKey.isPressed;
+    private bool gamepadFlyPressed =>
+        Gamepad.current != null && Gamepad.current.buttonNorth.isPressed;
+
+    #endregion
+    #region UIAcceptBindings
+
+    private bool isAcceptPressed => keyboardAcceptPressed || gamepadAcceptPressed;
+    private bool keyboardAcceptPressed => useLegacyKeyboardInput
+        ? Input.GetKey("Space") || Input.GetKey("Enter")
+        : Keyboard.current.spaceKey.isPressed || Keyboard.current.enterKey.isPressed;
+    private bool gamepadAcceptPressed =>
+        Gamepad.current != null && Gamepad.current.buttonSouth.isPressed;
+    
+    #endregion
+    #region UICancelBindings
+
+    private bool isCancelPressed => keyboardCancelPressed || gamepadCancelPressed;
+
+    private bool keyboardCancelPressed => useLegacyKeyboardInput
+        ? Input.GetKey("Escape")
+        : Keyboard.current.escapeKey.isPressed;
+    private bool gamepadCancelPressed =>
+        Gamepad.current != null && Gamepad.current.buttonEast.isPressed;
+
+    #endregion
+    #region UIMenuBindings
+    
+    private bool isMenuPressed => keyboardMenuPressed || gamepadMenuPressed;
+
+    private bool keyboardMenuPressed => useLegacyKeyboardInput
+        ? Input.GetKey("Escape")
+        : Keyboard.current.escapeKey.isPressed;
+    private bool gamepadMenuPressed =>
+        Gamepad.current != null && Gamepad.current.selectButton.isPressed;
+    
     #endregion
 }

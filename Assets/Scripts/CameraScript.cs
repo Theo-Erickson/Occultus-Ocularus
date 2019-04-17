@@ -199,7 +199,7 @@ public class CameraScript : MonoBehaviour {
             playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
-
+    
     //Check for conditions to change camera mode
     public void CheckCameraMode() {
         if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && !fixedCamPosition.Equals("Disabled")) {
@@ -255,8 +255,18 @@ public class CameraScript : MonoBehaviour {
         fixedCamPosition = position;
     }
 
+    private bool jumpLastPressed = false;
+
     public void FixedUpdate() {
-        if (playerScript.canMove && Input.GetButtonDown("Jump"))
+        // crappy replacement for ButtonDown()
+        // may get replaced eventually (by action callbacks or something)
+        // can't get stored / updated in PlayerInputModel since it's a
+        // stateless singleton that gets used in multiple locations...
+        bool jumpPressed = PlayerInputModel.instance.jumpPressed;
+        bool jumpDown = jumpPressed && jumpPressed != jumpLastPressed;
+        jumpLastPressed = jumpPressed;
+        
+        if (playerScript.canMove && jumpDown)
             playerEverJumped = true;
 
         // Putting the camera following in fixed update keeps jitter between the player and camera low.
@@ -269,7 +279,7 @@ public class CameraScript : MonoBehaviour {
 
             float xInput;
             if (playerScript.canMove)
-                xInput = Input.GetAxis("Horizontal");
+                xInput = PlayerInputModel.instance.movement.x;
             else
                 xInput = 0;
             float deltaX, deltaY;

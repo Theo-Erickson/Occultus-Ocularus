@@ -37,9 +37,21 @@ public class Dialogue : MonoBehaviour
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
     }
+    
+    // quick-fix to cover lack of Input.GetButtonDown() equivalent
+    // may get replaced eventually by input event callbacks
+    private bool uiAcceptButtonLastPressed = false;
+    private bool uiAcceptButtonPressedThisFrame = false;
 
-    void Update()
-    {
+    void Update() {
+        bool uiAcceptPressed = PlayerInputModel.instance.uiAcceptPressed;
+        uiAcceptButtonPressedThisFrame = !uiAcceptButtonLastPressed && uiAcceptPressed;
+        uiAcceptButtonLastPressed = uiAcceptPressed;
+        if (uiAcceptButtonPressedThisFrame)
+        {
+            Debug.Log("Accept!");
+        }
+        
         if (text != null) {
 
             // Do dialogue action for this phrase if there is one
@@ -52,11 +64,11 @@ public class Dialogue : MonoBehaviour
             }
 
             // Skip to end of line if button is pressed while text is still appearing
-            if (Input.GetKeyDown(KeyCode.Space) && !awaitingUser)
+            if (uiAcceptButtonPressedThisFrame && !awaitingUser)
                 skipToEndOfPhrase = true;
 
             // Resume text scroll & increase scroll rate if space key is down
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (uiAcceptButtonPressedThisFrame) {
                 awaitingUser = false;
                 currentScrollRate = FAST_SCROLL_RATE;
 

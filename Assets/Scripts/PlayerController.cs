@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Experimental.Input;
+using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour {
@@ -95,12 +96,24 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene().name;
     }
+    
+    // quick-fix to cover lack of Input.GetButtonDown() equivalent
+    // may get replaced eventually by input event callbacks (to trigger animations, jump actions, etc)
+    private bool jumpPressed = false;             // equivalent to Input.GetButton("Jump"), set by Update()
+    private bool jumpPressedThisFrame = false;    // equivalent to Input.GetButtonDown("Jump"), set by Update()
+    private bool flyButtonPressed = false;
+    private bool flyButtonPressedThisFrame = false;
 
     void Update() {
         PlayerInputModel.instance.DebugLogInput();
-        
         if (this.transform.position.y < -50) { ResetPlayer(); print("RESPAWN"); }
 
+        // see above
+        jumpPressedThisFrame = !jumpPressed && PlayerInputModel.instance.jumpPressed;
+        jumpPressed = PlayerInputModel.instance.jumpPressed;
+        flyButtonPressedThisFrame = !flyButtonPressed && PlayerInputModel.instance.flyPressed;
+        flyButtonPressed = PlayerInputModel.instance.flyPressed;
+        
         if (canMove) {
             InputHandler();
 
@@ -114,19 +127,22 @@ public class PlayerController : MonoBehaviour {
 
         // Sets animation variables
         anim.SetFloat("speed", Mathf.Abs(body.velocity.x));
-        if (Input.GetButtonDown("Jump") && canMove)
+        if (jumpPressedThisFrame && canMove)
             anim.SetBool("startJump", true);
         else
             anim.SetBool("startJump", false);
         anim.SetBool("grounded", touchingGround);
     }
 
+    
+    
     // Function to handle button or mouse events to avoid cluttering update
     void InputHandler() {
 
         // Reset position
         if (allowResetting && Input.GetKeyDown(KeyCode.R)) ResetPlayer();
         // Jump, set variable, force is applied in in FixedUpdate, (recommended by Unity docs).
+        
         jump = PlayerInputModel.instance.jumpPressed;
         jumpStart = !prevJump && jump;
 
@@ -140,7 +156,7 @@ public class PlayerController : MonoBehaviour {
 
 
         // Shift between flying and grounded modes
-        if (allowFlying && Input.GetKeyDown(KeyCode.RightShift))
+        if (allowFlying && flyButtonPressedThisFrame)
         {
             if (antiGrav) {
                 this.GetComponent<Renderer>().material.color = Color.white;
@@ -195,12 +211,12 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         if (canMove) {
             // If you are allowed free flight
-            if (antiGrav) {
-                this.transform.position = this.transform.position +
-                                          Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * maxWalkSpeed * 5;
-                this.transform.position = this.transform.position +
-                                          Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * maxWalkSpeed *
-                                          5;
+            if (antiGrav)
+            {
+                Vector2 movement = PlayerInputModel.instance.movement;
+                transform.position += (Vector3.up * movement.y * maxWalkSpeed * 5 +
+                                      Vector3.right * movement.x * maxWalkSpeed * 5) 
+                                      * Time.deltaTime;
                 playerCollider.isTrigger = true;
             } else {
                 playerCollider.isTrigger = false; // so the player isn't no-clipping after exiting anti-grav mode
