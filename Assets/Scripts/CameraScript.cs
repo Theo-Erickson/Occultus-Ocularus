@@ -206,7 +206,6 @@ public class CameraScript : MonoBehaviour {
         cameraTogglePressedThisFrame = !cameraToggleLastPress && cameraTogglePressed;
         cameraToggleLastPress = cameraTogglePressed;
         if (cameraTogglePressedThisFrame) {
-            Debug.Log("toggling camera...");
             if (mode == CameraMode.Fixed) {
                 mode = CameraMode.FollowPlayerSmooth;
             } else {
@@ -215,7 +214,6 @@ public class CameraScript : MonoBehaviour {
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1) && mode != CameraMode.Fixed && fixedCamera != null) {
-           Debug.Log("setting camera mode");
             mode = CameraMode.Fixed;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
@@ -230,8 +228,7 @@ public class CameraScript : MonoBehaviour {
             playerScript.canMove = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            Debug.Log("setting camera mode...");
-        mode = CameraMode.FollowPlayerSmooth;
+            mode = CameraMode.FollowPlayerSmooth;
             DistFromPlayer = Vector2.zero;
             playerScript.canMove = true;
         }
