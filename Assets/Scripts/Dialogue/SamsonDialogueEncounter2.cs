@@ -5,7 +5,7 @@ using UnityEngine;
 public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
 {
     public TextAsset dialogueText;
-    public Dialogue dialogueInstance;
+    public Dialogue dialogueSetup;
 
     public PlayerController player;
     public LevelTransition levelTransition;
@@ -30,7 +30,7 @@ public class SamsonDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
     public void Talk()
     {
         talkedToSamson = true;
-        dialogueInstance.ActivateDialogueBox();
+        Dialogue dialogueInstance = dialogueSetup.ActivateDialogueBox();
         dialogueInstance.Setup(this);
         dialogueInstance.ParseMessage(dialogueText.ToString());
     }
