@@ -64,25 +64,24 @@ public class Dialogue : MonoBehaviour
                 {
                     currentScrollRate = FAST_SCROLL_RATE;
                     lastScrollSpeedUpTime = Time.time;
+
+                    // End dialogue if it all has already appeared
+                    if (phraseIndex >= phrases.Length && charIndex == -1)
+                    {
+                        dialogueEncounter.DialogueFinished();
+                        phraseIndex = 0;
+                        awaitingUser = false;
+                        skipToEndOfPhrase = false;
+                        dialogueBox.SetActive(false);
+                        player.canMove = true;
+                    }
                 }
                 // Resume normal speed text scrolling
                 else
                 {
                     awaitingUser = false;
                 }
-            }
-        
-
-                // End dialogue if it all has already appeared
-                if (phraseIndex >= phrases.Length && charIndex == -1) {
-                    dialogueEncounter.DialogueFinished();
-                    phraseIndex = 0;
-                    awaitingUser = false; 
-                    skipToEndOfPhrase = false;
-                    dialogueBox.SetActive(false);
-                    player.canMove = true;
-                }
-            }
+            }                
 
             // Make scroll rate normal again if space key is released
             if (Input.GetKeyUp(KeyCode.Space))
