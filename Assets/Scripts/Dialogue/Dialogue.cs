@@ -55,7 +55,7 @@ public class Dialogue : MonoBehaviour
                 actionPerformed = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space){
+            if (Input.GetKeyDown(KeyCode.Space)){
                 // Resume normal speed text scrolling
                 if (awaitingUser)
                     awaitingUser = false;
