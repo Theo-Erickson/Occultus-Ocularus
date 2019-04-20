@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -88,6 +95,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -220,6 +228,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -233,7 +242,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -310,6 +319,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -323,7 +333,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -575,6 +585,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
 --- !u!483693784 &318558139
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -12395,6 +12406,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12408,7 +12420,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -12485,6 +12497,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12498,7 +12511,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -12603,6 +12616,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12616,7 +12630,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -12693,6 +12707,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12706,7 +12721,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -12811,6 +12826,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12824,7 +12840,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -12901,6 +12917,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -12914,7 +12931,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -13410,6 +13427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39685796935a664489896553cc0137ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput:
+    m_Asset: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+      type: 3}
   objectTag: Player
   sameLayerOnly: 0
   onGroundOnly: 1
@@ -13685,6 +13705,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -13698,7 +13719,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -13775,6 +13796,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -13788,7 +13810,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -13893,6 +13915,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -13906,7 +13929,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -13983,6 +14006,7 @@ Sprite:
     serializedVersion: 3
     texture: {fileID: 0}
     alphaTexture: {fileID: 0}
+    secondaryTextures: []
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
@@ -13996,7 +14020,7 @@ Sprite:
         m_Extent: {x: 0, y: 0, z: 0}
     m_IndexBuffer: 000001000200020001000300
     m_VertexData:
-      serializedVersion: 2
+      serializedVersion: 3
       m_VertexCount: 4
       m_Channels:
       - stream: 0
@@ -14394,6 +14418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39685796935a664489896553cc0137ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput:
+    m_Asset: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+      type: 3}
   objectTag: Player
   sameLayerOnly: 0
   onGroundOnly: 1
@@ -14762,6 +14789,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
 --- !u!483693784 &1796019100
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -18858,6 +18886,12 @@ PrefabInstance:
       propertyPath: dialogueBox
       value: 
       objectReference: {fileID: 763731409}
+    - target: {fileID: 2881084489140527899, guid: 99e7c45f2213e4ae28122e7684bdb7f4,
+        type: 3}
+      propertyPath: playerInput.m_Asset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99e7c45f2213e4ae28122e7684bdb7f4, type: 3}
 --- !u!114 &5715629648138811321 stripped

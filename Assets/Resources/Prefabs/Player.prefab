@@ -54,6 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c9621f58ddc3f4fbc994d724d7aec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput:
+    m_Asset: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+      type: 3}
   canMove: 1
   frozen: 0
   antiGrav: 0
@@ -73,6 +76,7 @@ MonoBehaviour:
   footsteps: {fileID: 5234725836872230692}
   allowResetting: 1
   allowFlying: 1
+  body: {fileID: 0}
   touchingGround: 0
 --- !u!61 &61809507331186424
 BoxCollider2D:

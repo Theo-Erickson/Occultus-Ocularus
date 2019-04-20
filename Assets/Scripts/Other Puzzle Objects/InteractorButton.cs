@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Input;
+using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 
 /*
  * This interactor causes an interaction when something enters or exits its trigger and the player presses 'Interact'.
  */
-public class InteractorButton : MonoBehaviour
-{
+public class InteractorButton : MonoBehaviour, IInteractionActions {
+    public PlayerInputMapping playerInput;    
+
     [Tooltip("Objects with this tag will cause interactions. If tag is empty, all objects will cause interactions.")]
     public string objectTag = "Player";
     [Tooltip("Whether or not only objects residing in the same layer as this object will cause interactions.")]
@@ -32,17 +35,17 @@ public class InteractorButton : MonoBehaviour
     private List<GameObject> inTrigger = new List<GameObject>();
     private bool triggered = false;
 
+    void Awake() {
+        playerInput.Interaction.SetCallbacks(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
         interactSound = this.GetComponent<AudioSource>();
         startYpos = transform.position.y;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Interact")) {
+    public void OnInteract(InputAction.CallbackContext context) {
+        if (context.performed) {
             foreach (GameObject go in inTrigger) {
                 // If no tag is specified or the object's tag matches the specified tag.
                 if (string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {
@@ -95,8 +98,7 @@ public class InteractorButton : MonoBehaviour
         inTrigger.Add(other.gameObject);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
+    private void OnTriggerExit2D(Collider2D other) {
         if (other.isTrigger)
             return;
 

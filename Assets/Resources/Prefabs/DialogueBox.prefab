@@ -92,8 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6c6603804bf10418dfc2765ae72032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput:
+    m_Asset: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+      type: 3}
   text: {fileID: 114540878271585790}
-  phrases: []
+  player: {fileID: 0}
+  dialogueBox: {fileID: 0}
 --- !u!1 &1824618624061054
 GameObject:
   m_ObjectHideFlags: 0
