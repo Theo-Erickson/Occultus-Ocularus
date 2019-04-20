@@ -5,13 +5,13 @@ using UnityEngine;
 public class ArielDialogueEncounter : MonoBehaviour, IDialogueEncounter
 {
     public TextAsset dialogueText;
-    public Dialogue dialogueSetup;
+    public Dialogue dialogueInstance;
 
     public void Talk()
     {
-        Dialogue dialogueInstance = dialogueSetup.ActivateDialogueBox();
-        dialogueInstance.Setup(this);
         dialogueInstance.ParseMessage(dialogueText.ToString());
+        dialogueInstance.Setup(this);
+        dialogueInstance.ActivateDialogueBox();
     }
 
     public void DialogueAction(string action)

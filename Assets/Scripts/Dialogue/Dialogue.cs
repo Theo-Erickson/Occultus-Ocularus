@@ -18,7 +18,7 @@ public class Dialogue : MonoBehaviour
 
     private string[] phrases;
     private string[] actions;
-    private bool actionPerformed;
+    private bool actionPerformed = false;
 
     private IDialogueEncounter dialogueEncounter;
 
@@ -42,11 +42,10 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (text != null)
+        if (phrases != null)
         {
-
             // Do dialogue action for this phrase if there is one
-            if (phraseIndex < phrases.Length &&
+            if (phrases != null && phraseIndex < phrases.Length &&
                 actions[phraseIndex] != null &&
                 !actionPerformed &&
                 !awaitingUser)
@@ -55,23 +54,20 @@ public class Dialogue : MonoBehaviour
                 actionPerformed = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space)){
-                // Resume normal speed text scrolling
-                if (awaitingUser)
-                    awaitingUser = false;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
                 // Skip to end of line if button is pressed immediately after increasing the scroll speed
-                else if (Time.time - lastScrollSpeedUpTime < SKIP_TO_END_TIME_RANGE)
-                {
+                if (Time.time - lastScrollSpeedUpTime < SKIP_TO_END_TIME_RANGE && !awaitingUser)
                     skipToEndOfPhrase = true;
-                }
-                // Increase speed of text scrolling
+                // Resume normal speed text scrolling/Increase speed of text scrolling
                 else
                 {
+                    awaitingUser = false;
                     currentScrollRate = FAST_SCROLL_RATE;
                     lastScrollSpeedUpTime = Time.time;
 
                     // End dialogue if it all has already appeared
-                    if (phraseIndex >= phrases.Length && charIndex == -1)
+                    if (phraseIndex >= phrases.Length)
                     {
                         dialogueEncounter.DialogueFinished();
                         phraseIndex = 0;
@@ -112,7 +108,7 @@ public class Dialogue : MonoBehaviour
                 }
 
                 // Prep for next phrase when the end of current phrase is reached
-                if (charIndex == phrase.Length)
+                if (charIndex >= phrase.Length)
                 {
                     charIndex = -1;
                     phraseIndex++;
@@ -152,10 +148,8 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public Dialogue ActivateDialogueBox()
+    public void ActivateDialogueBox()
     {
         dialogueBox.SetActive(true);
-        Dialogue dialogue = dialogueBox.transform.GetChild(1).gameObject.GetComponent<Dialogue>();
-        return dialogue;
     }
 }
