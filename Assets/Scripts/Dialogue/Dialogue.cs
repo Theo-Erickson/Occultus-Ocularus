@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     const char SPLIT_SYMBOL = '|';
     const float NORMAL_SCROLL_RATE = 0.04f;
     const float FAST_SCROLL_RATE = 0.015f;
+    const float SKIP_TO_END_TIME_RANGE = 1f;
 
     public Text text;
     public PlayerController player;
@@ -22,6 +23,7 @@ public class Dialogue : MonoBehaviour
     private IDialogueEncounter dialogueEncounter;
 
     private float lastUpdateTime;
+    private float lastScrollSpeedUpTime;
     private float currentScrollRate;
 
     private int phraseIndex = 0;
@@ -51,14 +53,25 @@ public class Dialogue : MonoBehaviour
                 actionPerformed = true;
             }
 
-            // Skip to end of line if button is pressed while text is still appearing
-            if (Input.GetKeyDown(KeyCode.Space) && !awaitingUser)
-                skipToEndOfPhrase = true;
-
-            // Resume text scroll & increase scroll rate if space key is down
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                awaitingUser = false;
-                currentScrollRate = FAST_SCROLL_RATE;
+            if (Input.GetKeyDown(KeyCode.Space){
+                // Skip to end of line if button is pressed immediately after increasing the scroll speed
+                if (!awaitingUser && Time.time - lastScrollSpeedUpTime < SKIP_TO_END_TIME_RANGE)
+                {
+                    skipToEndOfPhrase = true;
+                }
+                // Increase speed of text scrolling
+                else if (!awaitingUser)
+                {
+                    currentScrollRate = FAST_SCROLL_RATE;
+                    lastScrollSpeedUpTime = Time.time;
+                }
+                // Resume normal speed text scrolling
+                else
+                {
+                    awaitingUser = false;
+                }
+            }
+        
 
                 // End dialogue if it all has already appeared
                 if (phraseIndex >= phrases.Length && charIndex == -1) {
