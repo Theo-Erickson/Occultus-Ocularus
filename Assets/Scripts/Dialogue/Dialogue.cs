@@ -18,7 +18,7 @@ public class Dialogue : MonoBehaviour
 
     private string[] phrases;
     private string[] actions;
-    private bool actionPerformed = false;
+    private bool actionPerformed;
 
     private IDialogueEncounter dialogueEncounter;
 
@@ -26,10 +26,10 @@ public class Dialogue : MonoBehaviour
     private float lastScrollSpeedUpTime;
     private float currentScrollRate;
 
-    private int phraseIndex = 0;
-    private int charIndex = -1;
-    private bool awaitingUser = false;
-    private bool skipToEndOfPhrase = false;
+    private int phraseIndex;
+    private int charIndex;
+    private bool awaitingUser;
+    private bool skipToEndOfPhrase;
 
     public void Setup(IDialogueEncounter de)
     {
@@ -38,6 +38,11 @@ public class Dialogue : MonoBehaviour
         dialogueEncounter = de;
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
+        phraseIndex = 0;
+        charIndex = -1;
+        awaitingUser = false;
+        skipToEndOfPhrase = false;
+        actionPerformed = false;
     }
 
     void Update()
@@ -70,9 +75,6 @@ public class Dialogue : MonoBehaviour
                     if (phraseIndex >= phrases.Length)
                     {
                         dialogueEncounter.DialogueFinished();
-                        phraseIndex = 0;
-                        awaitingUser = false;
-                        skipToEndOfPhrase = false;
                         dialogueBox.SetActive(false);
                         player.canMove = true;
                     }
