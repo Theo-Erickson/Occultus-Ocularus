@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Input;
+using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 using UnityEngine.UI;
 
-public class Dialogue : MonoBehaviour
-{
+public class Dialogue : MonoBehaviour, IDialogActions {
+    public PlayerInputMapping playerInput;
+    
     public static bool messageComplete = true;
 
     const char SPLIT_SYMBOL = '|';
@@ -31,9 +34,14 @@ public class Dialogue : MonoBehaviour
     private bool awaitingUser;
     private bool skipToEndOfPhrase;
 
-    public void Setup(IDialogueEncounter de)
-    {
-        player.canMove = false;
+    public void Awake() {
+        playerInput.Dialog.SetCallbacks(this);
+    }
+    public void Setup(IDialogueEncounter de) {
+        BeginDialog(de);
+    }
+    public void BeginDialog(IDialogueEncounter de) {
+        player.EnterUIOrDialog();
         player.body.velocity = Vector2.zero;
         dialogueEncounter = de;
         lastUpdateTime = Time.time;
@@ -44,6 +52,21 @@ public class Dialogue : MonoBehaviour
         skipToEndOfPhrase = false;
         actionPerformed = false;
     }
+    public void EndDialog() {
+        player.ExitUIOrDialog();
+        dialogueEncounter.DialogueFinished();
+        phraseIndex = 0;
+        awaitingUser = false; 
+        skipToEndOfPhrase = false;
+        dialogueBox.SetActive(false);
+    }
+    
+    // Input action: user pressed space, "A" (gamepad), etc.
+    public void OnNext(InputAction.CallbackContext context) {
+        if (context.performed && text != null) {
+            // Skip to end of line if button is pressed while text is still appearing
+            if (!awaitingUser)
+                skipToEndOfPhrase = true;
 
     void Update()
     {

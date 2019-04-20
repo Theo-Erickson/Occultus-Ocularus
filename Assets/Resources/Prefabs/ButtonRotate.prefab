@@ -148,8 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39685796935a664489896553cc0137ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput:
+    m_Asset: {fileID: -944628639613478452, guid: ee4c2916222b34839b9bbc2d01681605,
+      type: 3}
   objectTag: Player
   sameLayerOnly: 0
+  onGroundOnly: 0
   onInteract:
     m_PersistentCalls:
       m_Calls: []
