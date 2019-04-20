@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using UnityEngine.Experimental.Input;
 
-public class PlayerLayerSwitcher : MonoBehaviour
+public class PlayerLayerSwitcher : MonoBehaviour, ILayerSwitchingActions
 {
     public GameObject player;
     public GameObject foreground;
@@ -24,6 +25,12 @@ public class PlayerLayerSwitcher : MonoBehaviour
     private float collisionPlayerFeedbackStartZPos;
     private LayerMask overlapLayerMask;
     private Collider2D[] detectedOverlaps;
+
+    public PlayerInputMapping playerInput;
+
+    public void Awake() {
+        playerInput.LayerSwitching.SetCallbacks(this);
+    }
 
     //call this function to switch the player to a layer (foreground, background, etc...)
     public void SwitchPlayerLayer(int destinationLayerNum)
@@ -114,15 +121,6 @@ public class PlayerLayerSwitcher : MonoBehaviour
             player.transform.Translate(new Vector3 (0,0, collisionPlayerFeedbackStartZPos - player.transform.position.z) * Time.deltaTime * 5);
             if (Mathf.Abs(collisionPlayerFeedbackStartZPos - player.transform.position.z)  < 0.02 || (Mathf.Abs(collisionPlayerFeedbackStartZPos - player.transform.position.z) > 1)) collisionPlayerFeedbackHappening = false;
         }
-
-        // toggle the player layer when the Switch Layer Key is pressed. See layer (not sorting layer) list
-        if (Input.GetButtonDown("Switch Layer")) {
-           if (currentPlayerLayer == foregroundLayer.value) {
-                SwitchPlayerLayer(midgroundLayer.value);
-           } else {
-                SwitchPlayerLayer(foregroundLayer.value);
-            }
-        }
     }
 
 
@@ -139,6 +137,17 @@ public class PlayerLayerSwitcher : MonoBehaviour
         for (int i = 0, spriteRenderersLength = spriteRenderers.Length; i < spriteRenderersLength; i++) {
             SpriteRenderer mapRenderer = spriteRenderers[i];
             mapRenderer.material.color = new Color(mapRenderer.material.color.r, mapRenderer.material.color.g, mapRenderer.material.color.b, opaqueness);
+        }
+    }
+
+    public void OnToggleLayerSwitching(InputAction.CallbackContext context) {
+        if (context.performed)
+        {
+            if (currentPlayerLayer == foregroundLayer.value) {
+                SwitchPlayerLayer(midgroundLayer.value);
+           } else {
+                SwitchPlayerLayer(foregroundLayer.value);
+            }
         }
     }
 }
