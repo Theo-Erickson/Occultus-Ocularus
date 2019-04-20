@@ -49,42 +49,6 @@ public class Dialogue : MonoBehaviour
     {
         if (phrases != null)
         {
-            // Do dialogue action for this phrase if there is one
-            if (phrases != null && phraseIndex < phrases.Length &&
-                actions[phraseIndex] != null &&
-                !actionPerformed &&
-                !awaitingUser)
-            {
-                dialogueEncounter.DialogueAction(actions[phraseIndex]);
-                actionPerformed = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // Skip to end of line if button is pressed immediately after increasing the scroll speed
-                if (Time.time - lastScrollSpeedUpTime < SKIP_TO_END_TIME_RANGE && !awaitingUser)
-                    skipToEndOfPhrase = true;
-                // Resume normal speed text scrolling/Increase speed of text scrolling
-                else
-                {
-                    awaitingUser = false;
-                    currentScrollRate = FAST_SCROLL_RATE;
-                    lastScrollSpeedUpTime = Time.time;
-
-                    // End dialogue if it all has already appeared
-                    if (phraseIndex >= phrases.Length)
-                    {
-                        dialogueEncounter.DialogueFinished();
-                        dialogueBox.SetActive(false);
-                        player.canMove = true;
-                    }
-                }
-            }
-
-            // Make scroll rate normal again if space key is released
-            if (Input.GetKeyUp(KeyCode.Space))
-                currentScrollRate = NORMAL_SCROLL_RATE;
-
             // Make a new letter appear after each interval defined by SCROLL_RATE
             while (Time.time - lastUpdateTime > currentScrollRate &&
                    phraseIndex < phrases.Length &&
@@ -118,6 +82,44 @@ public class Dialogue : MonoBehaviour
                     actionPerformed = false;
                 }
             }
+
+            // Do dialogue action for this phrase if there is one
+            if (phrases != null && phraseIndex < phrases.Length &&
+                actions[phraseIndex] != null &&
+                !actionPerformed &&
+                !awaitingUser)
+            {
+                dialogueEncounter.DialogueAction(actions[phraseIndex]);
+                actionPerformed = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // Skip to end of line if button is pressed immediately after increasing the scroll speed
+                if (Time.time - lastScrollSpeedUpTime < SKIP_TO_END_TIME_RANGE && !awaitingUser)
+                    skipToEndOfPhrase = true;
+                // Make scroll rate faster
+                else
+                {
+                    awaitingUser = false;
+                    currentScrollRate = FAST_SCROLL_RATE;
+                    lastScrollSpeedUpTime = Time.time;
+
+                    // End dialogue if it all has already appeared
+                    if (phraseIndex >= phrases.Length)
+                    {
+                        phrases = null;
+                        text.text = "";
+                        dialogueEncounter.DialogueFinished();
+                        dialogueBox.SetActive(false);
+                        player.canMove = true;
+                    }
+                }
+            }
+
+            // Make scroll rate normal again if space key is released
+            if (Input.GetKeyUp(KeyCode.Space))
+                currentScrollRate = NORMAL_SCROLL_RATE;
         }
     }
 

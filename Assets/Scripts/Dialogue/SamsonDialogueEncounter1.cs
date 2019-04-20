@@ -11,8 +11,8 @@ public class SamsonDialogueEncounter1 : MonoBehaviour, IDialogueEncounter
     public void Talk()
     {
         dialogueInstance.ActivateDialogueBox();
-        dialogueInstance.Setup(this);
         dialogueInstance.ParseMessage(dialogueText.ToString());
+        dialogueInstance.Setup(this);
     }
 
     public void DialogueFinished()

@@ -9,9 +9,9 @@ public class ArielDialogueEncounter : MonoBehaviour, IDialogueEncounter
 
     public void Talk()
     {
-        dialogueInstance.ParseMessage(dialogueText.ToString());
-        dialogueInstance.Setup(this);
         dialogueInstance.ActivateDialogueBox();
+        dialogueInstance.Setup(this);
+        dialogueInstance.ParseMessage(dialogueText.ToString());
     }
 
     public void DialogueAction(string action)
