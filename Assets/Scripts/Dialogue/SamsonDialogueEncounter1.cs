@@ -5,14 +5,14 @@ using UnityEngine;
 public class SamsonDialogueEncounter1 : MonoBehaviour, IDialogueEncounter
 {
     public TextAsset dialogueText;
-    public Dialogue dialogueSetup;
+    public Dialogue dialogueInstance;
     public bool moveWhenFinished = true;
 
     public void Talk()
     {
-        Dialogue dialogueInstance = dialogueSetup.ActivateDialogueBox();
-        dialogueInstance.Setup(this);
+        dialogueInstance.ActivateDialogueBox();
         dialogueInstance.ParseMessage(dialogueText.ToString());
+        dialogueInstance.Setup(this);
     }
 
     public void DialogueFinished()
