@@ -78,10 +78,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "<size=18>Detailed Controls</size>\nMove: <b>Left/Right arrows</b>\n      or
-    <b>A and D</b>\nJump: <b>Up arrow</b>\n      or <b>W</b>\nInteract: <b>Space</b>\nShift
-    layers: <b>Left shift</b>\nFly: <b>Right shift</b>\nReset position: <b>R</b>\n\nFixed
-    camera: <b>1</b>\nSmooth following camera: <b>3</b> \nFree camera: <b>4</b>\n"
+  m_Text: "<size=20>Detailed Controls</size>\nMove: <b>A, D</b>\nJump: <b>Space</b>\nInteract:
+    <b>E</b>\nShift layers: <b>Left shift</b>\n\nFocus zoom camera: <b>1</b>\nSmooth
+    following camera: <b>3</b> \nFree camera: <b>4</b>\n\nToggle UI mode: <b>Tab</b>\n<size=10>UI
+    modes: minimal, detailed, off</size>\n\n<size=16>Dev-Only Controls</size>\nFly
+    + noclip: <b>Right shift</b>\nReset position: <b>R</b>\n"
 --- !u!1 &1880057468518725066
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +161,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Move:\t <size=30>\u2190 \u2192</size>\t\tJump:\t <size=30>\u2191</size>\t\tInteract:<size=30>
-    </size><b>Space</b>"
+  m_Text: "Move:\t <size=30><b>A, D</b></size>\t\tJump:\t <size=30><b>Space</b></size>\t\tInteract:\t
+    <size=30><b>E</b></size>"
 --- !u!1 &2202917112584409219
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,8 +385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 260}
+  m_AnchoredPosition: {x: -0.000029846, y: -7}
+  m_SizeDelta: {x: 274.08, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2324119740405893148
 CanvasRenderer:
