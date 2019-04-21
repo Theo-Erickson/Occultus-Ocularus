@@ -22,6 +22,7 @@ public class InteractorButton : MonoBehaviour, IInteractionActions {
 
     [Header("Audio")]
     public AudioSource interactSound;
+    private float interactSoundTimer;
 
     [Header("Animation (set to enable animation)")]
     public Animator anim;
@@ -42,6 +43,10 @@ public class InteractorButton : MonoBehaviour, IInteractionActions {
     void Start()
     {
         interactSound = this.GetComponent<AudioSource>();
+        if (interactSound.clip.Equals(Resources.Load<AudioClip>("Audio/SFX/Background/prism_moving_loop")))
+            interactSound.volume = 0.5f;
+        else
+            interactSound.volume = 0.7f;
         startYpos = transform.position.y;
     }
     public void OnInteract(InputAction.CallbackContext context) {
@@ -53,12 +58,8 @@ public class InteractorButton : MonoBehaviour, IInteractionActions {
                     if (!sameLayerOnly || go.gameObject.layer == gameObject.layer) {
                         if (!onGroundOnly || (go.GetComponent<PlayerController>() != null && go.GetComponent<PlayerController>().touchingGround)) {
                             triggered = true;
-                            if (interactSound != null && interactSound.enabled) {
-                                interactSound.clip = Resources.Load<AudioClip>("Audio/SFX/UI/Menu-Click");
-                                interactSound.pitch = 0.7f;
-                                interactSound.volume = 1.0f;
-                                interactSound.Play();
-                            }
+                            interactSound.Play();
+                            interactSoundTimer = 0.5f;
                             if (anim) {
                             transform.position = new Vector3(transform.position.x, startYpos, transform.position.z);
                             if (!toggleAnimation) anim.Play("ButtonPush", 0, 0);
@@ -86,6 +87,11 @@ public class InteractorButton : MonoBehaviour, IInteractionActions {
         if (triggered == true) {
             onInteract.Invoke();
             triggered = false;
+        }
+        if (interactSound.isPlaying) {
+            interactSoundTimer -= Time.fixedDeltaTime;
+            if (interactSoundTimer <= 0)
+                interactSound.Stop();
         }
     }
 
