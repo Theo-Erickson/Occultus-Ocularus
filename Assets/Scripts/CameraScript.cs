@@ -231,7 +231,7 @@ public class CameraScript : MonoBehaviour, ICameraActions {
     }
 
     public void OnSetCameraMode4(InputAction.CallbackContext context) {
-        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+        if (context.performed) {
             mode = CameraMode.FreeCam;
             playerScript.canMove = false;
         }
