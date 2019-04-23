@@ -140,23 +140,22 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
 
     #region FootstepAudio
     void PlaySoftFootstep() {
-        if (currentScene.Equals("OutsideMall;Rooftops")) {
-            footsteps.clip =
-                Resources.Load<AudioClip>("Audio/SFX/Characters/Soft Footsteps/SoftFootsteps" + Random.Range(1, 4));
-            footsteps.pitch = Random.Range(0.7f, 1.0f);
-            footsteps.volume = Random.Range(0.1f, 0.2f);
-            footsteps.Play();
-        }
+        // The soft footstep sound is for grass/sand/dirt etc., but currently
+        // everything is urban only, so this sound  is not used for now 
+
+        /*footsteps.clip =
+            Resources.Load<AudioClip>("Audio/SFX/Characters/Soft Footsteps/SoftFootsteps" + Random.Range(1, 4));
+        footsteps.pitch = Random.Range(0.7f, 1.0f);
+        footsteps.volume = Random.Range(0.1f, 0.2f);
+        footsteps.Play();*/
     }
 
     void PlayHardFootstep() {
-        if (currentScene.Equals("MallIntro")) {
-            footsteps.clip =
-                Resources.Load<AudioClip>("Audio/SFX/Characters/Hard Footsteps/footsteps_" + Random.Range(1, 8));
-            footsteps.pitch = Random.Range(0.7f, 1.0f);
-            footsteps.volume = Random.Range(0.3f, 0.4f);
-            footsteps.Play();
-        }
+        footsteps.clip =
+            Resources.Load<AudioClip>("Audio/SFX/Characters/Hard Footsteps/footsteps_" + Random.Range(1, 8));
+        footsteps.pitch = Random.Range(0.7f, 1.0f);
+        footsteps.volume = Random.Range(0.3f, 0.4f);
+        footsteps.Play();
     }
 
     void PlayJumpSound() {
