@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
     [Header("Jumping")]
     [Tooltip("Is the jump using a velocity function or gravity?")]
     public JumpMode jumpMode;
+    public GameObject JumpDustPrefab;
 
     // Velocity-Based Jump variables
     public float maxJumpTime = 2.0f;
@@ -136,7 +137,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
 //        playerInput.Dialog.Disable();
         canMove = true;
     }
-    
+
     #region FootstepAudio
     void PlaySoftFootstep() {
         if (currentScene.Equals("OutsideMall;Rooftops")) {
@@ -213,6 +214,10 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
             {
                 allowedToJump = true;
                 jumpTime = 0.0f;
+                // Show Jump Dust Effect:
+                GameObject jumpDust = Instantiate(JumpDustPrefab);
+                jumpDust.transform.position = transform.position;
+                jumpDust.GetComponentInChildren<Renderer>().sortingLayerName = spriterender.sortingLayerName;
             }
             anim.SetBool("startJump", true);
         } else {

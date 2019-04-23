@@ -63,6 +63,8 @@ MonoBehaviour:
   maxWalkSpeed: 5
   walkForce: 40
   jumpMode: 0
+  JumpDustPrefab: {fileID: 966177266379546430, guid: 9d04c6c7d217b490fb04c23ac0b484db,
+    type: 3}
   maxJumpTime: 2
   jump_force: 1200
   jump_offset: 0
