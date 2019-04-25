@@ -50,7 +50,7 @@ public class InteractorButton : MonoBehaviour, IInteractionActions {
         startYpos = transform.position.y;
     }
     public void OnInteract(InputAction.CallbackContext context) {
-        if (context.performed) {
+        if (context.performed && enabled) {
             foreach (GameObject go in inTrigger) {
                 // If no tag is specified or the object's tag matches the specified tag.
                 if (string.IsNullOrEmpty(objectTag) || go.tag == objectTag) {

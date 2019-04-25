@@ -27,10 +27,10 @@ public class Dialogue : MonoBehaviour, IDialogActions {
     private float lastUpdateTime;
     private float currentScrollRate;
 
-    private int phraseIndex = 0;
-    private int charIndex = -1;
-    private bool awaitingUser = false;
-    private bool skipToEndOfPhrase = false;
+    private int phraseIndex;
+    private int charIndex;
+    private bool awaitingUser;
+    private bool skipToEndOfPhrase;
 
     public void Awake() {
         playerInput.Dialog.SetCallbacks(this);
@@ -44,14 +44,16 @@ public class Dialogue : MonoBehaviour, IDialogActions {
         dialogueEncounter = de;
         lastUpdateTime = Time.time;
         currentScrollRate = NORMAL_SCROLL_RATE;
+        phraseIndex = 0;
+        charIndex = -1;
+        awaitingUser = false;
+        skipToEndOfPhrase = false;
     }
     public void EndDialog() {
         player.ExitUIOrDialog();
         dialogueEncounter.DialogueFinished();
-        phraseIndex = 0;
-        awaitingUser = false; 
-        skipToEndOfPhrase = false;
         dialogueBox.SetActive(false);
+        text.text = "";
     }
     
     // Input action: user pressed space, "A" (gamepad), etc.
