@@ -52,11 +52,8 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
 
     private Vector3 startPoint;
     private SpriteRenderer spriterender;
-    private BoxCollider2D playerCollider;
-    private BoxCollider2D playerTopTrigger;
+    private CapsuleCollider2D playerCollider;
     private BoxCollider2D playerBottomTrigger;
-    private BoxCollider2D playerRightTrigger;
-    private BoxCollider2D playerLeftTrigger;
 
     private float h; //stores the horizontal axis input value
     //private float prevh; //stores the previous horizontal axis reading
@@ -95,11 +92,9 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         startPoint = this.transform.position;
         body = GetComponent<Rigidbody2D>();
         spriterender = GetComponent<SpriteRenderer>();
-        playerCollider = GetComponents<BoxCollider2D>()[0];
-        playerTopTrigger = GetComponents<BoxCollider2D>()[1];
-        playerBottomTrigger = GetComponents<BoxCollider2D>()[2];
-        playerRightTrigger = GetComponents<BoxCollider2D>()[3];
-        playerLeftTrigger = GetComponents<BoxCollider2D>()[4];
+        playerCollider = GetComponents<CapsuleCollider2D>()[0];
+        playerBottomTrigger = GetComponents<BoxCollider2D>()[0];
+        Debug.Log(playerBottomTrigger.isTrigger);
         anim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene().name;
     }
@@ -305,16 +300,16 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
                     touchingWall = 0;
                     hangingOnLedge = false;
                 }
-                else if (playerLeftTrigger.IsTouching(objCollider))
-                {
-                    touchingWall = 1;
-                    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
-                }
-                else if (playerRightTrigger.IsTouching(objCollider))
-                {
-                    touchingWall = -1;
-                    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
-                }
+                //else if (playerLeftTrigger.IsTouching(objCollider))
+                //{
+                //    touchingWall = 1;
+                //    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
+                //}
+                //else if (playerRightTrigger.IsTouching(objCollider))
+                //{
+                //    touchingWall = -1;
+                //    hangingOnLedge = !playerTopTrigger.IsTouching(otherCol);
+                //}
             }
         }
     }
