@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/secondLayerPuzzle.unity
     guid: 17d555a9bf941094e94115540ac9f2e8
   - enabled: 1
+    path: Assets/Scenes/Levels/[tempname] LayerMess.unity
+    guid: f9ebb8acbe23644cf85fd0807d1d8fa3
+  - enabled: 1
     path: Assets/Scenes/Menus/End Menu.unity
     guid: d416b22350f224398a704adbd1ab5dbe
   m_configObjects:
