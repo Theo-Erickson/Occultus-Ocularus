@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * Script to move platforms in any of these three ways:
@@ -25,8 +26,13 @@ public class MovingPlatform : MonoBehaviour
     public MvDir direction;
     [Tooltip("If set to true, platform will start moving on its own. If false, platform will only move upon StartMoving(), Extend(), Retract(), or ExtendOrRetract().")]
     public bool moveOnStart;
+    [Tooltip("If set to true, door will start as open and close when extended instead of opening when extended")]
+    public bool startWithDoorOpen;
     [Tooltip("If moving continuously, will pause at each end for this many seconds")]
     public float pauseTime;
+
+    public UnityEvent DoorTraversedL;
+    public UnityEvent DoorTraversedR;
 
     private bool move;
     private bool extendAndRetract;
@@ -37,6 +43,7 @@ public class MovingPlatform : MonoBehaviour
     private float displacement;
     private bool forwards;
     private Vector3 originalPosition;
+    private BoxCollider2D doorOpening;
 
     private float timePaused;
     private bool paused;
@@ -55,35 +62,32 @@ public class MovingPlatform : MonoBehaviour
             inverted = true;
 
         // Set front and back bounds for movement
-        if (!inverted)
-        {
-            if (direction == MvDir.horizontal)
-            {
+        if (!inverted) {
+            if (direction == MvDir.horizontal) {
                 back = originalPosition.x;
                 front = originalPosition.x + distance;
             }
-            else if (direction == MvDir.vertical)
-            {
+            else if (direction == MvDir.vertical) {
                 back = originalPosition.y;
                 front = originalPosition.y + distance;
             }
             extend = false;
         }
-        else if (inverted)
-        {
-            if (direction == MvDir.horizontal)
-            {
+        else if (inverted) {
+            if (direction == MvDir.horizontal) {
                 back = originalPosition.x + distance;
                 front = originalPosition.x;
             }
-            else if (direction == MvDir.vertical)
-            {
+            else if (direction == MvDir.vertical) {
                 back = originalPosition.y + distance;
                 front = originalPosition.y;
             }
             extend = true;
         }
 
+        doorOpening = gameObject.AddComponent<BoxCollider2D>();
+        doorOpening.isTrigger = true;
+        doorOpening.size = new Vector2(0.5f, 1);
     }
 
     void FixedUpdate()
@@ -91,22 +95,19 @@ public class MovingPlatform : MonoBehaviour
         if (paused)
             PauseMoving();
 
-        if (move && Mathf.Abs(distance) > 0)
-        {
-
-            if (direction == MvDir.horizontal)
-            {
+        if (move && Mathf.Abs(distance) > 0) {
+            if (direction == MvDir.horizontal) {
                 // If at bound, turn around or stop if in extendAndRetract mode
-                if (transform.position.x >= front)
-                {
+                if (transform.position.x > front - displacement + .001f) {
+                    transform.position = new Vector3(front, transform.position.y, transform.position.z);
                     if (pauseTime > 0 && canPause)
                         PauseMoving();
                     forwards = false;
                     if (extendAndRetract && extend)
                         move = false;
                 }
-                else if (transform.position.x <= back)
-                {
+                else if (transform.position.x < back + displacement - .001f) {
+                    transform.position = new Vector3(back, transform.position.y, transform.position.z);
                     if (pauseTime > 0 && canPause)
                         PauseMoving();
                     forwards = true;
@@ -115,8 +116,7 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // If going wrong direction, turn around
-                if (extendAndRetract)
-                {
+                if (extendAndRetract) {
                     if (!inverted && !forwards && extend)
                         forwards = true;
                     else if (inverted && forwards && !extend)
@@ -124,19 +124,16 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // Move right or left
-                if (move)
-                {
+                if (move) {
                     if (!extendAndRetract)
                         canPause = true;
-                    if (!inverted)
-                    {
+                    if (!inverted) {
                         if (forwards && (!extendAndRetract || extend))
                             transform.position = new Vector3(transform.position.x + displacement, transform.position.y, transform.position.z);
                         else
                             transform.position = new Vector3(transform.position.x - displacement, transform.position.y, transform.position.z);
                     }
-                    else
-                    {
+                    else {
                         if (!forwards && (!extendAndRetract || !extend))
                             transform.position = new Vector3(transform.position.x - displacement, transform.position.y, transform.position.z);
                         else
@@ -148,19 +145,18 @@ public class MovingPlatform : MonoBehaviour
                     }
                 }
             }
-            else if (direction == MvDir.vertical)
-            {
+            else if (direction == MvDir.vertical) {
                 // If at bound, turn around or stop if in extendAndRetract mode
-                if (transform.position.y >= front)
-                {
+                if (transform.position.y > front - displacement + .001f) {
+                    transform.position = new Vector3(transform.position.x, front, transform.position.z);
                     if (pauseTime > 0 && canPause)
                         PauseMoving();
                     forwards = false;
                     if (extendAndRetract && extend)
                         move = false;
                 }
-                else if (transform.position.y <= back)
-                {
+                else if (transform.position.y < back + displacement - .001f) {
+                    transform.position = new Vector3(transform.position.x, back, transform.position.z);
                     if (pauseTime > 0 && canPause)
                         PauseMoving();
                     forwards = true;
@@ -169,8 +165,7 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // If going wrong direction, turn around
-                if (extendAndRetract)
-                {
+                if (extendAndRetract) {
                     if (!inverted && !forwards && extend)
                         forwards = true;
                     else if (inverted && forwards && !extend)
@@ -178,19 +173,16 @@ public class MovingPlatform : MonoBehaviour
                 }
 
                 // Move up or down
-                if (move)
-                {
+                if (move) {
                     if (!extendAndRetract)
                         canPause = true;
-                    if (!inverted)
-                    {
+                    if (!inverted) {
                         if (forwards && (!extendAndRetract || extend))
                             transform.position = new Vector3(transform.position.x, transform.position.y + displacement, transform.position.z);
                         else
                             transform.position = new Vector3(transform.position.x, transform.position.y - displacement, transform.position.z);
                     }
-                    else
-                    {
+                    else {
                         if (!forwards && (!extendAndRetract || !extend))
                             transform.position = new Vector3(transform.position.x, transform.position.y - displacement, transform.position.z);
                         else
@@ -203,19 +195,26 @@ public class MovingPlatform : MonoBehaviour
                 }
             }
         }
+        if (!startWithDoorOpen)
+            doorOpening.offset = new Vector2((originalPosition.x - transform.position.x) / distance, (originalPosition.y - transform.position.y) / distance);
+        else {
+            if (direction == MvDir.horizontal)
+                doorOpening.offset = new Vector2((originalPosition.x + distance - transform.position.x) / distance, (originalPosition.y - transform.position.y) / distance);
+            if (direction == MvDir.vertical)
+                doorOpening.offset = new Vector2((originalPosition.x - transform.position.x) / distance, (originalPosition.y + distance - transform.position.y) / distance);
+        }
+            
     }
 
     private void PauseMoving()
     {
-        if (timePaused < pauseTime)
-        {
+        if (timePaused < pauseTime) {
             paused = true;
             extendAndRetract = true;
             move = false;
             timePaused += Time.deltaTime;
         }
-        else
-        {
+        else {
             paused = false;
             extendAndRetract = false;
             timePaused = 0;
@@ -276,7 +275,8 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Called by player class when they jump or walk onto platform: Makes player stick to platform when they're standing on it.
-    public void StickPlayer(GameObject player) {
+    public void StickPlayer(GameObject player)
+    {
         collidingPlayer = player;
         if (direction == MvDir.vertical) {
             platformPosition = transform.position.y;
@@ -287,7 +287,16 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Called by player class when they jump or walk off of platform: Unsticks player from platform
-    public void UnstickPlayer() {
+    public void UnstickPlayer()
+    {
         collidingPlayer = null;
+    }
+
+    public void OnTriggerExit2D(Collider2D collision) {
+        if (collision.transform.position.x - transform.position.x > 0)
+            DoorTraversedL.Invoke();
+        else
+            DoorTraversedR.Invoke();
+
     }
 }
