@@ -11032,7 +11032,7 @@ Tilemap:
   - m_RefCount: 1122
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
   m_Origin: {x: -29, y: -23, z: 0}
   m_Size: {x: 118, y: 46, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -11512,7 +11512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &1573998212 stripped
 MonoBehaviour:
@@ -11770,7 +11770,7 @@ Transform:
   m_Children:
   - {fileID: 516656010}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1766569439
 GameObject:
