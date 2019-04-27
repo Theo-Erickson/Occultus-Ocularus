@@ -38,8 +38,7 @@ public class PlayerLayerSwitcher : MonoBehaviour, ILayerSwitchingActions
         if (destinationLayerNum != currentPlayerLayer) {
             overlapLayerMask = LayerMask.GetMask(LayerMask.LayerToName(destinationLayerNum));
             // detects when the player will overlap/ collide with the layer they are attempting to switch to and returns (exits function without doing anything);
-            Collider2D targetLayerCollisions = Physics2D.OverlapCircle(player.transform.position, (float)0.1, overlapLayerMask);
-            if (targetLayerCollisions != null && targetLayerCollisions.isTrigger == false)
+            if (Physics2D.OverlapCircle(player.transform.position, (float)0.1, overlapLayerMask) != null)
             {
                 collisionPlayerFeedbackHappening = true;
                 if (destinationLayerNum == foregroundLayer.value) {

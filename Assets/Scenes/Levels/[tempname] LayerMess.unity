@@ -1896,22 +1896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771ecdbc37def47bd8a6e3c0e5b5b8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: -6
+  distance: 6
   speed: 6
   direction: 1
   moveOnStart: 0
-  startWithDoorOpen: 0
   pauseTime: 0
-  DoorTraversedL:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  DoorTraversedR:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1024348382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5246384068809405755, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
@@ -4543,16 +4532,6 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 949841991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: degrees
@@ -4577,6 +4556,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxReflections
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -4708,16 +4697,6 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 949841991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: degrees
@@ -4742,6 +4721,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxReflections
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -5647,7 +5636,7 @@ PrefabInstance:
     - target: {fileID: 4944738732274307307, guid: 14fc83d9a808ff449963b3b174086fa8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.5
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 4944738732274307307, guid: 14fc83d9a808ff449963b3b174086fa8,
         type: 3}

@@ -18149,18 +18149,7 @@ MonoBehaviour:
   speed: 3
   direction: 0
   moveOnStart: 0
-  startWithDoorOpen: 0
   pauseTime: 0
-  DoorTraversedL:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  DoorTraversedR:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1957383075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18620,7 +18609,7 @@ PrefabInstance:
     - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
       propertyPath: nextScene
-      value: Outside Mall+TTD, MPT
+      value: Outside Mall
       objectReference: {fileID: 0}
     - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
