@@ -107,7 +107,7 @@ public class PlayerLayerSwitcher : MonoBehaviour, ILayerSwitchingActions
         currentPlayerLayer = foregroundLayer.value;
         foregroundSortingLayer = foreground.GetComponentInChildren<Renderer>().sortingLayerID;
         midgroundSortingLayer = midground.GetComponentInChildren<Renderer>().sortingLayerID;
-        Debug.Log(foregroundSortingLayer);
+        // Debug.Log(foregroundSortingLayer);
 
 
 

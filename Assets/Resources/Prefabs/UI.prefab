@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Main Menu
-  fadeOutUIImage: {fileID: 0}
+  fadeOutUIImage: {fileID: 8837726542047142419}
   fadeSpeed: 0.8
   player: {fileID: 0}
 --- !u!1 &1453334386754742214

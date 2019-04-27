@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         spriterender = GetComponent<SpriteRenderer>();
         playerCollider = GetComponents<CapsuleCollider2D>()[0];
         playerBottomTrigger = GetComponents<BoxCollider2D>()[0];
-        Debug.Log(playerBottomTrigger.isTrigger);
+        // Debug.Log(playerBottomTrigger.isTrigger);
         anim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene().name;
     }
