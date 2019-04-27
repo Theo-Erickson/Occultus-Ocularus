@@ -1579,7 +1579,18 @@ MonoBehaviour:
   speed: 6
   direction: 1
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &141476729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77481,7 +77492,18 @@ MonoBehaviour:
   speed: 6
   direction: 1
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &567398458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
@@ -81506,6 +81528,11 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: degrees
@@ -81530,11 +81557,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxReflections
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -83224,7 +83246,18 @@ MonoBehaviour:
   speed: 6
   direction: 0
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &984007727
 GameObject:
   m_ObjectHideFlags: 0
@@ -98010,7 +98043,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 949841991
   m_SortingLayer: 3
-  m_SortingOrder: 6
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 66c4c6dae272f42f7bb0769913fcb12c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
