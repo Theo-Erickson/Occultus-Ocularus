@@ -649,6 +649,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
       propertyPath: distance
       value: 3
       objectReference: {fileID: 0}
@@ -657,6 +667,66 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1570228217}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFixedCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Camera, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1128202935}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1570228217}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFixedCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Camera, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedR.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1128202935}
     - target: {fileID: 7686641126589058698, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: m_Color.b
@@ -1579,7 +1649,18 @@ MonoBehaviour:
   speed: 6
   direction: 1
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &141476729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77481,7 +77562,18 @@ MonoBehaviour:
   speed: 6
   direction: 1
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &567398458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5847541926919599191, guid: 9f183ff4a8983614985912e5a718ecff,
@@ -83224,7 +83316,18 @@ MonoBehaviour:
   speed: 6
   direction: 0
   moveOnStart: 0
+  startWithDoorOpen: 0
   pauseTime: 0
+  DoorTraversedL:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DoorTraversedR:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &984007727
 GameObject:
   m_ObjectHideFlags: 0
@@ -86851,6 +86954,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
       propertyPath: distance
       value: -3
       objectReference: {fileID: 0}
@@ -86858,6 +86966,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
+        type: 3}
+      propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7686641126589058698, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
