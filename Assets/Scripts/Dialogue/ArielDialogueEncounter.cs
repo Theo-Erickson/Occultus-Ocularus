@@ -7,6 +7,8 @@ public class ArielDialogueEncounter : MonoBehaviour, IDialogueEncounter
     public TextAsset dialogueText;
     public Dialogue dialogueSetup;
 
+
+
     public void Talk()
     {
         Dialogue dialogueInstance = dialogueSetup.ActivateDialogueBox();
