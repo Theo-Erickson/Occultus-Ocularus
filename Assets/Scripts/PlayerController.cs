@@ -183,6 +183,18 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         if (allowResetting && context.performed) {
             ResetPlayer();
         }
+
+        // Quick hack for level restarting without using UI onscreen button
+        else {
+            LevelTransition[] lta = FindObjectsOfType<LevelTransition>();
+            foreach (LevelTransition lt in lta) {
+                if (lt.gameObject.name.Equals("RestartButton")) {
+                    lt.FadeLoadScene();
+                }
+            }
+            FindObjectOfType<PlayStats>().RestartGame();
+        }
+
     }
     public void OnToggleFlying(InputAction.CallbackContext context) {
         // Shift between flying and grounded modes
