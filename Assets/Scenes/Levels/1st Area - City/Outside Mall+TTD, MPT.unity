@@ -4864,6 +4864,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
       propertyPath: areaCamera
       value: 
       objectReference: {fileID: 56355499}
@@ -4871,6 +4876,32 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraTriggerBehavior
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZoomToPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -108550,12 +108581,12 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.138
+      value: 34.182
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.656
+      value: 19.766
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -108605,12 +108636,12 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.912504
+      value: 18.002068
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 14.393913
+      value: 18.179512
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -126082,7 +126113,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: cameraTriggerBehavior
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -127115,6 +127146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
       propertyPath: areaCamera
       value: 
       objectReference: {fileID: 1585965106}
@@ -127122,6 +127158,16 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraTriggerBehavior
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -133418,7 +133464,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: cameraTriggerBehavior
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -142921,7 +142967,7 @@ PrefabInstance:
     - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: allowFlying
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
