@@ -40,9 +40,15 @@ public class LevelTransition : MonoBehaviour
         StartCoroutine(FadeOut(sr));
     }
 
+    public void FadeAppear(SpriteRenderer sr) {
+        spriteRenderer = sr;
+        sr.enabled = true;
+        print(sr);
+        StartCoroutine(FadeIn(sr));
+    }
+
     private IEnumerator FadeOut(SpriteRenderer sr)
     {
-
         if (!fadeStarted)
         {
             fadeStartValue = 1;
@@ -57,10 +63,24 @@ public class LevelTransition : MonoBehaviour
         }
         sr.enabled = false;
         fadeStarted = false;
-
     }
 
-private IEnumerator Fade(FadeDirection fadeDirection)
+    private IEnumerator FadeIn(SpriteRenderer sr)
+    {
+        if (!fadeStarted) {
+            fadeStartValue = 0;
+            fadeEndValue = 1;
+        }
+        fadeStarted = true;
+
+        while (fadeStartValue <= fadeEndValue) {
+            SetTransparencySR(FadeDirection.In);
+            yield return null;
+        }
+        fadeStarted = false;
+    }
+
+    private IEnumerator Fade(FadeDirection fadeDirection)
     {
 
         if (!fadeStarted)

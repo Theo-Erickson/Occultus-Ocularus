@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArielDialogueEncounter : MonoBehaviour, IDialogueEncounter
+public class ArielDialogueEncounter2 : MonoBehaviour, IDialogueEncounter
 {
     public TextAsset dialogueText;
     public Dialogue dialogueSetup;
 
-
+    public SpriteRenderer samson;
+    public LevelTransition fadeEffect;
 
     public void Talk()
     {
@@ -18,7 +19,12 @@ public class ArielDialogueEncounter : MonoBehaviour, IDialogueEncounter
 
     public void DialogueAction(string action)
     {
-        Debug.Log("DialogAction: " + action);
+        if (action.Equals("Samson appears"))
+            fadeEffect.FadeAppear(samson);
+        else if (action.Equals("Samson disappears"))
+            fadeEffect.FadeAway(samson);
+        else
+            Debug.Log("DialogAction: " + action);
     }
 
     public void DialogueFinished() {}
