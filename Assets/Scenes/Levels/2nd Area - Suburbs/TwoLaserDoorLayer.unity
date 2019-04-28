@@ -1444,11 +1444,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5246384068809405749, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405750, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: m_Enabled
@@ -1519,11 +1514,6 @@ PrefabInstance:
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1319544400473933594, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405748, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: m_Color.r
@@ -1548,6 +1538,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405749, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319544400473933594, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cf8c3d51d3e9cf418c883adfebc4e31, type: 3}
@@ -5535,6 +5535,16 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: degrees
@@ -5559,16 +5569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxReflections
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 949841991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -5700,6 +5700,16 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4077298369169677312, guid: d51fec088e81f514e845fea0ffdd9878,
         type: 3}
       propertyPath: degrees
@@ -5724,16 +5734,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxReflections
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 949841991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077298369169677314, guid: d51fec088e81f514e845fea0ffdd9878,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fec088e81f514e845fea0ffdd9878, type: 3}
@@ -5760,21 +5760,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelTransition
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 185139562}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: fadeOutUIImage
-      value: 
-      objectReference: {fileID: 1557932754}
-    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: nextScene
-      value: End Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3929783599155801773, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
@@ -5881,16 +5866,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632774, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 949841991
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546765133345632774, guid: 1db867e681625471eb1971ad79647fae,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3546765133345632793, guid: 1db867e681625471eb1971ad79647fae,
         type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
@@ -5925,6 +5900,31 @@ PrefabInstance:
         type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
       value: TwoLaserDoorLayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 185139562}
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: fadeOutUIImage
+      value: 
+      objectReference: {fileID: 1557932754}
+    - target: {fileID: 3546765133345632795, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: nextScene
+      value: End Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632774, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 949841991
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546765133345632774, guid: 1db867e681625471eb1971ad79647fae,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db867e681625471eb1971ad79647fae, type: 3}
@@ -8952,7 +8952,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f66b44bbee23abf4caffa6132445dd58, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 246c2b41e70ad24449c78a9e1ec80ce8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -9063,6 +9063,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
+        type: 3}
+      propertyPath: allowResetting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
+        type: 3}
+      propertyPath: allowFlying
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4643587371059380, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9141,16 +9151,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
-      propertyPath: allowResetting
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
-        type: 3}
-      propertyPath: allowFlying
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2044585435650574375, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}

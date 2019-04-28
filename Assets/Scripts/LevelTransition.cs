@@ -129,6 +129,7 @@ public class LevelTransition : MonoBehaviour
 
     IEnumerator LoadScene()
     {
+        Debug.Log("transition");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);
 
         while (!asyncLoad.isDone)
