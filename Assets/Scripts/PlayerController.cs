@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         // Sets animation variables
         anim.SetFloat("speed", Mathf.Abs(body.velocity.x));
         anim.SetBool("grounded", touchingGround);
+        anim.SetFloat("vertical velocity", body.velocity.y);
     }
     public void EnterUIOrDialog() {
         PlayerInputModel.instance.enterUI();
@@ -328,16 +329,16 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
             float desiredSpeed = 2 / (0.5f + Mathf.Pow(5, 20 * (jumpTime + jump_shift))) + jump_offset;
             //float desiredSpeed = 1 / Mathf.Pow(jumpTime-1,10)-0.5f;
             desiredSpeed *= jump_force;
-            float currentSpeed = this.GetComponent<Rigidbody2D>().velocity.y;
+            float currentSpeed = body.velocity.y;
             float dif = desiredSpeed - currentSpeed;
             dif -= Physics.gravity.y;
 
-            body.AddForce(dif * this.GetComponent<Rigidbody2D>().mass * Vector3.up * Time.deltaTime);
+            body.AddForce(dif * body.mass * Vector3.up * Time.deltaTime);
             /*
             //coef = 2 / (1 + Mathf.Pow(50, (jumpTime + 1)));
             //coef = Mathf.Sqrt(coef);
             coef = 1 / Mathf.Pow(jumpTime+1, 2) + 0.3f;
-            coef*=this.GetComponent<Rigidbody2D>().mass;
+            coef*=body.mass;
             if (jumpTime <= 0.3f)
             {
                 coef = 1;
@@ -350,9 +351,9 @@ public class PlayerController : MonoBehaviour, IPlayerActions {
         else if (!touchingGround)
         {
             allowedToJump = false;
-            if (this.GetComponent<Rigidbody2D>().velocity.y >= 0)
+            if (body.velocity.y >= 0)
             {
-                body.AddForce(jump_forced_decel * this.GetComponent<Rigidbody2D>().mass * Vector3.up);
+                body.AddForce(jump_forced_decel * body.mass * Vector3.up);
             }
         }
     }
