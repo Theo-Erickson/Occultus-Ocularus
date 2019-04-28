@@ -131,6 +131,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &9171000608679992907
@@ -183,8 +194,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 11.6}
-  m_SizeDelta: {x: 237, y: 212.6}
+  m_AnchoredPosition: {x: 46.9, y: 2.005}
+  m_SizeDelta: {x: 330.9, y: 231.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &48326238468614641
 CanvasRenderer:
@@ -227,10 +238,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "<size=20>Detailed Controls</size>\nMove: <b>A, D</b>\nJump: <b>Space</b>\nInteract:
-    <b>E</b>\nShift layers: <b>Left shift</b>\n\nZoom camera: <b>1</b>\nRadius follow
-    camera: <b>2</b>\nSmooth follow camera: <b>3</b> \nFree camera: <b>4</b>\n\nHUD
-    mode: <b>Tab</b>\n<size=10>Available modes: minimal, detailed, off</size>\n"
+  m_Text: "<size=20>Detailed Controls</size>\nMove: <b>A, D</b>  (Gamepad: <b>Left
+    Stick</b>)\nJump: <b>Space</b>  (Gamepad: <b>A</b>)\nInteract: <b>E</b>       (Gamepad:
+    <b>X</b>)\nShift layers: <b>Left shift</b>  (<b>LT, B</b>)\n\nZoom camera: <b>1</b>
+    (<b>RT</b>)\nRadius follow camera: <b>2</b>\nSmooth follow camera: <b>3</b> \nFree
+    camera: <b>4</b>\n\nHUD mode: <b>Tab</b>\n<size=10>Available modes: minimal, detailed,
+    off</size>\n"
 --- !u!1 &1880057468518725066
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8491513713815107291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -309,8 +322,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Move:\t <size=18><b>A, D</b></size>\t\tJump:\t <size=18><b>Space</b></size>\t\tInteract:\t
-    <size=18><b>E</b></size>\t\t"
+  m_Text: "Move:   <size=18><b>A, D</b></size>    Jump:  <size=18><b>Space</b></size>
+    \   Interact: <size=18><b>E</b></size>    Switch Camera: <size=18><b>1</b></size>
+    \    Switch Layers: <b>Left Shift</b>   \nMove:   <size=18><b>LS</b></size>       Jump:
+    \ <size=18><b>A</b></size>             Interact:  <size=18><b>X</b></size>   Switch
+    Camera: <size=18><b>RT</b></size>     Switch Layers: <b>B, LT</B>      "
 --- !u!1 &2202917112584409219
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.35998535, y: -7.8200073}
+  m_AnchoredPosition: {x: -0.41003418, y: -7.8200684}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7133569522484499434
@@ -790,7 +806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8170532486456144647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5014794575961611490
 RectTransform:
   m_ObjectHideFlags: 0
