@@ -1737,7 +1737,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -1822,7 +1822,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -1833,11 +1833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1570228217}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -1977,7 +1977,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -4865,7 +4865,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -105839,7 +105839,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -105894,7 +105894,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -105905,11 +105905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 444278442}
+      objectReference: {fileID: 1570228217}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -105984,7 +105984,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -106679,7 +106679,7 @@ PrefabInstance:
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
@@ -106725,15 +106725,41 @@ PrefabInstance:
         type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ExtendOrRetract
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
         type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1570228217}
+    - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PreviewFixedCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246384068809405751, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1319544400473933594, guid: 3cf8c3d51d3e9cf418c883adfebc4e31,
@@ -108029,7 +108055,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -108175,16 +108201,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1570228217}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: 
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -108700,7 +108726,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.182
+      value: 34.15
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -108755,12 +108781,17 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 18.002068
+      value: 17.93006
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 18.179512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -108771,6 +108802,32 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraTriggerBehavior
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZoomToPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -112042,7 +112099,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -112138,11 +112195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1570228217}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: DoorUp
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -119603,7 +119660,7 @@ PrefabInstance:
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
@@ -119614,11 +119671,12 @@ PrefabInstance:
         type: 3}
       propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 295744757}
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CheckpointReached
+      value: PreviewFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
@@ -119628,7 +119686,7 @@ PrefabInstance:
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
       propertyPath: DoorTraversedL.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: OutsideMall2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4471179300471207632, guid: 41bae0e185c634c9a9372b78b46df184,
         type: 3}
@@ -121716,7 +121774,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -121821,6 +121879,31 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1570228217}
+    - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PreviewFixedCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
+        type: 3}
+      propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599185, guid: 9f183ff4a8983614985912e5a718ecff,
@@ -126320,12 +126403,12 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.56
+      value: 67.999
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.88
+      value: 22.296
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -126375,12 +126458,17 @@ PrefabInstance:
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 45.085114
+      value: 42.199665
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464103, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 24.418755
+      value: 23.588518
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -126391,6 +126479,32 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraTriggerBehavior
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZoomToPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -127424,7 +127538,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
@@ -127445,6 +127559,22 @@ PrefabInstance:
         type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2426558130871322744, guid: ad3293c9fee4045c9a81244841ff353a,
+        type: 3}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZoomToPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -132652,7 +132782,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -132702,7 +132832,7 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -132717,12 +132847,12 @@ PrefabInstance:
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetFixedCamera
+      value: ZoomToFixedCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Camera, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599184, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
@@ -132798,7 +132928,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1995583458}
+      objectReference: {fileID: 0}
     - target: {fileID: 5847541926919599185, guid: 9f183ff4a8983614985912e5a718ecff,
         type: 3}
       propertyPath: m_Color.r
@@ -133820,7 +133950,7 @@ PrefabInstance:
     - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
         type: 3}
       propertyPath: cameraTriggerBehavior
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
@@ -139094,6 +139224,11 @@ PrefabInstance:
       propertyPath: areaCamera
       value: 
       objectReference: {fileID: 433715893}
+    - target: {fileID: 8100220514163464088, guid: 75cb00007ed734736a32636958cbe243,
+        type: 3}
+      propertyPath: cameraTriggerBehavior
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb00007ed734736a32636958cbe243, type: 3}
 --- !u!4 &1885722817 stripped
@@ -143252,7 +143387,7 @@ PrefabInstance:
     - target: {fileID: 114329478392616022, guid: b60b13e4510963741b833fd8f53ff0dc,
         type: 3}
       propertyPath: allowFlying
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b60b13e4510963741b833fd8f53ff0dc, type: 3}

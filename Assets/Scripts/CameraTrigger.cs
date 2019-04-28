@@ -13,9 +13,12 @@ public class CameraTrigger : MonoBehaviour {
         PassiveEnableFixedCamera,
         JumpToFixedCameraOnFirstInteraction,
         PreviewFixedCameraOnFirstInteraction,
+        AlwaysPreviewCamera,
         AlwaysZoomToFixedCamera
     }
     public CameraTriggerBehavior cameraTriggerBehavior;
+    public bool refocusOnPlayerOnTriggerExit = true;
+    
     private bool hasBeenTriggeredByPlayer = false;
     private CameraScript activeCamera;
     
@@ -42,9 +45,11 @@ public class CameraTrigger : MonoBehaviour {
                 activeCamera.SetFixedCamera(areaCamera);
                 if (cameraTriggerBehavior != CameraTriggerBehavior.PassiveEnableFixedCamera &&
                     (cameraTriggerBehavior == CameraTriggerBehavior.AlwaysZoomToFixedCamera || 
+                     cameraTriggerBehavior == CameraTriggerBehavior.AlwaysPreviewCamera ||
                      !hasBeenTriggeredByPlayer))
                 {
-                    if (cameraTriggerBehavior == CameraTriggerBehavior.PreviewFixedCameraOnFirstInteraction) {
+                    if (cameraTriggerBehavior == CameraTriggerBehavior.PreviewFixedCameraOnFirstInteraction ||
+                        cameraTriggerBehavior == CameraTriggerBehavior.AlwaysPreviewCamera) {
                         activeCamera.PreviewFixedCamera();
                     } else {
                         activeCamera.ZoomToFixedCamera();
@@ -57,7 +62,7 @@ public class CameraTrigger : MonoBehaviour {
     }
     void OnTriggerExit2D(Collider2D other) {
         if (other.GetComponent<PlayerController>() != null) {
-            if (cameraTriggerBehavior == CameraTriggerBehavior.AlwaysZoomToFixedCamera) {
+            if (cameraTriggerBehavior == CameraTriggerBehavior.AlwaysZoomToFixedCamera || refocusOnPlayerOnTriggerExit) {
                 activeCamera.ZoomToPlayer();   
             }
             onTriggerExit.Invoke();

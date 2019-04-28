@@ -116,3 +116,4 @@ MonoBehaviour:
   freeMoveSpeed: 0.2
   DistFromPlayer: {x: 0, y: 0}
   MaxDistFromPlayer: {x: 10, y: 10}
+  cameraPreviewTime: 1.8
