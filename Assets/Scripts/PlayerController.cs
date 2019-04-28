@@ -8,7 +8,7 @@ using UnityEngine.Experimental.Input;
 using UnityEngine.Experimental.Input.Plugins.PlayerInput;
 using Random = UnityEngine.Random;
 
-public class PlayerController : MonoBehaviour, IPlayerActions {
+public class PlayerController : MonoBehaviour, IPlayerActions {    
     [SerializeField] public PlayerInputMapping playerInput;
     
     [Header("Movement")]

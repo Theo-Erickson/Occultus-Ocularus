@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Experimental.Input;
 
@@ -83,6 +84,12 @@ public class CameraScript : MonoBehaviour, ICameraActions {
 
     private float destFov;
     int lerpTimer;
+
+    [Tooltip("Time delay between zooming to the fixed camera and back to whatever it was previously")]
+    public float cameraPreviewTime = 1.0f;
+
+    private bool isPreviewingCamera = false;
+    private CameraMode previewPreviousCameraMode;
 
     void Awake() {
         playerInput.Camera.SetCallbacks(this);
@@ -199,41 +206,31 @@ public class CameraScript : MonoBehaviour, ICameraActions {
     // Toggles camera. Activated by 't' or 'tab' (keyboard) or right trigger (gamepad)
     public void OnToggleCamera(InputAction.CallbackContext context) {
         if (context.performed) {
-            if (mode != CameraMode.Fixed && fixedCamera != null) {
-                mode = CameraMode.Fixed;
-                DistFromPlayer = Vector2.zero;
-                playerScript.canMove = true;
-            } else {
-                mode = CameraMode.FollowPlayerSmooth;
-                playerScript.canMove = true;
-            }
+            ToggleFixedCameraMode();
         }
     }
-    
     public void OnSetCameraMode1(InputAction.CallbackContext context) {
-        OnToggleCamera(context);
+        ToggleFixedCameraMode();
     }
 
     public void OnSetCameraMode2(InputAction.CallbackContext context) {
         if (context.performed) {
-            mode = CameraMode.FollowPlayerRadius;
-            DistFromPlayer = Vector2.zero;
-            playerScript.canMove = true;
+            SetCameraMode(CameraMode.FollowPlayerRadius);
         }
     }
 
     public void OnSetCameraMode3(InputAction.CallbackContext context) {
         if (context.performed) {
-            mode = CameraMode.FollowPlayerSmooth;
-            DistFromPlayer = Vector2.zero;
-            playerScript.canMove = true;
+            SetCameraMode(CameraMode.FollowPlayerSmooth);
+//            DistFromPlayer = Vector2.zero;
+//            playerScript.canMove = true;
         }
     }
 
     public void OnSetCameraMode4(InputAction.CallbackContext context) {
         if (context.performed) {
-            mode = CameraMode.FreeCam;
-            playerScript.canMove = false;
+            SetCameraMode(CameraMode.FreeCam);
+//            playerScript.canMove = false;
         }
     }
     
@@ -245,18 +242,62 @@ public class CameraScript : MonoBehaviour, ICameraActions {
     public void SetFixedCamera(Camera camera) {
         fixedCamera = camera;
     }
-    
+    public void SetCameraMode(CameraMode newMode) {
+        if (newMode == CameraMode.Fixed && !fixedCamera) return;
+        if (isPreviewingCamera) {
+            previewPreviousCameraMode = newMode;
+        } else {
+            mode = newMode;
+            if (mode != CameraMode.FreeCam)
+            {
+                DistFromPlayer = Vector2.zero;
+                playerScript.canMove = true;
+            }
+            else
+            {
+                playerScript.canMove = false;
+            }
+        }
+    }
+
+    public void ZoomToFixedCamera() {
+        SetCameraMode(CameraMode.Fixed);
+    }
+    public void ZoomToPlayer() {
+        SetCameraMode(CameraMode.FollowPlayerSmooth);
+    }
+    public void ToggleFixedCameraMode() {
+        SetCameraMode(mode == CameraMode.Fixed ? CameraMode.FollowPlayerSmooth : CameraMode.Fixed);
+    }
+    public void PreviewFixedCamera() {
+        if (!isPreviewingCamera) {
+            StartCoroutine(DoFixedCameraPreview());
+        }
+    }
+    private IEnumerator DoFixedCameraPreview() {
+        if (mode != CameraMode.Fixed)
+        {
+            Debug.Log($"Previewing camera position, returning to {mode} in {cameraPreviewTime} seconds");
+            previewPreviousCameraMode = mode;
+            ZoomToFixedCamera();
+            isPreviewingCamera = true;
+            yield return new WaitForSeconds(cameraPreviewTime);
+            Debug.Log($"Restoring camera mode to {previewPreviousCameraMode}");
+            isPreviewingCamera = false;
+            SetCameraMode(previewPreviousCameraMode);
+        }
+    }
+     
     // UnityEvent: Sets the camera mode from a string (enums are not supported as UnityEvent arguments) :(
     public void SetCameraMode(string newmode)
     {
         if (newmode.Equals("Fixed"))
-            mode = CameraMode.Fixed;
+            SetCameraMode(CameraMode.Fixed);
         else if (newmode.Equals("FollowPlayerSmooth"))
-            mode = CameraMode.FollowPlayerSmooth;
+            SetCameraMode(CameraMode.FollowPlayerSmooth);
     }
     
     // Use to tell the camera where to move to in fixed mode
-    // FIXME: is this still used??
     public void SetDestination(Vector3 destination, float time) {
         t = 0;
         start = transform.position;
@@ -264,7 +305,6 @@ public class CameraScript : MonoBehaviour, ICameraActions {
         this.destination = destination;
     }
     
-    // FIXME: is this still used??
     public void resetPosition(Vector3 destination, float time) {
         t = 0;
         start = transform.position;
