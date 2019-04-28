@@ -682,10 +682,10 @@ MonoBehaviour:
 
     Interact: <b>X</b>
 
-    Shift layers: <b>LT, B</b>
+    Shift layers: <b>B, Left Trigger</b>
 
 
-    Zoom camera: <b>RT</b>
+    Zoom camera: <b>Right Trigger</b>
 
     Radius follow camera: <b>2</b> (on keyboard)
 
@@ -1275,7 +1275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Zoom Camera: <b>RT</b>'
+  m_Text: 'Zoom Camera: <b>Right Trigger</b>'
 --- !u!1 &6287706489482582678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,4 +1994,4 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Move:   <size=18><b>Left Stick</b></size>\t\tJump:  <size=18><b>A</b></size>\t\tInteract:
-    \ <size=18><b>X</b></size>\t\tSwitch Layers: <b>B, LT</B>    \t"
+    \ <size=18><b>X</b></size>\t\tSwitch Layers: <b>B, Left Trigger</B>    \t"
