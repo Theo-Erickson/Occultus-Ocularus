@@ -30,17 +30,29 @@ public class PlayStats : MonoBehaviour
 
         switch (SceneManager.GetActiveScene().name)
         {
-            case "OutsideMall;Rooftops":
+            case "Mall":
+                original = GameObject.Find("PlaytestStatsMain").GetComponent<PlayStats>();
+                break;
+            case "Outside Mall+TTD, MPT":
                 original = GameObject.Find("PlaytestStatsMall").GetComponent<PlayStats>();
                 break;
-            case "EndMenu":
-                original = GameObject.Find("PlaytestStatsRooftops").GetComponent<PlayStats>();
+            case "ArielIntro":
+                original = GameObject.Find("PlaytestStatsOutside").GetComponent<PlayStats>();
                 break;
-            case "MainMenu":
+            case "LayersIntroPuzzles":
+                original = GameObject.Find("PlaytestStatsAriel").GetComponent<PlayStats>();
+                break;
+            case "secondLayerPuzzle":
+                original = GameObject.Find("PlaytestStatsLayers").GetComponent<PlayStats>();
+                break;
+            case "TwoLaserDoorLayer":
+                original = GameObject.Find("PlaytestStatsSecond").GetComponent<PlayStats>();
+                break;
+            case "End Menu":
+                original = GameObject.Find("PlaytestStatsTwo").GetComponent<PlayStats>();
+                break;
+            case "Main Menu":
                 original = GameObject.Find("PlaytestStatsEnd").GetComponent<PlayStats>();
-                break;
-            case "MallIntro":
-                original = GameObject.Find("PlaytestStatsMain").GetComponent<PlayStats>();
                 break;
         }
 
