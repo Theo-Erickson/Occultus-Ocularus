@@ -9,11 +9,15 @@ public class UIDisplay : MonoBehaviour {
 
     private GameObject minCtrls;
     private GameObject detailedCtrls;
-
+    private bool usingGamepadUI = false;
+    
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        UpdateGamepadOrKeyboardControls();
+    }
+    private void UpdateGamepadOrKeyboardControls () {
         // Switch between gamepad and keyboard controls overlays depending on if a controller is connected
+        usingGamepadUI = Gamepad.current != null;
         if (Gamepad.current != null) {
             minCtrls = gameObject.transform.GetChild(1).GetChild(0).gameObject;
             detailedCtrls = gameObject.transform.GetChild(1).GetChild(1).gameObject;
@@ -50,6 +54,9 @@ public class UIDisplay : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (usingGamepadUI != (Gamepad.current != null)) {
+            UpdateGamepadOrKeyboardControls();
+        }
 
         // Switch between minimalist and detailed controls UI when Tab is pressed
         if (Input.GetKeyDown(KeyCode.Tab)) {
