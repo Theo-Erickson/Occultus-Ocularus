@@ -37,10 +37,10 @@ public class LevelTransition : MonoBehaviour
     public void FadeAway(SpriteRenderer sr)
     {
         spriteRenderer = sr;
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeOut(sr));
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(SpriteRenderer sr)
     {
 
         if (!fadeStarted)
@@ -55,7 +55,7 @@ public class LevelTransition : MonoBehaviour
             SetTransparencySR(FadeDirection.Out);
             yield return null;
         }
-        fadeOutUIImage.enabled = false;
+        sr.enabled = false;
         fadeStarted = false;
 
     }

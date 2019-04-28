@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/1st Area - City/Mall.unity
     guid: 5191489791667437a913d9e4f6eabfd0
   - enabled: 1
-    path: Assets/Scenes/Levels/1st Area - City/Outside Mall.unity
-    guid: 457803f5de39c44989dd0347e4fbaaa0
-  - enabled: 1
     path: Assets/Scenes/Levels/1st Area - City/Outside Mall+TTD, MPT.unity
     guid: 4276bf45dfe9042d7bf77d14bf909e34
   - enabled: 1
