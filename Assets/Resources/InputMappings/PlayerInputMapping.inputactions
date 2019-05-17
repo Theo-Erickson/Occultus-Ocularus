@@ -1,0 +1,1088 @@
+{
+    "name": "PlayerInputMapping",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "258d52f5-ae0f-43d3-8e09-05502b20174c",
+            "actions": [
+                {
+                    "name": "Move",
+                    "id": "30e4cc3e-5a6e-48a5-9c6e-e955a1e1b2df",
+                    "expectedControlLayout": "Vector2",
+                    "continuous": true,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Jump",
+                    "id": "7625f790-8811-4e37-8819-fffa11e31ba3",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "ResetPlayer",
+                    "id": "4d89f6b8-ede3-4a81-a996-bf0569c5d603",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "ToggleFlying",
+                    "id": "dfd5576f-04b0-4d07-9f61-1a448e8122e9",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "889fc022-7ce4-40dc-9f6f-7589a8de28f9",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "WASD",
+                    "id": "27f1eca2-a9ea-4cf8-b444-f8e242f7b223",
+                    "path": "Dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "up",
+                    "id": "f5ae665c-22b3-49bd-b087-6b8626e22232",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "down",
+                    "id": "fc64738b-cb93-4072-99b5-78236c90b96b",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "left",
+                    "id": "4f9ac38e-3837-4578-88e7-af1b4ae3f369",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "right",
+                    "id": "a5c58767-3064-4be0-93a9-69ab5bad4ecc",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Arrows",
+                    "id": "27030839-c479-4ba7-a6d1-5d48e47fc186",
+                    "path": "Dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "up",
+                    "id": "c19d9f4b-4f1e-4b28-8213-fe823d3a6252",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "down",
+                    "id": "81f81d41-5087-4469-9f18-386e762b72df",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "left",
+                    "id": "8c90a059-b855-4ab2-800b-68486e03e61e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "right",
+                    "id": "9a1bf5f9-5c44-4443-b2fe-a9d752d91038",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "dpad",
+                    "id": "a25f276c-9e6e-4618-a84c-026f3e02f854",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Up",
+                    "id": "3f5610f3-9e6f-4d06-a87d-6d4aac79294b",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Down",
+                    "id": "e9b6c304-6425-4252-be74-eef02e5bdbdf",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Left",
+                    "id": "529a6faf-9ee9-4961-bf94-b6fade2d6d82",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Right",
+                    "id": "0373b369-2740-4c03-92a8-9ae0d9e436d6",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Move",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "f1c3ec04-e1dd-4812-a187-a5d941b93f27",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Jump",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "45372cff-029c-42d0-b6e0-20fe45cd7fd8",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Jump",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "ef0fc501-6fdc-4e3d-9006-3e4f17f620b5",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Jump",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "7adcd009-705e-4abb-b202-a535b1a27dbb",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";SpaceToJump;SpaceToInteract",
+                    "action": "ResetPlayer",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "000059bb-2356-4f2e-bf9a-24764a16f258",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";SpaceToJump;SpaceToInteract",
+                    "action": "ToggleFlying",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "2011a630-e3ec-4cdf-811d-a624ba5d1859",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";SpaceToJump;SpaceToInteract",
+                    "action": "ToggleFlying",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "fe0357d0-81b0-43e4-a38f-af47bd74b45a",
+            "actions": [
+                {
+                    "name": "Navigate",
+                    "id": "c9a2889a-4e31-46ae-b84e-5deb9bf3b877",
+                    "expectedControlLayout": "Vector2",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Submit",
+                    "id": "c462be1f-b5fd-4097-8c7a-abe55e290768",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Cancel",
+                    "id": "e4706325-2fe5-4fc0-9854-bd778c56b7a6",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Point",
+                    "id": "baa6bbdb-8925-48fa-9d28-32867a5a4d24",
+                    "expectedControlLayout": "Vector2",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Click",
+                    "id": "14a2d24e-584d-4e73-aaf5-d2219cf9ed77",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "OpenMenu",
+                    "id": "2d84aecf-ac47-4a6c-8388-63609b669906",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e03c93ec-3b6a-4c00-9513-670abe1be47c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "WASD",
+                    "id": "7802e5cd-fd40-4f38-8c59-1412e7c84082",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Up",
+                    "id": "6eba7028-1c92-4ef1-a580-613e2e18ef17",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToInteract;SpaceToJump",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Down",
+                    "id": "2a590608-1ec7-41a7-815c-8942c3e52786",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Left",
+                    "id": "abdd44b4-4405-4bf2-b3d8-56fff4237ec4",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Right",
+                    "id": "fed8ba75-305f-4caf-90c6-4966d3b95d6c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "ArrowKeys",
+                    "id": "bee780d6-3b6c-4ab6-8d79-e74706a7dc71",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Up",
+                    "id": "bfdc0952-7fdd-4f1d-b22c-b0bece9086a1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Down",
+                    "id": "4da639df-623c-4805-9df4-15c4e3441a2a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Left",
+                    "id": "d373f20a-171d-4ade-9c7b-89a5bcf16b26",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Right",
+                    "id": "c1843887-e9df-4f06-98a6-3c531bd365d3",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "dpad",
+                    "id": "d257cf2b-e80b-4101-9767-631e88286d57",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": true,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Up",
+                    "id": "b025829d-8867-4652-bead-e3dc2383fd5f",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Down",
+                    "id": "f92b06c6-f1a8-4e43-bc8c-28d962bc96d1",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Left",
+                    "id": "91e6e086-621f-4dad-8c8e-2f45b3cf9726",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Right",
+                    "id": "0a959d6d-f16b-4581-b9f1-c7e3c7808edb",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Navigate",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "9bc43fdb-fff7-4d98-a127-d931a49c4abd",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Submit",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "a72decfc-538f-4a39-9f32-a7269aabe117",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Submit",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "78805528-ccb0-445a-b0fd-0cf5ef74f90d",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Submit",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "52ebcfc4-bbec-4e4d-b67b-a9c878c8fe0a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Submit",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "85595007-433d-4b07-a802-878ca648f96e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Cancel",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "342402de-b710-4e25-9e53-8fb345fed23c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Cancel",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "529d5b37-fa29-42d2-ab87-5dac84de7ed0",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Point",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "2c8a2034-f14e-4e9e-bad5-b03d0e5fdb52",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Click",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "5af5222a-31dc-4744-a7a3-7ff87615c0e3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "OpenMenu",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "2e5e1883-f3d6-4d30-8357-f2e0aec0ca29",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "OpenMenu",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "7f386215-c74b-4c70-a8ff-1799b008d1d4",
+            "actions": [
+                {
+                    "name": "ToggleCamera",
+                    "id": "4e352d5b-e2b0-4404-a71e-c9930bc4f178",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "SetCameraMode1",
+                    "id": "07b3931e-9803-4aeb-90bb-575c394ce5ca",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "SetCameraMode2",
+                    "id": "3996fbe8-d313-43a8-8a0f-6dd0b57d2cd1",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "SetCameraMode3",
+                    "id": "6c8f7884-35fb-4c2b-b076-d5bbe50b4262",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "SetCameraMode4",
+                    "id": "c327e3d7-547c-4f0e-a7b7-0993a44b7d65",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c88753df-f12e-4c22-a6c4-b83bafe3851d",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "ToggleCamera",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "c3c79afe-dc01-4111-985c-dedf7d91956a",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToInteract;SpaceToJump",
+                    "action": "ToggleCamera",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "0d898b47-8935-493e-93ef-69a2a567040e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "SetCameraMode1",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "f55412b0-138d-4f82-97f1-2ecb0ef01d4c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "SetCameraMode2",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "98920f4e-893e-44be-9024-ae230b646434",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "SetCameraMode3",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "2fc30464-11c0-4173-975f-fbb493fb9330",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "SetCameraMode4",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "Interaction",
+            "id": "2131f98b-9f64-489a-b25e-a3e49ad25556",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "id": "709eab70-7c6c-4e5b-ab82-e2f2d67050ec",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "da5d4cb3-6c39-4160-83e0-5aad45c674a7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Interact",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "3cbb8aad-05b1-4c6d-aa28-cf9a5262b98c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Interact",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "LayerSwitching",
+            "id": "58a64ed2-ac2c-4cc2-aef1-d17c17d35100",
+            "actions": [
+                {
+                    "name": "ToggleLayerSwitching",
+                    "id": "8e2328de-143c-429a-a9a1-25e59119eef6",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "99340e2e-bf5d-448e-93e6-5d65ad8d664a",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "ToggleLayerSwitching",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "36f5f826-76ae-4ab4-9baa-fca177d04453",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "ToggleLayerSwitching",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "f32d785e-0473-489e-adc4-4a72d356f7e2",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";SpaceToJump;SpaceToInteract",
+                    "action": "ToggleLayerSwitching",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "Dialog",
+            "id": "20e251f0-16aa-4159-9c69-90e22c2aeea6",
+            "actions": [
+                {
+                    "name": "Next",
+                    "id": "ab260b0d-d2be-4126-8eea-e72209e857bd",
+                    "expectedControlLayout": "Button",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "564c1f1c-0c70-4161-b598-83899db02e2b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "a56c3542-9df5-4b17-bdf4-ef245d464dd8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "3edbebc5-0be4-45ad-906c-ad5c530b7083",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "id": "791218f7-1f1c-4cac-83e8-6c1005f8c6ff",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;SpaceToJump;SpaceToInteract",
+                    "action": "Next",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "SpaceToJump",
+            "basedOn": "",
+            "bindingGroup": "SpaceToJump",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "SpaceToInteract",
+            "basedOn": "",
+            "bindingGroup": "SpaceToInteract",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

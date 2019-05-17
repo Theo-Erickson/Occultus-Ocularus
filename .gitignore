@@ -23,6 +23,7 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+*.idea
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -36,3 +37,4 @@ sysinfo.txt
 *.unitypackage
 Assets/Scenes/TestScene.unity
 Assets/Scenes/TestScene.unity
+.DS_Store
